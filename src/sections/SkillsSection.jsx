@@ -11,10 +11,9 @@ const SkillsSection = () => {
       items: [
         { name: 'React', level: 95 },
         { name: 'JavaScript', level: 90 },
-        { name: 'TypeScript', level: 85 },
         { name: 'HTML/CSS', level: 95 },
         { name: 'Tailwind CSS', level: 90 },
-        { name: 'Framer Motion', level: 80 }
+        { name: 'Bootstrap', level: 80 }
       ],
       color: 'from-blue-500 to-cyan-500',
       glowColor: 'primary'
@@ -25,10 +24,7 @@ const SkillsSection = () => {
       items: [
         { name: 'Node.js', level: 88 },
         { name: 'Express', level: 85 },
-        { name: 'Python', level: 80 },
-        { name: 'Django', level: 75 },
-        { name: 'REST APIs', level: 90 },
-        { name: 'GraphQL', level: 70 }
+        { name: 'REST APIs', level: 90 }
       ],
       color: 'from-green-500 to-emerald-500',
       glowColor: 'secondary'
@@ -40,9 +36,7 @@ const SkillsSection = () => {
         { name: 'MongoDB', level: 85 },
         { name: 'PostgreSQL', level: 80 },
         { name: 'MySQL', level: 75 },
-        { name: 'Firebase', level: 85 },
-        { name: 'Redis', level: 70 },
-        { name: 'Supabase', level: 80 }
+        { name: 'Firebase', level: 85 }
       ],
       color: 'from-purple-500 to-pink-500',
       glowColor: 'accent'
@@ -53,8 +47,6 @@ const SkillsSection = () => {
       items: [
         { name: 'Git', level: 90 },
         { name: 'Docker', level: 75 },
-        { name: 'AWS', level: 70 },
-        { name: 'Vercel', level: 85 },
         { name: 'VS Code', level: 95 },
         { name: 'Figma', level: 80 }
       ],

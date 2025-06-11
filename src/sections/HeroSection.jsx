@@ -7,38 +7,11 @@ import AnimatedSection from '../components/AnimatedSection';
 
 const HeroSection = () => {
   const handleDownloadResume = () => {
-    const resumeContent = `
-John Doe - Portfolio Resume
-========================
-
-Contact Information:
-Email: john.doe@example.com
-Phone: (555) 123-4567
-LinkedIn: linkedin.com/in/johndoe
-GitHub: github.com/johndoe
-
-Summary:
-Passionate full-stack developer with experience in modern web technologies.
-
-Skills:
-- Frontend: React, JavaScript, HTML, CSS, Tailwind CSS
-- Backend: Node.js, Express, Python
-- Database: MongoDB, PostgreSQL
-- Tools: Git, Docker, AWS
-
-Experience:
-Senior Developer at Tech Company (2022-Present)
-- Led development of multiple web applications
-- Collaborated with cross-functional teams
-- Mentored junior developers
-
-Education:
-Bachelor of Science in Computer Science
-University Name (2018-2022)
+    const resumeContent = `Pavithran S 
     `;
     
     const blob = new Blob([resumeContent], { type: 'text/plain;charset=utf-8' });
-    saveAs(blob, 'John_Doe_Resume.txt');
+    saveAs(blob, 'Pavithran_Resume.txt');
   };
 
   const scrollToNext = () => {
@@ -69,7 +42,7 @@ University Name (2018-2022)
                 }}
                 transition={{ duration: 3, repeat: Infinity }}
               >
-                John Doe
+                Pavithran S
               </motion.span>
             </motion.h1>
             

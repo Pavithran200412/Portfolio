@@ -32,7 +32,7 @@ Email: 1lK4o@example.com
             <h1 className="text-5xl md:text-7xl font-bold text-gray-900 dark:text-white mb-6">
               Hi, I'm{' '}
               <span className="bg-gradient-to-r from-primary-600 to-secondary-600 bg-clip-text text-transparent">
-                Pavithran
+                Pavithran S
               </span>
             </h1>
             

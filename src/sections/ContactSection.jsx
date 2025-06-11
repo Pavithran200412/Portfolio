@@ -40,8 +40,8 @@ const ContactSection = () => {
     {
       icon: FiMail,
       label: 'Email',
-      value: 'john.doe@example.com',
-      href: 'mailto:john.doe@example.com',
+      value: 'pavithran@example.com',
+      href: 'mailto:pavithran@example.com',
       color: 'text-blue-400'
     },
     {
