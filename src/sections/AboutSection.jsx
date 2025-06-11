@@ -2,42 +2,31 @@ import { motion } from 'framer-motion';
 import { FiUser, FiHeart, FiTarget, FiAward } from 'react-icons/fi';
 import AnimatedSection from '../components/AnimatedSection';
 import GlowingCard from '../components/GlowingCard';
+import EditableText from '../components/EditableText';
+import { useContent } from '../context/ContentContext';
 
 const AboutSection = () => {
-  const timeline = [
-    {
-      year: '2023',
-      title: 'Senior Full Stack Developer',
-      company: 'Tech Solutions Inc.',
-      description: 'Led development of multiple client projects, mentored junior developers, and implemented best practices for code quality and deployment.',
-      icon: FiAward,
-      color: 'primary'
-    },
-    {
-      year: '2021',
-      title: 'Full Stack Developer',
-      company: 'Digital Agency',
-      description: 'Developed responsive web applications, collaborated with design teams, and optimized application performance.',
-      icon: FiTarget,
-      color: 'secondary'
-    },
-    {
-      year: '2020',
-      title: 'Frontend Developer',
-      company: 'Startup Co.',
-      description: 'Built user interfaces using React, implemented responsive designs, and worked closely with UX designers.',
-      icon: FiHeart,
-      color: 'accent'
-    },
-    {
-      year: '2018',
-      title: 'Computer Science Degree',
-      company: 'University Name',
-      description: 'Bachelor of Science in Computer Science with focus on software engineering and web development.',
-      icon: FiUser,
-      color: 'success'
-    }
-  ];
+  const { content, updateAbout } = useContent();
+
+  const updateExperience = (index, field, value) => {
+    const newExperience = [...content.about.experience];
+    newExperience[index] = { ...newExperience[index], [field]: value };
+    updateAbout({ experience: newExperience });
+  };
+
+  const iconMap = {
+    0: FiAward,
+    1: FiTarget,
+    2: FiHeart,
+    3: FiUser
+  };
+
+  const colorMap = {
+    0: 'primary',
+    1: 'secondary',
+    2: 'accent',
+    3: 'success'
+  };
 
   return (
     <section id="about" className="min-h-screen py-20 px-4">
@@ -76,12 +65,14 @@ const AboutSection = () => {
             >
               <FiUser className="text-6xl text-primary-400 mx-auto mb-6" />
               <h3 className="text-2xl md:text-3xl font-bold mb-6 text-white">My Story</h3>
-              <p className="text-gray-300 leading-relaxed text-lg">
-                Started as a curious kid who loved taking apart computers, I've evolved into a developer 
-                who builds digital experiences that matter. My journey spans from learning my first 
-                "Hello World" to architecting complex applications that serve thousands of users. 
-                I believe in the power of clean code, beautiful design, and meaningful user interactions.
-              </p>
+              <div className="text-gray-300 leading-relaxed text-lg">
+                <EditableText
+                  value={content.about.story}
+                  onSave={(value) => updateAbout({ story: value })}
+                  multiline
+                  className="text-gray-300 leading-relaxed text-lg"
+                />
+              </div>
             </motion.div>
           </GlowingCard>
         </AnimatedSection>
@@ -93,11 +84,12 @@ const AboutSection = () => {
             {/* Timeline line */}
             <div className="absolute left-4 md:left-1/2 transform md:-translate-x-px h-full w-1 bg-gradient-to-b from-primary-600 via-secondary-600 to-accent-600"></div>
             
-            {timeline.map((item, index) => {
-              const Icon = item.icon;
+            {content.about.experience.map((item, index) => {
+              const Icon = iconMap[index] || FiUser;
+              const color = colorMap[index] || 'primary';
               return (
                 <motion.div
-                  key={item.year}
+                  key={index}
                   initial={{ opacity: 0, x: index % 2 === 0 ? -100 : 100 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.8, delay: index * 0.2 }}
@@ -117,22 +109,39 @@ const AboutSection = () => {
                   
                   {/* Content card */}
                   <div className={`ml-16 md:ml-0 md:w-5/12 ${index % 2 === 0 ? 'md:mr-8' : 'md:ml-8'}`}>
-                    <GlowingCard glowColor={item.color}>
+                    <GlowingCard glowColor={color}>
                       <div className="p-6">
                         <div className="flex items-center mb-3">
-                          <span className={`bg-${item.color}-500/20 text-${item.color}-400 px-3 py-1 rounded-full text-sm font-bold`}>
-                            {item.year}
+                          <span className={`bg-${color}-500/20 text-${color}-400 px-3 py-1 rounded-full text-sm font-bold`}>
+                            <EditableText
+                              value={item.year}
+                              onSave={(value) => updateExperience(index, 'year', value)}
+                              className={`text-${color}-400`}
+                            />
                           </span>
                         </div>
                         <h4 className="text-xl font-bold text-white mb-2">
-                          {item.title}
+                          <EditableText
+                            value={item.title}
+                            onSave={(value) => updateExperience(index, 'title', value)}
+                            className="text-xl font-bold text-white"
+                          />
                         </h4>
                         <p className="text-primary-400 font-medium mb-3">
-                          {item.company}
+                          <EditableText
+                            value={item.company}
+                            onSave={(value) => updateExperience(index, 'company', value)}
+                            className="text-primary-400 font-medium"
+                          />
                         </p>
-                        <p className="text-gray-400 leading-relaxed">
-                          {item.description}
-                        </p>
+                        <div className="text-gray-400 leading-relaxed">
+                          <EditableText
+                            value={item.description}
+                            onSave={(value) => updateExperience(index, 'description', value)}
+                            multiline
+                            className="text-gray-400 leading-relaxed"
+                          />
+                        </div>
                       </div>
                     </GlowingCard>
                   </div>

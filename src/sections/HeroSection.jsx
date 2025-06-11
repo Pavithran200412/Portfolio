@@ -4,41 +4,38 @@ import { FiDownload, FiMail, FiGithub, FiLinkedin, FiArrowDown } from 'react-ico
 import { saveAs } from 'file-saver';
 import Avatar3D from '../components/Avatar3D';
 import AnimatedSection from '../components/AnimatedSection';
+import EditableText from '../components/EditableText';
+import { useContent } from '../context/ContentContext';
 
 const HeroSection = () => {
+  const { content, updatePersonal } = useContent();
+
   const handleDownloadResume = () => {
     const resumeContent = `
-John Doe - Portfolio Resume
+${content.personal.name} - Portfolio Resume
 ========================
 
 Contact Information:
-Email: john.doe@example.com
-Phone: (555) 123-4567
-LinkedIn: linkedin.com/in/johndoe
-GitHub: github.com/johndoe
+Email: ${content.personal.email}
+Phone: ${content.personal.phone}
+LinkedIn: ${content.personal.linkedin}
+GitHub: ${content.personal.github}
 
 Summary:
-Passionate full-stack developer with experience in modern web technologies.
+${content.personal.bio}
 
 Skills:
-- Frontend: React, JavaScript, HTML, CSS, Tailwind CSS
-- Backend: Node.js, Express, Python
-- Database: MongoDB, PostgreSQL
-- Tools: Git, Docker, AWS
+- Frontend: ${content.skills.frontend.map(skill => skill.name).join(', ')}
+- Backend: ${content.skills.backend.map(skill => skill.name).join(', ')}
+- Database: ${content.skills.database.map(skill => skill.name).join(', ')}
+- Tools: ${content.skills.tools.map(skill => skill.name).join(', ')}
 
 Experience:
-Senior Developer at Tech Company (2022-Present)
-- Led development of multiple web applications
-- Collaborated with cross-functional teams
-- Mentored junior developers
-
-Education:
-Bachelor of Science in Computer Science
-University Name (2018-2022)
+${content.about.experience.map(exp => `${exp.title} at ${exp.company} (${exp.year})\n- ${exp.description}`).join('\n\n')}
     `;
     
     const blob = new Blob([resumeContent], { type: 'text/plain;charset=utf-8' });
-    saveAs(blob, 'John_Doe_Resume.txt');
+    saveAs(blob, `${content.personal.name.replace(' ', '_')}_Resume.txt`);
   };
 
   const scrollToNext = () => {
@@ -69,14 +66,18 @@ University Name (2018-2022)
                 }}
                 transition={{ duration: 3, repeat: Infinity }}
               >
-                John Doe
+                <EditableText
+                  value={content.personal.name}
+                  onSave={(value) => updatePersonal({ name: value })}
+                  className="bg-gradient-to-r from-primary-400 via-secondary-400 to-accent-400 bg-clip-text text-transparent"
+                />
               </motion.span>
             </motion.h1>
             
             <div className="text-2xl md:text-3xl lg:text-4xl text-gray-300 mb-8 h-20">
               <TypeAnimation
                 sequence={[
-                  'Full Stack Developer',
+                  content.personal.title,
                   2000,
                   'React Specialist',
                   2000,
@@ -94,15 +95,19 @@ University Name (2018-2022)
               />
             </div>
             
-            <motion.p 
+            <motion.div
               className="text-lg md:text-xl text-gray-400 max-w-2xl mx-auto lg:mx-0 mb-12 leading-relaxed"
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.6 }}
             >
-              Passionate about creating beautiful, functional, and user-friendly applications. 
-              I love turning complex problems into simple, elegant solutions with cutting-edge technology.
-            </motion.p>
+              <EditableText
+                value={content.personal.bio}
+                onSave={(value) => updatePersonal({ bio: value })}
+                multiline
+                className="text-lg md:text-xl text-gray-400 leading-relaxed"
+              />
+            </motion.div>
           </motion.div>
 
           {/* CTA Buttons */}
@@ -150,9 +155,9 @@ University Name (2018-2022)
             className="flex justify-center lg:justify-start space-x-6"
           >
             {[
-              { Icon: FiGithub, href: 'https://github.com', label: 'GitHub', color: 'hover:text-gray-400' },
-              { Icon: FiLinkedin, href: 'https://linkedin.com', label: 'LinkedIn', color: 'hover:text-blue-400' },
-              { Icon: FiMail, href: 'mailto:john.doe@example.com', label: 'Email', color: 'hover:text-green-400' },
+              { Icon: FiGithub, href: content.personal.github, label: 'GitHub', color: 'hover:text-gray-400' },
+              { Icon: FiLinkedin, href: content.personal.linkedin, label: 'LinkedIn', color: 'hover:text-blue-400' },
+              { Icon: FiMail, href: `mailto:${content.personal.email}`, label: 'Email', color: 'hover:text-green-400' },
             ].map(({ Icon, href, label, color }) => (
               <motion.a
                 key={label}
