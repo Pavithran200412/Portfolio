@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { FiMail, FiPhone, FiMapPin, FiSend, FiGithub, FiLinkedin, FiTwitter, FiMessageCircle } from 'react-icons/fi';
+import { FiMail, FiPhone, FiMapPin, FiSend, FiGithub, FiLinkedin, FiTwitter, FiMessageCircle, FiInstagram } from 'react-icons/fi';
 import AnimatedSection from '../components/AnimatedSection';
 import GlowingCard from '../components/GlowingCard';
 
@@ -61,10 +61,10 @@ const ContactSection = () => {
   ];
 
   const socialLinks = [
-    { icon: FiGithub, href: 'https://github.com', label: 'GitHub', color: 'hover:text-gray-400' },
-    { icon: FiLinkedin, href: 'https://linkedin.com', label: 'LinkedIn', color: 'hover:text-blue-400' },
-    { icon: FiTwitter, href: 'https://twitter.com', label: 'Twitter', color: 'hover:text-sky-400' },
-    { icon: FiMessageCircle, href: 'https://discord.com', label: 'Discord', color: 'hover:text-purple-400' }
+    { icon: FiGithub, href: 'https://github.com/Pavithran200412', label: 'GitHub', color: 'hover:text-gray-400' },
+    { icon: FiLinkedin, href: 'https://www.linkedin.com/in/pavithran-s-1814a3310?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app', label: 'LinkedIn', color: 'hover:text-blue-400' },
+    { icon: FiTwitter, href: 'https://x.com/PAVITHRANS95329?t=53Hhk1oI2LaIXwI0itEQtQ&s=09', label: 'Twitter', color: 'hover:text-sky-400' },
+    { icon: FiInstagram, href: 'https://www.instagram.com/itzz_pavithran_?igsh=MXAxMXplcTVpeTVwcQ==', label:'Instagram', color: 'hover:text-purple-400' }
   ];
 
   return (
@@ -275,32 +275,6 @@ const ContactSection = () => {
                       );
                     })}
                   </div>
-                </div>
-              </GlowingCard>
-            </AnimatedSection>
-
-            {/* Availability Status */}
-            <AnimatedSection animation="scaleIn" delay={0.9}>
-              <GlowingCard glowColor="success">
-                <div className="p-8 text-center">
-                  <motion.div
-                    animate={{ scale: [1, 1.05, 1] }}
-                    transition={{ duration: 2, repeat: Infinity }}
-                  >
-                    <h3 className="text-xl font-bold mb-4 text-white">Ready to Collaborate</h3>
-                    <p className="text-gray-300 mb-4">
-                      I'm currently available for exciting projects and opportunities. 
-                      Let's create something amazing together!
-                    </p>
-                    <div className="flex items-center justify-center">
-                      <motion.div 
-                        className="w-3 h-3 bg-green-400 rounded-full mr-3"
-                        animate={{ opacity: [1, 0.5, 1] }}
-                        transition={{ duration: 1.5, repeat: Infinity }}
-                      />
-                      <span className="font-medium text-green-400">Available for new projects</span>
-                    </div>
-                  </motion.div>
                 </div>
               </GlowingCard>
             </AnimatedSection>

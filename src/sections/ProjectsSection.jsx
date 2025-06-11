@@ -58,7 +58,7 @@ const ProjectsSection = () => {
       github: 'https://github.com/Paramesh612/App-Feature-Analysis-and-Comment-Driven-Rating',
       demo: 'https://github.com/Paramesh612/App-Feature-Analysis-and-Comment-Driven-Rating',
       features: [ 'Comment Analysis', 'Rating System'],
-      category: 'Machine Learning',
+      category: 'AI/ML',
       color: 'success'
     },
     {
@@ -76,7 +76,7 @@ const ProjectsSection = () => {
     }
   ];
 
-  const categories = ['All', 'Full Stack', 'Frontend', '3D Graphics', 'Blockchain', 'AI/ML'];
+  const categories = ['All', 'Full Stack', '3D Graphics', 'AI/ML'];
 
   const filteredProjects = activeCategory === 'All' 
     ? projects 

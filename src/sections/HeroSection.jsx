@@ -116,9 +116,9 @@ Full Stack Developer
             className="flex justify-center lg:justify-start space-x-6"
           >
             {[
-              { Icon: FiGithub, href: 'https://github.com', label: 'GitHub', color: 'hover:text-gray-400' },
-              { Icon: FiLinkedin, href: 'https://linkedin.com', label: 'LinkedIn', color: 'hover:text-blue-400' },
-              { Icon: FiMail, href: 'mailto:pavithran@example.com', label: 'Email', color: 'hover:text-green-400' },
+              { Icon: FiGithub, href: 'https://github.com/Pavithran200412', label: 'GitHub' },
+              { Icon: FiLinkedin, href: 'https://www.linkedin.com/in/pavithran-s-1814a3310?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app', label: 'LinkedIn' },
+              { Icon: FiMail, href: 'mailto:pavithran.workat@gmail.com', label: 'Email' }
             ].map(({ Icon, href, label, color }) => (
               <motion.a
                 key={label}
