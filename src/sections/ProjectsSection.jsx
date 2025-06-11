@@ -1,11 +1,10 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { FiGithub, FiExternalLink, FiX, FiPlay } from 'react-icons/fi';
-import AnimatedSection from '../components/AnimatedSection';
+import { FiGithub, FiExternalLink, FiPlay } from 'react-icons/fi';
 import GlowingCard from '../components/GlowingCard';
 
-const GITHUB_USERNAME = 'Pavithran200412'; // your GitHub username
-const REPO_LIMIT = 10; // limit the number of repos to display
+const GITHUB_USERNAME = 'Pavithran200412';
+const REPO_LIMIT = 10;
 
 const topicToCategoryMap = {
   fullstack: 'Full Stack',
@@ -20,12 +19,13 @@ const topicToCategoryMap = {
   'machine-learning': 'AI/ML',
   vr: '3D Graphics',
 };
+
 const getCategoryFromTopics = (topics) => {
   for (const topic of topics) {
     const key = topic.toLowerCase();
     if (topicToCategoryMap[key]) return topicToCategoryMap[key];
   }
-  return 'Full Stack'; // default
+  return 'Full Stack';
 };
 
 const ProjectsSection = () => {
@@ -35,7 +35,9 @@ const ProjectsSection = () => {
 
   useEffect(() => {
     const fetchGitHubRepos = async () => {
-      const response = await fetch(`https://api.github.com/users/${GITHUB_USERNAME}/repos?per_page=100`);
+      const response = await fetch(
+        `https://api.github.com/users/${GITHUB_USERNAME}/repos?per_page=100`
+      );
       const data = await response.json();
 
       const limitedRepos = data.slice(0, REPO_LIMIT).map((repo) => ({
@@ -47,7 +49,7 @@ const ProjectsSection = () => {
         tags: repo.topics || [],
         github: repo.html_url,
         demo: repo.homepage || repo.html_url,
-        features: ['Open Source', 'GitHub Integration', 'Auto-generated'], // example
+        features: ['Open Source', 'GitHub Integration', 'Auto-generated'],
         category: getCategoryFromTopics(repo.topics || []),
         color: 'primary',
       }));
@@ -69,7 +71,26 @@ const ProjectsSection = () => {
     <section id="projects" className="min-h-screen py-20 px-4">
       <div className="max-w-7xl mx-auto">
         {/* Header and Category Filter */}
-        {/* Keep your header and category button JSX unchanged here... */}
+        <div className="text-center mb-12">
+          <h2 className="text-4xl font-bold text-white mb-4">Projects</h2>
+          <p className="text-gray-400">Explore my latest work categorized by technology</p>
+        </div>
+
+        <div className="flex flex-wrap justify-center gap-4 mb-12">
+          {categories.map((cat) => (
+            <button
+              key={cat}
+              onClick={() => setActiveCategory(cat)}
+              className={`px-4 py-2 rounded-full border transition-all duration-300 ${
+                activeCategory === cat
+                  ? 'bg-primary-500 text-white border-primary-500'
+                  : 'bg-transparent border-gray-500 text-gray-400 hover:bg-primary-500 hover:text-white'
+              }`}
+            >
+              {cat}
+            </button>
+          ))}
+        </div>
 
         {/* Projects Grid */}
         <motion.div
@@ -110,7 +131,9 @@ const ProjectsSection = () => {
                       </motion.div>
                     </div>
                     <div className="absolute top-4 right-4">
-                      <span className={`px-3 py-1 bg-${project.color}-500/20 text-${project.color}-400 rounded-full text-sm font-medium backdrop-blur-sm`}>
+                      <span
+                        className={`px-3 py-1 bg-${project.color}-500/20 text-${project.color}-400 rounded-full text-sm font-medium backdrop-blur-sm`}
+                      >
                         {project.category}
                       </span>
                     </div>
@@ -165,7 +188,7 @@ const ProjectsSection = () => {
           </AnimatePresence>
         </motion.div>
 
-        {/* Modal component logic remains unchanged */}
+        {/* Optional: You can include a modal here for selected project */}
       </div>
     </section>
   );
