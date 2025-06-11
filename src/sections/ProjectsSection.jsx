@@ -19,7 +19,8 @@ const ProjectsSection = () => {
       github: 'https://github.com/Paramesh612/DormNest-OOAD-Project',
       demo: 'https://github.com/Paramesh612/DormNest-OOAD-Project',
       features: ['User Authentication', 'Property Listings', 'Booking Management', 'Admin Dashboard'],
-      category: 'Full Stack'
+      category: 'Java Spring Boot',
+      color: 'primary'
     },
     {
       id: 2,
@@ -31,7 +32,7 @@ const ProjectsSection = () => {
       github: 'https://github.com/Pavithran200412/RemoConnect-Project-CN',
       demo: 'https://github.com/Pavithran200412/RemoConnect-Project-CN',
       features: ['Messaging', 'File Sharing','Screen Sharing'],
-      category: 'Frontend',
+      category: 'Java Spring Boot with Networking',
       color: 'secondary'
     },
     {
@@ -71,7 +72,7 @@ const ProjectsSection = () => {
       demo: 'https://github.com/Pavithran200412/SpaceShooter_Game',
       features: ['Hand Tracking', 'Spatial Audio', 'Real-time Interaction'],
       category: '3D Graphics',
-      color: 'primary'
+      color: 'secondary'
     }
   ];
 
