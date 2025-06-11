@@ -44,11 +44,11 @@ Full Stack Developer
             <div className="text-2xl md:text-3xl lg:text-4xl text-gray-300 mb-8 h-20">
               <TypeAnimation
                 sequence={[
-                  'Full Stack Developer',
+                  'Transforming Ideas into Reality',
                   3000, // Increased delay
-                  'React Specialist',
+                  'Tech Enthusiast',
                   3000,
-                  'UI/UX Enthusiast',
+                  'Team Worker',
                   3000,
                   'Problem Solver',
                   3000,
