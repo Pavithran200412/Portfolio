@@ -6,36 +6,28 @@ import GlowingCard from '../components/GlowingCard';
 const AboutSection = () => {
   const timeline = [
     {
-      year: '2023',
-      title: 'Senior Full Stack Developer',
-      company: 'Tech Solutions Inc.',
-      description: 'Led development of multiple client projects, mentored junior developers, and implemented best practices for code quality and deployment.',
-      icon: FiAward,
+      year: '2023 – Present',
+      title: 'Madras Institute of Technology, Anna University Chennai, Tamil Nadu.',
+      company: 'Bachelor of Engineering in Computer Science',
+      description: 'Currently pursuing my Bachelor of Engineering in Computer Science, focusing on software development, algorithms, and data structures.',
+      icon: FiUser,
       color: 'primary'
     },
     {
-      year: '2021',
-      title: 'Full Stack Developer',
-      company: 'Digital Agency',
-      description: 'Developed responsive web applications, collaborated with design teams, and optimized application performance.',
-      icon: FiTarget,
+      year: 'Jun 2020 – Apr 2022',
+      title: 'Adhiparasakthi Polytechnic College Chengalpattu, Tamil Nadu.',
+      company: 'Diploma in Computer Science',
+      description: 'Completed my diploma in Computer Science, gaining foundational knowledge in programming and software development.',
+      icon: FiAward,
       color: 'secondary'
     },
     {
-      year: '2020',
-      title: 'Frontend Developer',
-      company: 'Startup Co.',
-      description: 'Built user interfaces using React, implemented responsive designs, and worked closely with UX designers.',
+      year: '2008 – 2020',
+      title: 'St.Joseph of Cluny Matric Hr.Sec. School Viluppuram, Tamil Nadu.',
+      company: 'Schooling',
+      description: 'Completed my schooling at St.Joseph of Cluny Matric Hr.Sec. School Viluppuram, Tamil Nadu.',
       icon: FiHeart,
       color: 'accent'
-    },
-    {
-      year: '2018',
-      title: 'Computer Science Degree',
-      company: 'University Name',
-      description: 'Bachelor of Science in Computer Science with focus on software engineering and web development.',
-      icon: FiUser,
-      color: 'success'
     }
   ];
 
@@ -60,7 +52,7 @@ const AboutSection = () => {
             transition={{ duration: 0.8, delay: 0.2 }}
             viewport={{ once: true }}
           >
-            I'm a passionate full-stack developer with a love for creating innovative solutions 
+            I'm a passionate developer developing my skills and learning new things. I have a love for creating innovative solutions 
             and beautiful user experiences. Here's my journey and what drives me every day.
           </motion.p>
         </AnimatedSection>

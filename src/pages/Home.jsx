@@ -39,11 +39,11 @@ Email: 1lK4o@example.com
             <div className="text-xl md:text-2xl text-gray-600 dark:text-gray-300 mb-8 h-16">
               <TypeAnimation
                 sequence={[
-                  'Full Stack Developer',
+                  'Transforming Ideas into Reality',
                   2000,
-                  'React Specialist',
+                  'Tech Enthusiast',
                   2000,
-                  'UI/UX Enthusiast',
+                  'Team Worker',
                   2000,
                   'Problem Solver',
                   2000,

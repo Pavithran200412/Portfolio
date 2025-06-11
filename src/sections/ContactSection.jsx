@@ -40,21 +40,21 @@ const ContactSection = () => {
     {
       icon: FiMail,
       label: 'Email',
-      value: 'pavithran@example.com',
-      href: 'mailto:pavithran@example.com',
+      value: 'pavithran.workat@gmail.com',
+      href: 'mailto:pavithran.workat@gmail.com',
       color: 'text-blue-400'
     },
     {
       icon: FiPhone,
       label: 'Phone',
-      value: '+1 (555) 123-4567',
-      href: 'tel:+15551234567',
+      value: '+91 93859 85154',
+      href: 'tel:+919385985154',
       color: 'text-green-400'
     },
     {
       icon: FiMapPin,
       label: 'Location',
-      value: 'San Francisco, CA',
+      value: 'Chennai, Tamil Nadu, India',
       href: 'https://maps.google.com',
       color: 'text-red-400'
     }
