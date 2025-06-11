@@ -8,6 +8,7 @@ import AnimatedSection from '../components/AnimatedSection';
 const HeroSection = () => {
   const handleDownloadResume = () => {
     const resumeContent = `Pavithran S 
+Full Stack Developer
     `;
     
     const blob = new Blob([resumeContent], { type: 'text/plain;charset=utf-8' });
@@ -35,33 +36,25 @@ const HeroSection = () => {
               transition={{ duration: 1, delay: 0.2 }}
             >
               Hi, I'm{' '}
-              <motion.span 
-                className="bg-gradient-to-r from-primary-400 via-secondary-400 to-accent-400 bg-clip-text text-transparent"
-                animate={{ 
-                  backgroundPosition: ['0% 50%', '100% 50%', '0% 50%'],
-                }}
-                transition={{ duration: 3, repeat: Infinity }}
-              >
+              <span className="bg-gradient-to-r from-primary-400 via-secondary-400 to-accent-400 bg-clip-text text-transparent">
                 Pavithran S
-              </motion.span>
+              </span>
             </motion.h1>
             
             <div className="text-2xl md:text-3xl lg:text-4xl text-gray-300 mb-8 h-20">
               <TypeAnimation
                 sequence={[
                   'Full Stack Developer',
-                  2000,
+                  3000, // Increased delay
                   'React Specialist',
-                  2000,
+                  3000,
                   'UI/UX Enthusiast',
-                  2000,
-                  '3D Graphics Creator',
-                  2000,
+                  3000,
                   'Problem Solver',
-                  2000,
+                  3000,
                 ]}
                 wrapper="span"
-                speed={50}
+                speed={40} // Reduced speed
                 repeat={Infinity}
                 className="font-medium"
               />
@@ -74,7 +67,7 @@ const HeroSection = () => {
               transition={{ duration: 0.8, delay: 0.6 }}
             >
               Passionate about creating beautiful, functional, and user-friendly applications. 
-              I love turning complex problems into simple, elegant solutions with cutting-edge technology.
+              I love turning complex problems into simple, elegant solutions.
             </motion.p>
           </motion.div>
 
@@ -86,30 +79,30 @@ const HeroSection = () => {
             className="flex flex-wrap justify-center lg:justify-start gap-4 mb-12"
           >
             <motion.button
-              whileHover={{ scale: 1.05, y: -2, boxShadow: '0 20px 40px rgba(99, 102, 241, 0.4)' }}
-              whileTap={{ scale: 0.95 }}
+              whileHover={{ scale: 1.03, y: -1 }} // Reduced scale and movement
+              whileTap={{ scale: 0.97 }}
               onClick={handleDownloadResume}
-              className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-primary-600 to-secondary-600 hover:from-primary-700 hover:to-secondary-700 text-white font-medium rounded-xl shadow-lg transition-all duration-300"
+              className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-primary-600 to-secondary-600 hover:from-primary-700 hover:to-secondary-700 text-white font-medium rounded-xl shadow-lg transition-all duration-200"
             >
               <FiDownload className="mr-2" />
               View Resume
             </motion.button>
             
             <motion.button
-              whileHover={{ scale: 1.05, y: -2, boxShadow: '0 20px 40px rgba(139, 92, 246, 0.4)' }}
-              whileTap={{ scale: 0.95 }}
+              whileHover={{ scale: 1.03, y: -1 }} // Reduced scale and movement
+              whileTap={{ scale: 0.97 }}
               onClick={() => document.getElementById('contact').scrollIntoView({ behavior: 'smooth' })}
-              className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-secondary-600 to-accent-600 hover:from-secondary-700 hover:to-accent-700 text-white font-medium rounded-xl shadow-lg transition-all duration-300"
+              className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-secondary-600 to-accent-600 hover:from-secondary-700 hover:to-accent-700 text-white font-medium rounded-xl shadow-lg transition-all duration-200"
             >
               <FiMail className="mr-2" />
               Contact Me
             </motion.button>
             
             <motion.button
-              whileHover={{ scale: 1.05, y: -2 }}
-              whileTap={{ scale: 0.95 }}
+              whileHover={{ scale: 1.03, y: -1 }} // Reduced scale and movement
+              whileTap={{ scale: 0.97 }}
               onClick={() => document.getElementById('projects').scrollIntoView({ behavior: 'smooth' })}
-              className="inline-flex items-center px-8 py-4 border-2 border-primary-400 text-primary-400 hover:bg-primary-400 hover:text-white font-medium rounded-xl transition-all duration-300 backdrop-blur-sm"
+              className="inline-flex items-center px-8 py-4 border-2 border-primary-400 text-primary-400 hover:bg-primary-400 hover:text-white font-medium rounded-xl transition-all duration-200 backdrop-blur-sm"
             >
               View Projects
             </motion.button>
@@ -125,16 +118,16 @@ const HeroSection = () => {
             {[
               { Icon: FiGithub, href: 'https://github.com', label: 'GitHub', color: 'hover:text-gray-400' },
               { Icon: FiLinkedin, href: 'https://linkedin.com', label: 'LinkedIn', color: 'hover:text-blue-400' },
-              { Icon: FiMail, href: 'mailto:john.doe@example.com', label: 'Email', color: 'hover:text-green-400' },
+              { Icon: FiMail, href: 'mailto:pavithran@example.com', label: 'Email', color: 'hover:text-green-400' },
             ].map(({ Icon, href, label, color }) => (
               <motion.a
                 key={label}
                 href={href}
                 target="_blank"
                 rel="noopener noreferrer"
-                whileHover={{ scale: 1.3, y: -5, rotate: 5 }}
-                whileTap={{ scale: 0.9 }}
-                className={`p-4 text-gray-400 ${color} transition-all duration-300 rounded-full bg-white/10 backdrop-blur-sm hover:bg-white/20`}
+                whileHover={{ scale: 1.2, y: -3 }} // Reduced movement
+                whileTap={{ scale: 0.95 }}
+                className={`p-4 text-gray-400 ${color} transition-all duration-200 rounded-full bg-white/10 backdrop-blur-sm hover:bg-white/20`}
                 aria-label={label}
               >
                 <Icon size={24} />
@@ -153,9 +146,9 @@ const HeroSection = () => {
       <motion.button
         onClick={scrollToNext}
         className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
-        animate={{ y: [0, 10, 0] }}
-        transition={{ duration: 2, repeat: Infinity }}
-        whileHover={{ scale: 1.2 }}
+        animate={{ y: [0, 5, 0] }} // Reduced movement
+        transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut' }} // Increased duration
+        whileHover={{ scale: 1.1 }}
       >
         <div className="flex flex-col items-center text-gray-400 hover:text-white transition-colors">
           <span className="text-sm mb-2">Scroll Down</span>
