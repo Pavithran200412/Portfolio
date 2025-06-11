@@ -5,7 +5,7 @@ import AnimatedSection from '../components/AnimatedSection';
 import GlowingCard from '../components/GlowingCard';
 
 const GITHUB_USERNAME = 'Pavithran200412'; // your GitHub username
-const REPO_LIMIT = 6; // limit the number of repos to display
+const REPO_LIMIT = 10; // limit the number of repos to display
 
 const topicToCategoryMap = {
   fullstack: 'Full Stack',
