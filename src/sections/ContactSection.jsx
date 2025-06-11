@@ -3,11 +3,8 @@ import { motion } from 'framer-motion';
 import { FiMail, FiPhone, FiMapPin, FiSend, FiGithub, FiLinkedin, FiTwitter, FiMessageCircle } from 'react-icons/fi';
 import AnimatedSection from '../components/AnimatedSection';
 import GlowingCard from '../components/GlowingCard';
-import EditableText from '../components/EditableText';
-import { useContent } from '../context/ContentContext';
 
 const ContactSection = () => {
-  const { content, updatePersonal } = useContent();
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -43,34 +40,31 @@ const ContactSection = () => {
     {
       icon: FiMail,
       label: 'Email',
-      value: content.personal.email,
-      href: `mailto:${content.personal.email}`,
-      color: 'text-blue-400',
-      field: 'email'
+      value: 'john.doe@example.com',
+      href: 'mailto:john.doe@example.com',
+      color: 'text-blue-400'
     },
     {
       icon: FiPhone,
       label: 'Phone',
-      value: content.personal.phone,
-      href: `tel:${content.personal.phone}`,
-      color: 'text-green-400',
-      field: 'phone'
+      value: '+1 (555) 123-4567',
+      href: 'tel:+15551234567',
+      color: 'text-green-400'
     },
     {
       icon: FiMapPin,
       label: 'Location',
-      value: content.personal.location,
+      value: 'San Francisco, CA',
       href: 'https://maps.google.com',
-      color: 'text-red-400',
-      field: 'location'
+      color: 'text-red-400'
     }
   ];
 
   const socialLinks = [
-    { icon: FiGithub, href: content.personal.github, label: 'GitHub', color: 'hover:text-gray-400', field: 'github' },
-    { icon: FiLinkedin, href: content.personal.linkedin, label: 'LinkedIn', color: 'hover:text-blue-400', field: 'linkedin' },
-    { icon: FiTwitter, href: content.personal.twitter, label: 'Twitter', color: 'hover:text-sky-400', field: 'twitter' },
-    { icon: FiMessageCircle, href: 'https://discord.com', label: 'Discord', color: 'hover:text-purple-400', field: 'discord' }
+    { icon: FiGithub, href: 'https://github.com', label: 'GitHub', color: 'hover:text-gray-400' },
+    { icon: FiLinkedin, href: 'https://linkedin.com', label: 'LinkedIn', color: 'hover:text-blue-400' },
+    { icon: FiTwitter, href: 'https://twitter.com', label: 'Twitter', color: 'hover:text-sky-400' },
+    { icon: FiMessageCircle, href: 'https://discord.com', label: 'Discord', color: 'hover:text-purple-400' }
   ];
 
   return (
@@ -237,14 +231,9 @@ const ContactSection = () => {
                             <p className="text-sm text-gray-400">
                               {info.label}
                             </p>
-                            <div className="text-white font-medium">
-                              <EditableText
-                                value={info.value}
-                                onSave={(value) => updatePersonal({ [info.field]: value })}
-                                className="text-white font-medium"
-                                type={info.field === 'email' ? 'email' : info.field === 'phone' ? 'tel' : 'text'}
-                              />
-                            </div>
+                            <p className="text-white font-medium">
+                              {info.value}
+                            </p>
                           </div>
                         </motion.a>
                       );
