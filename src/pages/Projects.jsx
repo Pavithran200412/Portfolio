@@ -9,14 +9,14 @@ const Projects = () => {
   const projects = [
     {
       id: 1,
-      title: 'E-Commerce Platform',
-      shortDesc: 'Modern e-commerce solution with React and Node.js',
-      fullDesc: 'A comprehensive e-commerce platform built with React, Node.js, and MongoDB. Features include user authentication, product catalog, shopping cart, payment integration with Stripe, order management, and admin dashboard. The application is fully responsive and optimized for performance.',
+      title: 'DormNest-OOAD-Project',
+      shortDesc: 'Student Accommodation Management System',
+      fullDesc: 'A comprehensive student accommodation management system designed to streamline the process of finding and managing student housing. Built with a modern tech stack including Java, Spring Boot, React, and PostgreSQL. Features include user authentication, property listings, booking management,and an admin dashboard for managing properties and users.',
       image: 'https://images.pexels.com/photos/230544/pexels-photo-230544.jpeg?auto=compress&cs=tinysrgb&w=800',
-      tags: ['React', 'Node.js', 'MongoDB', 'Stripe', 'Express'],
-      github: 'https://github.com',
-      demo: 'https://example.com',
-      features: ['User Authentication', 'Payment Integration', 'Admin Dashboard', 'Responsive Design'],
+      tags: ['Java', 'Spring Boot', 'React', 'PostgreSQL'],
+      github: 'https://github.com/Paramesh612/DormNest-OOAD-Project',
+      demo: 'https://github.com/Paramesh612/DormNest-OOAD-Project',
+      features: ['User Authentication', 'Property Listings', 'Booking Management', 'Admin Dashboard'],
       category: 'Full Stack'
     },
     {
