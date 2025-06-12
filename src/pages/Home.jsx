@@ -7,16 +7,13 @@ import PageTransition from '../components/PageTransition';
 
 const Home = () => {
   const handleDownloadResume = () => {
-    // In a real application, you would host your resume file and download it
-    // For now, we'll simulate the download
-    const resumeContent = `Pavithran S
-Full Stack Developer
-Contact Information:    
-Email: 1lK4o@example.com
-    `;
-    
+    const link = document.createElement('a');
+  link.href = '/public/Resume.pdf'; // Make sure Resume.pdf is in your public folder
+  link.download = 'Pavithran_Resume.pdf';
+  link.click();
+;
     const blob = new Blob([resumeContent], { type: 'text/plain;charset=utf-8' });
-    saveAs(blob, 'John_Doe_Resume.txt');
+    saveAs(blob, 'Pavithran_Resume.pdf');
   };
 
   return (

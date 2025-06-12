@@ -7,13 +7,11 @@ import AnimatedSection from '../components/AnimatedSection';
 
 const HeroSection = () => {
   const handleDownloadResume = () => {
-    const resumeContent = `Pavithran S 
-Full Stack Developer
-    `;
-    
-    const blob = new Blob([resumeContent], { type: 'text/plain;charset=utf-8' });
-    saveAs(blob, 'Pavithran_Resume.txt');
-  };
+  const link = document.createElement('a');
+  link.href = '/public/Resume.pdf'; // Make sure Resume.pdf is in your public folder
+  link.download = 'Pavithran_Resume.pdf';
+  link.click();
+};
 
   const scrollToNext = () => {
     document.getElementById('about').scrollIntoView({ behavior: 'smooth' });
