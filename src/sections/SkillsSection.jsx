@@ -6,10 +6,12 @@ import GlowingCard from '../components/GlowingCard';
 const SkillsSection = () => {
   const skills = [
     {
-      category: 'Frontend',
+      category: 'Programming Languages & Frontend',
       icon: FiCode,
       items: [
-        { name: 'React', level: 95 },
+        { name: 'Java', level: 85 },
+        { name: 'C (basic)', level: 50 },
+        { name: 'React', level: 90 },
         { name: 'JavaScript', level: 90 },
         { name: 'HTML/CSS', level: 95 },
         { name: 'Tailwind CSS', level: 90 },
@@ -24,7 +26,7 @@ const SkillsSection = () => {
       items: [
         { name: 'Node.js', level: 88 },
         { name: 'Express', level: 85 },
-        { name: 'REST APIs', level: 90 }
+        { name: 'REST APIs', level: 80 }
       ],
       color: 'from-green-500 to-emerald-500',
       glowColor: 'secondary'
@@ -35,8 +37,8 @@ const SkillsSection = () => {
       items: [
         { name: 'MongoDB', level: 85 },
         { name: 'PostgreSQL', level: 80 },
-        { name: 'MySQL', level: 75 },
-        { name: 'Firebase', level: 85 }
+        { name: 'MySQL', level: 85 },
+        { name: 'SQL', level: 85 }
       ],
       color: 'from-purple-500 to-pink-500',
       glowColor: 'accent'
