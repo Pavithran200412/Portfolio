@@ -9,7 +9,7 @@ const Projects = () => {
   const projects = [
     {
       id: 1,
-      title: 'DormNest-OOAD-Project',
+      title: 'DormNest',
       shortDesc: 'Student Accommodation Management System',
       fullDesc: 'A comprehensive student accommodation management system designed to streamline the process of finding and managing student housing. Built with a modern tech stack including Java, Spring Boot and PostgreSQL. Features include user authentication, property listings, booking management,and an admin dashboard for managing properties and users.',
       image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSH5Cf_LlgRH2M7uVV474n6mMbbW4DfiS2NHQ&s',
@@ -22,7 +22,7 @@ const Projects = () => {
     },
     {
       id: 2,
-      title: 'RemoConnect-Project-CN',
+      title: 'RemoConnect',
       shortDesc: 'Remote Work Collaboration Platform',
       fullDesc: 'A cutting-edge remote work collaboration platform that integrates real-time communication.',
       image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQGAIiHmxrntQtwPht-ASiViBU-Ge4PfSRwdw&s',
@@ -30,12 +30,12 @@ const Projects = () => {
       github: 'https://github.com/Pavithran200412/RemoConnect-Project-CN',
       demo: 'https://github.com/Pavithran200412/RemoConnect-Project-CN',
       features: ['Messaging', 'File Sharing','Screen Sharing'],
-      category: 'Java Spring Boot with Networking',
+      category: 'Networking',
       color: 'secondary'
     },
     {
       id: 3,
-      title: 'Hospital Management System MERN Stack Project',
+      title: 'MedCare Hospital',
       shortDesc: 'Hospital management system',
       fullDesc: 'A comprehensive hospital management system website that allows patients to book appointments, view medical records, and communicate with healthcare providers. Built with React, Node.js, and MongoDB. Features include patient registration, appointment scheduling, doctor profiles. and a secure admin panel for managing hospital operations.',
       image: 'https://acropolium.com/img/articles/hospital-management-software/img01.jpg',
@@ -61,7 +61,7 @@ const Projects = () => {
     },
     {
       id: 5,
-      title: 'SpaceShooter_Game',
+      title: 'SpaceShooter Game',
       shortDesc: 'Space-shooter game python',
       fullDesc: 'Space-shooter game built with Python, featuring hand tracking and spatial audio. Players can control their spaceship and experience immersive soundscapes as they navigate through space.',
       image: 'https://i.ytimg.com/vi/fBf-IznUHns/sddefault.jpg',
