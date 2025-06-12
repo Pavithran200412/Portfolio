@@ -8,7 +8,7 @@ import PageTransition from '../components/PageTransition';
 const Home = () => {
   const handleDownloadResume = () => {
     const link = document.createElement('a');
-  link.href = '/public/Resume.pdf'; // Make sure Resume.pdf is in your public folder
+  link.href = '/Resume.pdf'; // Make sure Resume.pdf is in your public folder
   link.download = 'Pavithran_Resume.pdf';
   link.click();
 ;
