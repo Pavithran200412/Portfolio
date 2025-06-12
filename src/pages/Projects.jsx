@@ -74,7 +74,7 @@ const Projects = () => {
     }
   ];
 
-  const categories = ['All', 'Full Stack', 'Frontend', 'Backend'];
+  const categories = ['All', 'Full Stack', 'Networking', 'Backend'];
   const [activeCategory, setActiveCategory] = useState('All');
 
   const filteredProjects = activeCategory === 'All' 
