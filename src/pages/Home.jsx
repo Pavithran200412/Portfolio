@@ -12,7 +12,7 @@ const Home = () => {
   link.download = 'Pavithran_Resume.pdf';
   link.click();
 ;
-    const blob = new Blob([resumeContent], { type: 'text/plain;charset=utf-8' });
+    const blob = new Blob([resumeContent], { type: 'application/pdf;charset=utf-8' });
     saveAs(blob, 'Pavithran_Resume.pdf');
   };
 
