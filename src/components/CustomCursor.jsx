@@ -59,7 +59,7 @@ const CustomCursor = () => {
     window.addEventListener('mouseup', handleMouseUp);
     
     // Add hover listeners after a short delay to ensure DOM is ready
-    setTimeout(addHoverListeners, 100);
+    setTimeout(addHoverListeners, 5);
 
     // Re-add listeners when new elements are added to DOM
     const observer = new MutationObserver(addHoverListeners);

@@ -253,20 +253,6 @@ const Contact = () => {
                   })}
                 </div>
               </div>
-
-              {/* Availability */}
-              <div className="bg-gradient-to-r from-primary-600 to-secondary-600 rounded-2xl p-8 text-white">
-                <h3 className="text-xl font-bold mb-4">Let's Work Together</h3>
-                <p className="opacity-90 mb-4">
-                  I'm currently available for freelance projects and full-time opportunities. 
-                  Whether you have a specific project in mind or just want to explore possibilities, 
-                  I'd love to discuss how we can work together.
-                </p>
-                <div className="flex items-center">
-                  <div className="w-3 h-3 bg-green-400 rounded-full mr-3 animate-pulse"></div>
-                  <span className="font-medium">Available for new projects</span>
-                </div>
-              </div>
             </motion.div>
           </div>
         </div>

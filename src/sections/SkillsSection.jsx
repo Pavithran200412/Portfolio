@@ -57,27 +57,6 @@ const SkillsSection = () => {
     }
   ];
 
-  const specialties = [
-    {
-      icon: FiZap,
-      title: 'Performance Optimization',
-      description: 'Optimizing applications for speed and efficiency',
-      color: 'text-yellow-400'
-    },
-    {
-      icon: FiCpu,
-      title: '3D Graphics',
-      description: 'Creating immersive 3D experiences with Three.js',
-      color: 'text-pink-400'
-    },
-    {
-      icon: FiCode,
-      title: 'Clean Architecture',
-      description: 'Writing maintainable and scalable code',
-      color: 'text-blue-400'
-    }
-  ];
-
   return (
     <section id="skills" className="min-h-screen py-20 px-4">
       <div className="max-w-7xl mx-auto">
@@ -153,41 +132,6 @@ const SkillsSection = () => {
           })}
         </div>
 
-        {/* Specialties */}
-        <AnimatedSection animation="fadeInUp" delay={0.5}>
-          <h3 className="text-3xl font-bold text-center mb-12 text-white">Specialties</h3>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {specialties.map((specialty, index) => {
-              const Icon = specialty.icon;
-              return (
-                <motion.div
-                  key={specialty.title}
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: index * 0.2 }}
-                  viewport={{ once: true }}
-                >
-                  <GlowingCard>
-                    <motion.div 
-                      className="p-8 text-center"
-                      whileHover={{ y: -5 }}
-                      transition={{ type: 'spring', stiffness: 300 }}
-                    >
-                      <motion.div
-                        whileHover={{ rotate: 360, scale: 1.2 }}
-                        transition={{ duration: 0.5 }}
-                      >
-                        <Icon className={`text-6xl ${specialty.color} mx-auto mb-4`} />
-                      </motion.div>
-                      <h4 className="text-xl font-bold text-white mb-3">{specialty.title}</h4>
-                      <p className="text-gray-400">{specialty.description}</p>
-                    </motion.div>
-                  </GlowingCard>
-                </motion.div>
-              );
-            })}
-          </div>
-        </AnimatedSection>
 
         {/* Interactive Skills Visualization */}
         <AnimatedSection animation="scaleIn" delay={0.8} className="mt-20">

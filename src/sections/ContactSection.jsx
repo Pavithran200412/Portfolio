@@ -183,26 +183,6 @@ const ContactSection = () => {
               </GlowingCard>
             </AnimatedSection>
 
-            {/* Availability */}
-            <AnimatedSection animation="fadeInRight" delay={0.9}>
-              <GlowingCard glowColor="success">
-                <div className="p-8">
-                  <h3 className="text-xl font-bold text-white mb-4 flex items-center">
-                    <FiShield className="mr-3 text-green-400" />
-                    Let's Work Together
-                  </h3>
-                  <p className="text-gray-300 mb-4">
-                    I'm currently available for freelance projects and full-time opportunities. 
-                    Whether you have a specific project in mind or just want to explore possibilities, 
-                    I'd love to discuss how we can work together.
-                  </p>
-                  <div className="flex items-center">
-                    <div className="w-3 h-3 bg-green-400 rounded-full mr-3 animate-pulse"></div>
-                    <span className="font-medium text-white">Available for new projects</span>
-                  </div>
-                </div>
-              </GlowingCard>
-            </AnimatedSection>
           </div>
         </div>
       </div>
