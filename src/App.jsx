@@ -4,6 +4,7 @@ import Navigation from './components/Navigation';
 import ParticleBackground from './components/ParticleBackground';
 import FloatingElements from './components/FloatingElements';
 import PrivacyBanner from './components/PrivacyBanner';
+import CustomCursor from './components/CustomCursor';
 import HeroSection from './sections/HeroSection';
 import AboutSection from './sections/AboutSection';
 import SkillsSection from './sections/SkillsSection';
@@ -15,6 +16,9 @@ function App() {
   useEffect(() => {
     // Smooth scrolling for the entire page
     document.documentElement.style.scrollBehavior = 'smooth';
+
+    // Hide default cursor on desktop
+    document.body.style.cursor = 'none';
 
     // Security headers (for reference - these should be set by the server)
     const meta = document.createElement('meta');
@@ -47,12 +51,15 @@ function App() {
     return () => {
       document.removeEventListener('contextmenu', handleContextMenu);
       document.removeEventListener('keydown', handleKeyDown);
+      // Restore default cursor when component unmounts
+      document.body.style.cursor = 'auto';
     };
   }, []);
 
   return (
     <ThemeProvider>
       <div className="relative min-h-screen bg-gradient-to-br from-gray-900 via-purple-900 to-violet-900 dark:from-dark-900 dark:via-purple-900 dark:to-violet-900 text-white overflow-x-hidden">
+        <CustomCursor />
         <ParticleBackground />
         <FloatingElements />
         <Navigation />

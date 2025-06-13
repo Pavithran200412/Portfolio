@@ -32,6 +32,14 @@ body {
   min-height: 100vh;
   overflow-x: hidden;
   background: linear-gradient(135deg, #1e293b 0%, #7c3aed 50%, #6366f1 100%);
+  cursor: none; /* Hide default cursor on desktop */
+}
+
+/* Show default cursor on mobile devices */
+@media (max-width: 768px) {
+  body {
+    cursor: auto !important;
+  }
 }
 
 /* Performance optimizations */
@@ -181,8 +189,15 @@ button {
   border: none;
   padding: 0;
   font: inherit;
-  cursor: pointer;
+  cursor: none; /* Hide cursor for buttons on desktop */
   outline: inherit;
+}
+
+/* Show cursor for buttons on mobile */
+@media (max-width: 768px) {
+  button {
+    cursor: pointer !important;
+  }
 }
 
 /* Ensure text remains visible during webfont load */
@@ -224,6 +239,11 @@ button {
     scroll-behavior: auto !important;
     transition-duration: 0s !important;
     transition-delay: 0s !important;
+  }
+  
+  /* Also hide custom cursor for users who prefer reduced motion */
+  body {
+    cursor: auto !important;
   }
 }
 
@@ -297,4 +317,24 @@ button {
   .animate-pulse-glow {
     animation-duration: 6s; /* Slower animations on mobile */
   }
+}
+
+/* Custom cursor styles */
+.cursor-pointer {
+  cursor: none !important;
+}
+
+@media (max-width: 768px) {
+  .cursor-pointer {
+    cursor: pointer !important;
+  }
+}
+
+/* Interactive element hover states for custom cursor */
+button:hover,
+a:hover,
+input:hover,
+textarea:hover,
+[role="button"]:hover {
+  /* These elements will trigger cursor state changes via JavaScript */
 }
