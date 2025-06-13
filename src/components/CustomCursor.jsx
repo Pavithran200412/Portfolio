@@ -111,59 +111,56 @@ const CustomCursor = () => {
   return (
     <>
       {/* Main cursor */}
-      <motion.div
-        className="fixed top-0 left-0 w-6 h-6 rounded-full pointer-events-none z-[9999] hidden md:block"
-        style={{
-          x: mousePosition.x - 12,
-          y: mousePosition.y - 12,
-        }}
-        animate={cursorVariants[currentVariant]}
-        transition={{
-          type: 'spring',
-          stiffness: 800,
-          damping: 20,
-          mass: 0.3,
-        }}
-      />
+<motion.div
+  className="fixed top-0 left-0 w-6 h-6 rounded-full pointer-events-none z-[9999] hidden md:block"
+  style={{
+    x: mousePosition.x - 12,
+    y: mousePosition.y - 12,
+  }}
+  animate={cursorVariants[currentVariant]}
+  transition={{
+    type: 'tween',
+    duration: 0.05,
+    ease: 'linear',
+  }}
+/>
 
-      {/* Cursor trail */}
-      <motion.div
-        className="fixed top-0 left-0 w-2 h-2 rounded-full pointer-events-none z-[9998] hidden md:block"
-        style={{
-          x: mousePosition.x - 4,
-          y: mousePosition.y - 4,
-          backgroundColor: 'rgba(99, 102, 241, 0.3)',
-        }}
-        animate={{
-          scale: isHovering ? 2 : 1,
-          opacity: isHovering ? 0.8 : 0.4,
-        }}
-        transition={{
-          type: 'spring',
-          stiffness: 500,
-          damping: 20,
-          delay: 0.01,
-        }}
-      />
+{/* Cursor trail */}
+<motion.div
+  className="fixed top-0 left-0 w-2 h-2 rounded-full pointer-events-none z-[9998] hidden md:block"
+  style={{
+    x: mousePosition.x - 4,
+    y: mousePosition.y - 4,
+    backgroundColor: 'rgba(99, 102, 241, 0.3)',
+  }}
+  animate={{
+    scale: isHovering ? 2 : 1,
+    opacity: isHovering ? 0.8 : 0.4,
+  }}
+  transition={{
+    type: 'tween',
+    duration: 0.08,
+    ease: 'linear',
+  }}
+/>
 
-      {/* Outer ring */}
-      <motion.div
-        className="fixed top-0 left-0 w-12 h-12 rounded-full border border-primary-400/20 pointer-events-none z-[9997] hidden md:block"
-        style={{
-          x: mousePosition.x - 24,
-          y: mousePosition.y - 24,
-        }}
-        animate={{
-          scale: isHovering ? 0.8 : 1,
-          opacity: isHovering ? 0.8 : 0.3,
-        }}
-        transition={{
-          type: 'spring',
-          stiffness: 300,
-          damping: 20,
-          delay: 0.02,
-        }}
-      />
+{/* Outer ring */}
+<motion.div
+  className="fixed top-0 left-0 w-12 h-12 rounded-full border border-primary-400/20 pointer-events-none z-[9997] hidden md:block"
+  style={{
+    x: mousePosition.x - 24,
+    y: mousePosition.y - 24,
+  }}
+  animate={{
+    scale: isHovering ? 0.8 : 1,
+    opacity: isHovering ? 0.8 : 0.3,
+  }}
+  transition={{
+    type: 'tween',
+    duration: 0.1,
+    ease: 'linear',
+  }}
+/>
     </>
   );
 };
