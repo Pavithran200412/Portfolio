@@ -120,9 +120,9 @@ const CustomCursor = () => {
         animate={cursorVariants[currentVariant]}
         transition={{
           type: 'spring',
-          stiffness: 500,
-          damping: 28,
-          mass: 0.5,
+          stiffness: 800,
+          damping: 20,
+          mass: 0.3,
         }}
       />
 
@@ -140,9 +140,9 @@ const CustomCursor = () => {
         }}
         transition={{
           type: 'spring',
-          stiffness: 300,
-          damping: 30,
-          delay: 0.05,
+          stiffness: 500,
+          damping: 20,
+          delay: 0.01,
         }}
       />
 
@@ -159,9 +159,9 @@ const CustomCursor = () => {
         }}
         transition={{
           type: 'spring',
-          stiffness: 200,
-          damping: 25,
-          delay: 0.1,
+          stiffness: 300,
+          damping: 20,
+          delay: 0.02,
         }}
       />
     </>
