@@ -7,32 +7,29 @@ import SecureContactForm from '../components/SecureContactForm';
 
 const ContactSection = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [isSubmitted, setIsSubmitted] = useState(false);
 
-  const handleSecureSubmit = async (secureData) => {
+  const handleFormSubmit = async (formData) => {
     setIsSubmitting(true);
     
     try {
-      // Simulate secure form submission
-      // In production, this would send to a secure backend endpoint
-      console.log('Secure form submission:', {
-        ...secureData,
-        // Don't log sensitive data in production
-        sessionToken: '[REDACTED]',
-        userAgent: '[REDACTED]'
-      });
+      // Simulate form submission
+      console.log('Form submitted:', formData);
       
-      // Simulate API call
+      // Simulate API call delay
       await new Promise(resolve => setTimeout(resolve, 2000));
       
-      setIsSubmitted(true);
+      // In a real application, you would send this to your backend
+      // const response = await fetch('/api/contact', {
+      //   method: 'POST',
+      //   headers: { 'Content-Type': 'application/json' },
+      //   body: JSON.stringify(formData)
+      // });
       
-      // Reset success message after 5 seconds
-      setTimeout(() => setIsSubmitted(false), 5000);
+      console.log('Message sent successfully!');
       
     } catch (error) {
-      console.error('Secure submission failed:', error);
-      throw error;
+      console.error('Failed to send message:', error);
+      throw new Error('Failed to send message. Please try again.');
     } finally {
       setIsSubmitting(false);
     }
@@ -90,29 +87,17 @@ const ContactSection = () => {
             transition={{ duration: 0.8, delay: 0.2 }}
             viewport={{ once: true }}
           >
-            Ready to bring your ideas to life? Let's collaborate and create something extraordinary together. 
-            Your data is protected with enterprise-grade security.
+            Ready to bring your ideas to life? Let's collaborate and create something extraordinary together.
           </motion.p>
         </AnimatedSection>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-          {/* Secure Contact Form */}
+          {/* Contact Form */}
           <AnimatedSection animation="fadeInLeft" delay={0.3}>
             <GlowingCard glowColor="primary">
               <div className="p-8">
-                {isSubmitted && (
-                  <motion.div
-                    initial={{ opacity: 0, y: -10, scale: 0.9 }}
-                    animate={{ opacity: 1, y: 0, scale: 1 }}
-                    className="mb-6 p-4 bg-success-500/20 border border-success-400/50 text-success-400 rounded-lg backdrop-blur-sm flex items-center"
-                  >
-                    <FiShield className="mr-2" />
-                    🎉 Your secure message has been sent! I'll get back to you soon.
-                  </motion.div>
-                )}
-
                 <SecureContactForm 
-                  onSubmit={handleSecureSubmit}
+                  onSubmit={handleFormSubmit}
                   isSubmitting={isSubmitting}
                 />
               </div>
@@ -127,7 +112,7 @@ const ContactSection = () => {
                 <div className="p-8">
                   <h3 className="text-2xl font-bold text-white mb-6 flex items-center">
                     <FiShield className="mr-3 text-green-400" />
-                    Secure Contact Information
+                    Contact Information
                   </h3>
                   
                   <div className="space-y-6">
@@ -198,31 +183,22 @@ const ContactSection = () => {
               </GlowingCard>
             </AnimatedSection>
 
-            {/* Security Notice */}
+            {/* Availability */}
             <AnimatedSection animation="fadeInRight" delay={0.9}>
               <GlowingCard glowColor="success">
                 <div className="p-8">
                   <h3 className="text-xl font-bold text-white mb-4 flex items-center">
                     <FiShield className="mr-3 text-green-400" />
-                    Privacy & Security
+                    Let's Work Together
                   </h3>
-                  <div className="space-y-3 text-sm text-gray-300">
-                    <div className="flex items-center">
-                      <div className="w-2 h-2 bg-green-400 rounded-full mr-3"></div>
-                      <span>End-to-end encryption for all communications</span>
-                    </div>
-                    <div className="flex items-center">
-                      <div className="w-2 h-2 bg-green-400 rounded-full mr-3"></div>
-                      <span>No personal data stored without consent</span>
-                    </div>
-                    <div className="flex items-center">
-                      <div className="w-2 h-2 bg-green-400 rounded-full mr-3"></div>
-                      <span>GDPR compliant data handling</span>
-                    </div>
-                    <div className="flex items-center">
-                      <div className="w-2 h-2 bg-green-400 rounded-full mr-3"></div>
-                      <span>Rate limiting prevents spam</span>
-                    </div>
+                  <p className="text-gray-300 mb-4">
+                    I'm currently available for freelance projects and full-time opportunities. 
+                    Whether you have a specific project in mind or just want to explore possibilities, 
+                    I'd love to discuss how we can work together.
+                  </p>
+                  <div className="flex items-center">
+                    <div className="w-3 h-3 bg-green-400 rounded-full mr-3 animate-pulse"></div>
+                    <span className="font-medium text-white">Available for new projects</span>
                   </div>
                 </div>
               </GlowingCard>

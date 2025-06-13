@@ -1,16 +1,6 @@
 import { useState, useCallback } from 'react';
 import { motion } from 'framer-motion';
-import { FiSend, FiShield, FiLock, FiAlertTriangle } from 'react-icons/fi';
-import { 
-  sanitizeInput, 
-  validateEmail, 
-  validatePhone, 
-  formRateLimiter, 
-  processFormData,
-  detectXSS,
-  secureStorage,
-  generateSecureToken
-} from '../utils/security';
+import { FiSend, FiShield, FiAlertTriangle } from 'react-icons/fi';
 
 const SecureContactForm = ({ onSubmit, isSubmitting = false }) => {
   const [formData, setFormData] = useState({
@@ -22,20 +12,25 @@ const SecureContactForm = ({ onSubmit, isSubmitting = false }) => {
   
   const [errors, setErrors] = useState({});
   const [securityWarning, setSecurityWarning] = useState('');
-  const [isRateLimited, setIsRateLimited] = useState(false);
-  const [sessionToken] = useState(() => generateSecureToken());
+  const [isSubmitted, setIsSubmitted] = useState(false);
 
-  // Real-time input validation and sanitization
+  // Simple input sanitization
+  const sanitizeInput = (input) => {
+    if (typeof input !== 'string') return input;
+    return input.replace(/[<>]/g, '').trim();
+  };
+
+  // Basic email validation
+  const validateEmail = (email) => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+  };
+
+  // Real-time input validation
   const handleInputChange = useCallback((e) => {
     const { name, value } = e.target;
     
-    // Check for potential XSS attempts
-    if (detectXSS(value)) {
-      setSecurityWarning('Potentially malicious content detected. Please use safe characters only.');
-      return;
-    }
-    
-    // Clear security warning if input is safe
+    // Clear security warning
     setSecurityWarning('');
     
     // Sanitize input
@@ -54,72 +49,37 @@ const SecureContactForm = ({ onSubmit, isSubmitting = false }) => {
         [name]: ''
       }));
     }
-    
-    // Real-time validation
-    validateField(name, sanitizedValue);
   }, [errors]);
-
-  const validateField = (name, value) => {
-    let error = '';
-    
-    switch (name) {
-      case 'name':
-        if (!value.trim()) {
-          error = 'Name is required';
-        } else if (value.length < 2) {
-          error = 'Name must be at least 2 characters';
-        } else if (value.length > 50) {
-          error = 'Name must be less than 50 characters';
-        }
-        break;
-        
-      case 'email':
-        if (!value.trim()) {
-          error = 'Email is required';
-        } else if (!validateEmail(value)) {
-          error = 'Please enter a valid email address';
-        }
-        break;
-        
-      case 'subject':
-        if (!value.trim()) {
-          error = 'Subject is required';
-        } else if (value.length < 5) {
-          error = 'Subject must be at least 5 characters';
-        } else if (value.length > 100) {
-          error = 'Subject must be less than 100 characters';
-        }
-        break;
-        
-      case 'message':
-        if (!value.trim()) {
-          error = 'Message is required';
-        } else if (value.length < 10) {
-          error = 'Message must be at least 10 characters';
-        } else if (value.length > 1000) {
-          error = 'Message must be less than 1000 characters';
-        }
-        break;
-    }
-    
-    if (error) {
-      setErrors(prev => ({
-        ...prev,
-        [name]: error
-      }));
-    }
-  };
 
   const validateForm = () => {
     const newErrors = {};
     
-    // Validate all fields
-    Object.keys(formData).forEach(key => {
-      validateField(key, formData[key]);
-    });
+    if (!formData.name.trim()) {
+      newErrors.name = 'Name is required';
+    } else if (formData.name.length < 2) {
+      newErrors.name = 'Name must be at least 2 characters';
+    }
     
-    // Check for any remaining errors
-    return Object.keys(errors).length === 0;
+    if (!formData.email.trim()) {
+      newErrors.email = 'Email is required';
+    } else if (!validateEmail(formData.email)) {
+      newErrors.email = 'Please enter a valid email address';
+    }
+    
+    if (!formData.subject.trim()) {
+      newErrors.subject = 'Subject is required';
+    } else if (formData.subject.length < 5) {
+      newErrors.subject = 'Subject must be at least 5 characters';
+    }
+    
+    if (!formData.message.trim()) {
+      newErrors.message = 'Message is required';
+    } else if (formData.message.length < 10) {
+      newErrors.message = 'Message must be at least 10 characters';
+    }
+    
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
   };
 
   const handleSubmit = async (e) => {
@@ -128,17 +88,6 @@ const SecureContactForm = ({ onSubmit, isSubmitting = false }) => {
     // Clear previous warnings
     setSecurityWarning('');
     
-    // Check rate limiting
-    const userIdentifier = `${formData.email}_${sessionToken}`;
-    if (!formRateLimiter.isAllowed(userIdentifier)) {
-      const remainingTime = Math.ceil(formRateLimiter.getRemainingTime(userIdentifier) / 1000 / 60);
-      setIsRateLimited(true);
-      setSecurityWarning(`Too many attempts. Please wait ${remainingTime} minutes before trying again.`);
-      return;
-    }
-    
-    setIsRateLimited(false);
-    
     // Validate form
     if (!validateForm()) {
       setSecurityWarning('Please fix the errors above before submitting.');
@@ -146,23 +95,18 @@ const SecureContactForm = ({ onSubmit, isSubmitting = false }) => {
     }
     
     try {
-      // Process and secure form data
-      const processedData = processFormData(formData);
-      
-      // Add security metadata
-      const secureSubmission = {
-        ...processedData,
-        sessionToken,
+      // Process form data
+      const processedData = {
+        ...formData,
         timestamp: new Date().toISOString(),
-        userAgent: navigator.userAgent,
-        referrer: document.referrer || 'direct'
+        source: 'contact_form'
       };
       
-      // Store submission locally (encrypted) for backup
-      secureStorage.setItem(`form_submission_${Date.now()}`, secureSubmission);
-      
       // Submit form
-      await onSubmit(secureSubmission);
+      await onSubmit(processedData);
+      
+      // Show success message
+      setIsSubmitted(true);
       
       // Clear form on successful submission
       setFormData({
@@ -173,9 +117,12 @@ const SecureContactForm = ({ onSubmit, isSubmitting = false }) => {
       });
       setErrors({});
       
+      // Hide success message after 5 seconds
+      setTimeout(() => setIsSubmitted(false), 5000);
+      
     } catch (error) {
       console.error('Form submission error:', error);
-      setSecurityWarning(error.message || 'An error occurred while submitting the form. Please try again.');
+      setSecurityWarning('An error occurred while submitting the form. Please try again.');
     }
   };
 
@@ -185,13 +132,25 @@ const SecureContactForm = ({ onSubmit, isSubmitting = false }) => {
       <div className="flex items-center justify-between mb-6">
         <h3 className="text-2xl font-bold text-white flex items-center">
           <FiSend className="mr-3 text-primary-400" />
-          Secure Contact Form
+          Contact Form
         </h3>
         <div className="flex items-center text-green-400 text-sm">
           <FiShield className="mr-1" />
-          <span>SSL Protected</span>
+          <span>Secure</span>
         </div>
       </div>
+
+      {/* Success Message */}
+      {isSubmitted && (
+        <motion.div
+          initial={{ opacity: 0, y: -10 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="mb-6 p-4 bg-green-500/20 border border-green-400/50 text-green-400 rounded-lg backdrop-blur-sm flex items-start"
+        >
+          <FiShield className="mr-2 mt-0.5 flex-shrink-0" />
+          <span>🎉 Your message has been sent successfully! I'll get back to you soon.</span>
+        </motion.div>
+      )}
 
       {/* Security Warning */}
       {securityWarning && (
@@ -202,18 +161,6 @@ const SecureContactForm = ({ onSubmit, isSubmitting = false }) => {
         >
           <FiAlertTriangle className="mr-2 mt-0.5 flex-shrink-0" />
           <span>{securityWarning}</span>
-        </motion.div>
-      )}
-
-      {/* Rate Limit Warning */}
-      {isRateLimited && (
-        <motion.div
-          initial={{ opacity: 0, y: -10 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="mb-6 p-4 bg-orange-500/20 border border-orange-400/50 text-orange-400 rounded-lg backdrop-blur-sm flex items-start"
-        >
-          <FiLock className="mr-2 mt-0.5 flex-shrink-0" />
-          <span>Rate limit exceeded. This helps protect against spam and abuse.</span>
         </motion.div>
       )}
 
@@ -312,8 +259,7 @@ const SecureContactForm = ({ onSubmit, isSubmitting = false }) => {
             <span className="font-medium">Your data is protected</span>
           </div>
           <ul className="space-y-1 text-xs">
-            <li>• All data is encrypted and sanitized</li>
-            <li>• Rate limiting prevents spam</li>
+            <li>• All data is validated and sanitized</li>
             <li>• No personal data is stored permanently</li>
             <li>• SSL/TLS encryption in transit</li>
           </ul>
@@ -322,7 +268,7 @@ const SecureContactForm = ({ onSubmit, isSubmitting = false }) => {
         {/* Submit Button */}
         <motion.button
           type="submit"
-          disabled={isSubmitting || isRateLimited || Object.keys(errors).length > 0}
+          disabled={isSubmitting}
           whileHover={{ scale: 1.02, y: -2 }}
           whileTap={{ scale: 0.98 }}
           className="w-full bg-gradient-to-r from-primary-600 to-secondary-600 text-white font-medium py-4 px-6 rounded-lg hover:from-primary-700 hover:to-secondary-700 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center shadow-lg"
@@ -336,7 +282,7 @@ const SecureContactForm = ({ onSubmit, isSubmitting = false }) => {
           ) : (
             <>
               <FiSend className="mr-2" />
-              Send Secure Message
+              Send Message
             </>
           )}
         </motion.button>
