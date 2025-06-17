@@ -18,41 +18,53 @@ const ParticleBackground = () => {
     },
     background: {
       color: {
-        value: isDark ? '#0f172a' : '#f8fafc',
+        value: 'transparent',
       },
     },
-    fpsLimit: 60, // Reduced from 120 to 60 for better performance
+    fpsLimit: 60,
     interactivity: {
       events: {
         onClick: {
           enable: true,
-          mode: 'push',
+          mode: ['push', 'repulse'],
         },
         onHover: {
           enable: true,
-          mode: 'repulse',
+          mode: ['grab', 'bubble'],
         },
         resize: true,
       },
       modes: {
         push: {
-          quantity: 2, // Reduced from 6
+          quantity: 3,
         },
         repulse: {
-          distance: 150, // Reduced from 300
-          duration: 0.2, // Reduced from 0.4
+          distance: 200,
+          duration: 0.4,
+        },
+        grab: {
+          distance: 150,
+          links: {
+            opacity: 0.8,
+          },
+        },
+        bubble: {
+          distance: 200,
+          size: 8,
+          duration: 2,
+          opacity: 0.8,
         },
       },
     },
     particles: {
       color: {
-        value: ['#6366f1', '#8b5cf6'],
+        value: isDark ? ['#6366f1', '#8b5cf6', '#06b6d4'] : ['#3b82f6', '#6366f1', '#8b5cf6'],
       },
       links: {
-        color: isDark ? '#4f46e5' : '#a5b4fc',
-        distance: 120, // Reduced from 150
+        color: isDark ? '#4f46e5' : '#6366f1',
+        distance: 150,
         enable: true,
-        opacity: isDark ? 0.3 : 0.2, // Reduced opacity
+        opacity: isDark ? 0.4 : 0.3,
         width: 1,
       },
       move: {
@@ -61,38 +73,66 @@ const ParticleBackground = () => {
         outModes: {
           default: 'bounce',
         },
-        random: false, // Disabled random movement
-        speed: { min: 0.3, max: 1 }, // Reduced speed
+        random: true,
+        speed: { min: 0.5, max: 2 },
         straight: false,
       },
       number: {
         density: {
           enable: true,
-          area: 1200, // Increased area to reduce particle density
+          area: 800,
         },
-        value: 60, // Reduced from 120
+        value: 80,
       },
       opacity: {
-        value: { min: 0.2, max: 0.6 }, // Reduced opacity
+        value: { min: 0.3, max: 0.8 },
         animation: {
           enable: true,
-          speed: 0.5, // Reduced animation speed
+          speed: 1,
           minimumValue: 0.1,
         },
       },
       shape: {
-        type: 'circle', // Only use circles for better performance
+        type: ['circle', 'triangle'],
       },
       size: {
-        value: { min: 1, max: 4 }, // Reduced max size
+        value: { min: 1, max: 5 },
         animation: {
           enable: true,
-          speed: 1, // Reduced animation speed
+          speed: 2,
           minimumValue: 0.5,
         },
       },
     },
     detectRetina: true,
+    responsive: [
+      {
+        maxWidth: 768,
+        options: {
+          particles: {
+            number: {
+              value: 40,
+            },
+            links: {
+              distance: 100,
+            },
+            move: {
+              speed: { min: 0.3, max: 1 },
+            },
+          },
+          interactivity: {
+            modes: {
+              grab: {
+                distance: 100,
+              },
+              bubble: {
+                distance: 100,
+              },
+            },
+          },
+        },
+      },
+    ],
   }), [isDark]);
 
   return (

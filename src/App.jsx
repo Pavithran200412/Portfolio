@@ -17,8 +17,29 @@ function App() {
     // Smooth scrolling for the entire page
     document.documentElement.style.scrollBehavior = 'smooth';
 
-    // Hide default cursor on desktop
-    document.body.style.cursor = 'none';
+    // Performance optimizations
+    const handleVisibilityChange = () => {
+      if (document.hidden) {
+        // Pause animations when tab is not visible
+        document.body.style.animationPlayState = 'paused';
+      } else {
+        document.body.style.animationPlayState = 'running';
+      }
+    };
+
+    document.addEventListener('visibilitychange', handleVisibilityChange);
+
+    // Preload critical resources
+    const preloadImages = [
+      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSH5Cf_LlgRH2M7uVV474n6mMbbW4DfiS2NHQ&s',
+      'https://acropolium.com/img/articles/hospital-management-software/img01.jpg',
+      'https://images.pexels.com/photos/267350/pexels-photo-267350.jpeg?auto=compress&cs=tinysrgb&w=800'
+    ];
+
+    preloadImages.forEach(src => {
+      const img = new Image();
+      img.src = src;
+    });
 
     // Security headers (for reference - these should be set by the server)
     const meta = document.createElement('meta');
@@ -26,14 +47,14 @@ function App() {
     meta.content = "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https: blob:; connect-src 'self' https:;";
     document.head.appendChild(meta);
 
-    // Disable right-click context menu for additional protection (optional)
+    // Disable right-click context menu in production
     const handleContextMenu = (e) => {
       if (process.env.NODE_ENV === 'production') {
         e.preventDefault();
       }
     };
 
-    // Disable F12 and other developer tools shortcuts (optional)
+    // Disable F12 and other developer tools shortcuts in production
     const handleKeyDown = (e) => {
       if (process.env.NODE_ENV === 'production') {
         if (e.key === 'F12' || 
@@ -51,14 +72,13 @@ function App() {
     return () => {
       document.removeEventListener('contextmenu', handleContextMenu);
       document.removeEventListener('keydown', handleKeyDown);
-      // Restore default cursor when component unmounts
-      document.body.style.cursor = 'auto';
+      document.removeEventListener('visibilitychange', handleVisibilityChange);
     };
   }, []);
 
   return (
     <ThemeProvider>
-      <div className="relative min-h-screen bg-gradient-to-br from-gray-900 via-purple-900 to-violet-900 dark:from-dark-900 dark:via-purple-900 dark:to-violet-900 text-white overflow-x-hidden">
+      <div className="relative min-h-screen bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-white overflow-x-hidden theme-transition">
         <CustomCursor />
         <ParticleBackground />
         <FloatingElements />

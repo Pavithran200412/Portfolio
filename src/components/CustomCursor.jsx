@@ -6,10 +6,32 @@ const CustomCursor = () => {
   const [isHovering, setIsHovering] = useState(false);
   const [isClicking, setIsClicking] = useState(false);
   const [cursorVariant, setCursorVariant] = useState('default');
+  const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
+    // Check if device is mobile
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth <= 768 || 'ontouchstart' in window);
+    };
+    
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+
+    // Don't show custom cursor on mobile
+    if (isMobile) {
+      document.body.style.cursor = 'auto';
+      return;
+    }
+
+    let animationId;
+    
     const updateMousePosition = (e) => {
-      setMousePosition({ x: e.clientX, y: e.clientY });
+      if (animationId) return;
+      
+      animationId = requestAnimationFrame(() => {
+        setMousePosition({ x: e.clientX, y: e.clientY });
+        animationId = null;
+      });
     };
 
     const handleMouseDown = () => setIsClicking(true);
@@ -18,37 +40,25 @@ const CustomCursor = () => {
     // Add event listeners for interactive elements
     const addHoverListeners = () => {
       const interactiveElements = document.querySelectorAll(
-        'button, a, input, textarea, [role="button"], .cursor-pointer'
+        'button, a, input, textarea, [role="button"], .cursor-pointer, .group'
       );
 
       interactiveElements.forEach(element => {
         element.addEventListener('mouseenter', () => {
           setIsHovering(true);
-          setCursorVariant('hover');
+          const elementType = element.tagName.toLowerCase();
+          
+          if (elementType === 'input' || elementType === 'textarea') {
+            setCursorVariant('text');
+          } else if (elementType === 'a') {
+            setCursorVariant('link');
+          } else {
+            setCursorVariant('hover');
+          }
         });
+        
         element.addEventListener('mouseleave', () => {
           setIsHovering(false);
-          setCursorVariant('default');
-        });
-      });
-
-      // Special handling for different element types
-      const textElements = document.querySelectorAll('input[type="text"], input[type="email"], textarea');
-      textElements.forEach(element => {
-        element.addEventListener('mouseenter', () => {
-          setCursorVariant('text');
-        });
-        element.addEventListener('mouseleave', () => {
-          setCursorVariant('default');
-        });
-      });
-
-      const linkElements = document.querySelectorAll('a');
-      linkElements.forEach(element => {
-        element.addEventListener('mouseenter', () => {
-          setCursorVariant('link');
-        });
-        element.addEventListener('mouseleave', () => {
           setCursorVariant('default');
         });
       });
@@ -58,10 +68,10 @@ const CustomCursor = () => {
     window.addEventListener('mousedown', handleMouseDown);
     window.addEventListener('mouseup', handleMouseUp);
     
-    // Add hover listeners after a short delay to ensure DOM is ready
-    setTimeout(addHoverListeners, 5);
+    // Add hover listeners after a short delay
+    setTimeout(addHoverListeners, 100);
 
-    // Re-add listeners when new elements are added to DOM
+    // Re-add listeners when new elements are added
     const observer = new MutationObserver(addHoverListeners);
     observer.observe(document.body, { childList: true, subtree: true });
 
@@ -69,9 +79,15 @@ const CustomCursor = () => {
       window.removeEventListener('mousemove', updateMousePosition);
       window.removeEventListener('mousedown', handleMouseDown);
       window.removeEventListener('mouseup', handleMouseUp);
+      window.removeEventListener('resize', checkMobile);
       observer.disconnect();
+      if (animationId) cancelAnimationFrame(animationId);
+      document.body.style.cursor = 'auto';
     };
-  }, []);
+  }, [isMobile]);
+
+  // Don't render on mobile
+  if (isMobile) return null;
 
   const cursorVariants = {
     default: {
@@ -111,56 +127,57 @@ const CustomCursor = () => {
   return (
     <>
       {/* Main cursor */}
-<motion.div
-  className="fixed top-0 left-0 w-6 h-6 rounded-full pointer-events-none z-[9999] hidden md:block"
-  style={{
-    x: mousePosition.x - 12,
-    y: mousePosition.y - 12,
-  }}
-  animate={cursorVariants[currentVariant]}
-  transition={{
-    type: 'tween',
-    duration: 0.05,
-    ease: 'linear',
-  }}
-/>
+      <motion.div
+        className="fixed top-0 left-0 w-6 h-6 rounded-full pointer-events-none z-[9999]"
+        style={{
+          x: mousePosition.x - 12,
+          y: mousePosition.y - 12,
+        }}
+        animate={cursorVariants[currentVariant]}
+        transition={{
+          type: 'spring',
+          stiffness: 500,
+          damping: 28,
+          mass: 0.5,
+        }}
+      />
 
-{/* Cursor trail */}
-<motion.div
-  className="fixed top-0 left-0 w-2 h-2 rounded-full pointer-events-none z-[9998] hidden md:block"
-  style={{
-    x: mousePosition.x - 4,
-    y: mousePosition.y - 4,
-    backgroundColor: 'rgba(99, 102, 241, 0.3)',
-  }}
-  animate={{
-    scale: isHovering ? 2 : 1,
-    opacity: isHovering ? 0.8 : 0.4,
-  }}
-  transition={{
-    type: 'tween',
-    duration: 0.08,
-    ease: 'linear',
-  }}
-/>
+      {/* Cursor trail */}
+      <motion.div
+        className="fixed top-0 left-0 w-2 h-2 rounded-full pointer-events-none z-[9998]"
+        style={{
+          x: mousePosition.x - 4,
+          y: mousePosition.y - 4,
+          backgroundColor: 'rgba(99, 102, 241, 0.3)',
+        }}
+        animate={{
+          scale: isHovering ? 2 : 1,
+          opacity: isHovering ? 0.8 : 0.4,
+        }}
+        transition={{
+          type: 'spring',
+          stiffness: 300,
+          damping: 20,
+        }}
+      />
 
-{/* Outer ring */}
-<motion.div
-  className="fixed top-0 left-0 w-12 h-12 rounded-full border border-primary-400/20 pointer-events-none z-[9997] hidden md:block"
-  style={{
-    x: mousePosition.x - 24,
-    y: mousePosition.y - 24,
-  }}
-  animate={{
-    scale: isHovering ? 0.8 : 1,
-    opacity: isHovering ? 0.8 : 0.3,
-  }}
-  transition={{
-    type: 'tween',
-    duration: 0.1,
-    ease: 'linear',
-  }}
-/>
+      {/* Outer ring */}
+      <motion.div
+        className="fixed top-0 left-0 w-12 h-12 rounded-full border border-primary-400/20 pointer-events-none z-[9997]"
+        style={{
+          x: mousePosition.x - 24,
+          y: mousePosition.y - 24,
+        }}
+        animate={{
+          scale: isHovering ? 0.8 : 1,
+          opacity: isHovering ? 0.8 : 0.3,
+        }}
+        transition={{
+          type: 'spring',
+          stiffness: 200,
+          damping: 15,
+        }}
+      />
     </>
   );
 };

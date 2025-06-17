@@ -13,7 +13,7 @@ const ProjectsSection = () => {
       id: 1,
       title: 'DormNest',
       shortDesc: 'Student Accommodation Management System',
-      fullDesc: 'A comprehensive student accommodation management system designed to streamline the process of finding and managing student housing. Built with a modern tech stack including Java, Spring Boot and PostgreSQL. Features include user authentication, property listings, booking management,and an admin dashboard for managing properties and users.',
+      fullDesc: 'A comprehensive student accommodation management system designed to streamline the process of finding and managing student housing. Built with a modern tech stack including Java, Spring Boot and PostgreSQL. Features include user authentication, property listings, booking management, and an admin dashboard for managing properties and users.',
       image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSH5Cf_LlgRH2M7uVV474n6mMbbW4DfiS2NHQ&s',
       tags: ['Java', 'Spring Boot', 'PostgreSQL'],
       github: 'https://github.com/Paramesh612/DormNest-OOAD-Project',
@@ -39,7 +39,7 @@ const ProjectsSection = () => {
       id: 3,
       title: 'MedCare Hospital',
       shortDesc: 'Hospital management system',
-      fullDesc: 'A comprehensive hospital management system website that allows patients to book appointments, view medical records, and communicate with healthcare providers. Built with React, Node.js, and MongoDB. Features include patient registration, appointment scheduling, doctor profiles. and a secure admin panel for managing hospital operations.',
+      fullDesc: 'A comprehensive hospital management system website that allows patients to book appointments, view medical records, and communicate with healthcare providers. Built with React, Node.js, and MongoDB. Features include patient registration, appointment scheduling, doctor profiles, and a secure admin panel for managing hospital operations.',
       image: 'https://acropolium.com/img/articles/hospital-management-software/img01.jpg',
       tags: ['React', 'Node.js', 'MongoDB', 'Express', 'Bootstrap'],
       github: 'https://github.com/Pavithran200412/Hospital-Management-website',
@@ -51,20 +51,20 @@ const ProjectsSection = () => {
     {
       id: 4,
       title: 'App-Feature-Analysis-and-Comment-Driven-Rating',
-      shortDesc: 'Decentralized Social Media Platform',
-      fullDesc: 'A decentralized social media platform that allows users to analyze app features and provide ratings based on comments. Built with React, NLP, ML. Features include user authentication with MetaMask, smart contract integration for ratings, and decentralized storage of comments and ratings.',
+      shortDesc: 'App Feature Analysis Platform',
+      fullDesc: 'A platform that allows users to analyze app features and provide ratings based on comments. Built with React, NLP, ML. Features include comment analysis and intelligent rating systems.',
       image: 'https://images.pexels.com/photos/267350/pexels-photo-267350.jpeg?auto=compress&cs=tinysrgb&w=800',
       tags: ['React', 'NLP', 'ML'],
       github: 'https://github.com/Paramesh612/App-Feature-Analysis-and-Comment-Driven-Rating',
       demo: 'https://github.com/Paramesh612/App-Feature-Analysis-and-Comment-Driven-Rating',
-      features: [ 'Comment Analysis', 'Rating System'],
+      features: ['Comment Analysis', 'Rating System'],
       category: 'AI/ML',
       color: 'success'
     },
     {
       id: 5,
       title: 'SpaceShooter Game',
-      shortDesc: 'Space-shooter game python',
+      shortDesc: 'Interactive Space Shooter Game',
       fullDesc: 'Space-shooter game built with Python, featuring hand tracking and spatial audio. Players can control their spaceship and experience immersive soundscapes as they navigate through space.',
       image: 'https://i.ytimg.com/vi/fBf-IznUHns/sddefault.jpg',
       tags: ['Python', 'Pygame', 'OpenCV', 'TensorFlow'],
@@ -76,7 +76,7 @@ const ProjectsSection = () => {
     }
   ];
 
-  const categories = ['All', 'Full Stack', '3D Graphics', 'AI/ML'];
+  const categories = ['All', 'Full Stack', '3D Graphics', 'AI/ML', 'Java Spring Boot', 'Networking'];
 
   const filteredProjects = activeCategory === 'All' 
     ? projects 
@@ -88,7 +88,7 @@ const ProjectsSection = () => {
         {/* Header */}
         <AnimatedSection className="text-center mb-16">
           <motion.h2 
-            className="text-4xl md:text-6xl font-bold mb-6"
+            className="text-4xl md:text-6xl font-bold mb-6 text-gray-900 dark:text-white"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
@@ -97,7 +97,7 @@ const ProjectsSection = () => {
             Featured <span className="bg-gradient-to-r from-primary-400 to-secondary-400 bg-clip-text text-transparent">Projects</span>
           </motion.h2>
           <motion.p 
-            className="text-xl text-gray-400 max-w-3xl mx-auto leading-relaxed"
+            className="text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto leading-relaxed"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
@@ -110,17 +110,17 @@ const ProjectsSection = () => {
 
         {/* Category Filter */}
         <AnimatedSection animation="fadeInUp" delay={0.3} className="mb-12">
-          <div className="flex flex-wrap justify-center gap-4">
+          <div className="flex flex-wrap justify-center gap-3 px-4">
             {categories.map((category) => (
               <motion.button
                 key={category}
                 whileHover={{ scale: 1.05, y: -2 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={() => setActiveCategory(category)}
-                className={`px-6 py-3 rounded-xl font-medium transition-all duration-300 ${
+                className={`px-4 py-2 text-sm md:px-6 md:py-3 md:text-base rounded-xl font-medium transition-all duration-300 ${
                   activeCategory === category
                     ? 'bg-gradient-to-r from-primary-600 to-secondary-600 text-white shadow-lg shadow-primary-500/25'
-                    : 'bg-white/10 text-gray-300 hover:bg-white/20 hover:text-white backdrop-blur-sm'
+                    : 'bg-white/10 dark:bg-gray-800/50 text-gray-700 dark:text-gray-300 hover:bg-white/20 dark:hover:bg-gray-700/50 hover:text-gray-900 dark:hover:text-white backdrop-blur-sm border border-gray-200/20 dark:border-gray-700/20'
                 }`}
               >
                 {category}
@@ -132,9 +132,9 @@ const ProjectsSection = () => {
         {/* Projects Grid */}
         <motion.div 
           layout
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 justify-center items-center"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 justify-items-center"
         >
-          <AnimatePresence>
+          <AnimatePresence mode="wait">
             {filteredProjects.map((project, index) => (
               <motion.div
                 key={project.id}
@@ -144,6 +144,7 @@ const ProjectsSection = () => {
                 exit={{ opacity: 0, y: 50, scale: 0.9 }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
                 whileHover={{ y: -10 }}
+                className="w-full max-w-sm"
               >
                 <GlowingCard 
                   glowColor={project.color}
@@ -175,11 +176,11 @@ const ProjectsSection = () => {
                   </div>
                   
                   <div className="p-6">
-                    <h3 className="text-xl font-bold text-white mb-3 group-hover:text-primary-400 transition-colors">
+                    <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3 group-hover:text-primary-400 transition-colors">
                       {project.title}
                     </h3>
                     
-                    <p className="text-gray-400 mb-4 line-clamp-2">
+                    <p className="text-gray-600 dark:text-gray-400 mb-4 line-clamp-2">
                       {project.shortDesc}
                     </p>
                     
@@ -187,13 +188,13 @@ const ProjectsSection = () => {
                       {project.tags.slice(0, 3).map((tag) => (
                         <span
                           key={tag}
-                          className="px-2 py-1 bg-white/10 text-gray-300 rounded text-xs backdrop-blur-sm"
+                          className="px-2 py-1 bg-gray-100 dark:bg-gray-700/50 text-gray-600 dark:text-gray-300 rounded text-xs backdrop-blur-sm"
                         >
                           {tag}
                         </span>
                       ))}
                       {project.tags.length > 3 && (
-                        <span className="px-2 py-1 bg-white/10 text-gray-300 rounded text-xs backdrop-blur-sm">
+                        <span className="px-2 py-1 bg-gray-100 dark:bg-gray-700/50 text-gray-600 dark:text-gray-300 rounded text-xs backdrop-blur-sm">
                           +{project.tags.length - 3}
                         </span>
                       )}
@@ -204,7 +205,7 @@ const ProjectsSection = () => {
                         href={project.github}
                         onClick={(e) => e.stopPropagation()}
                         whileHover={{ scale: 1.1 }}
-                        className="flex items-center text-gray-400 hover:text-white transition-colors"
+                        className="flex items-center text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors"
                       >
                         <FiGithub size={16} className="mr-1" />
                         Code
@@ -213,7 +214,7 @@ const ProjectsSection = () => {
                         href={project.demo}
                         onClick={(e) => e.stopPropagation()}
                         whileHover={{ scale: 1.1 }}
-                        className="flex items-center text-gray-400 hover:text-primary-400 transition-colors"
+                        className="flex items-center text-gray-600 dark:text-gray-400 hover:text-primary-400 transition-colors"
                       >
                         <FiExternalLink size={16} className="mr-1" />
                         Demo
@@ -241,7 +242,7 @@ const ProjectsSection = () => {
                 animate={{ scale: 1, opacity: 1, y: 0 }}
                 exit={{ scale: 0.8, opacity: 0, y: 50 }}
                 onClick={(e) => e.stopPropagation()}
-                className="bg-dark-800/90 backdrop-blur-xl rounded-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto border border-white/10"
+                className="bg-white dark:bg-gray-800 backdrop-blur-xl rounded-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto border border-gray-200 dark:border-gray-700"
               >
                 <div className="relative">
                   <img
@@ -260,9 +261,9 @@ const ProjectsSection = () => {
                 </div>
                 
                 <div className="p-8">
-                  <div className="flex items-center justify-between mb-6">
+                  <div className="flex flex-col md:flex-row md:items-center justify-between mb-6 gap-4">
                     <div>
-                      <h2 className="text-3xl font-bold text-white mb-2">
+                      <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-2">
                         {selectedProject.title}
                       </h2>
                       <span className={`px-3 py-1 bg-${selectedProject.color}-500/20 text-${selectedProject.color}-400 rounded-full text-sm font-medium`}>
@@ -289,12 +290,12 @@ const ProjectsSection = () => {
                     </div>
                   </div>
                   
-                  <p className="text-gray-300 mb-6 leading-relaxed text-lg">
+                  <p className="text-gray-600 dark:text-gray-300 mb-6 leading-relaxed text-lg">
                     {selectedProject.fullDesc}
                   </p>
                   
                   <div className="mb-6">
-                    <h3 className="text-xl font-bold text-white mb-3">
+                    <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3">
                       Key Features
                     </h3>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
@@ -307,14 +308,14 @@ const ProjectsSection = () => {
                           transition={{ delay: index * 0.1 }}
                         >
                           <div className="w-2 h-2 bg-primary-400 rounded-full mr-3"></div>
-                          <span className="text-gray-300">{feature}</span>
+                          <span className="text-gray-600 dark:text-gray-300">{feature}</span>
                         </motion.div>
                       ))}
                     </div>
                   </div>
                   
                   <div>
-                    <h3 className="text-xl font-bold text-white mb-3">
+                    <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3">
                       Technologies Used
                     </h3>
                     <div className="flex flex-wrap gap-2">
@@ -324,7 +325,7 @@ const ProjectsSection = () => {
                           initial={{ opacity: 0, scale: 0 }}
                           animate={{ opacity: 1, scale: 1 }}
                           transition={{ delay: index * 0.1 }}
-                          className="px-3 py-1 bg-white/10 text-gray-300 rounded-lg text-sm font-medium backdrop-blur-sm"
+                          className="px-3 py-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-lg text-sm font-medium backdrop-blur-sm"
                         >
                           {tag}
                         </motion.span>
