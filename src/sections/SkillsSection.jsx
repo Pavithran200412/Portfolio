@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { FiCode, FiDatabase, FiServer, FiTool, FiZap, FiCpu } from 'react-icons/fi';
+import { FiCode, FiDatabase, FiServer, FiTool } from 'react-icons/fi';
 import AnimatedSection from '../components/AnimatedSection';
 import GlowingCard from '../components/GlowingCard';
 
@@ -58,12 +58,12 @@ const SkillsSection = () => {
   ];
 
   return (
-    <section id="skills" className="min-h-screen py-20 px-4">
+    <section id="skills" className="min-h-screen py-20 px-4 bg-gray-50 dark:bg-gray-800">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <AnimatedSection className="text-center mb-20">
           <motion.h2 
-            className="text-4xl md:text-6xl font-bold mb-6"
+            className="text-4xl md:text-6xl font-bold mb-6 text-gray-900 dark:text-white"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
@@ -72,7 +72,7 @@ const SkillsSection = () => {
             Skills & <span className="bg-gradient-to-r from-primary-400 to-secondary-400 bg-clip-text text-transparent">Technologies</span>
           </motion.h2>
           <motion.p 
-            className="text-xl text-gray-400 max-w-3xl mx-auto leading-relaxed"
+            className="text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto leading-relaxed"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
@@ -93,11 +93,11 @@ const SkillsSection = () => {
                 delay={index * 0.1}
               >
                 <GlowingCard glowColor={skill.glowColor} className="h-full">
-                  <div className="p-6">
+                  <div className="p-6 bg-white dark:bg-gray-800 rounded-xl h-full">
                     <div className={`w-16 h-16 rounded-xl bg-gradient-to-br ${skill.color} flex items-center justify-center mb-6 mx-auto`}>
                       <Icon className="text-white" size={28} />
                     </div>
-                    <h3 className="text-xl font-bold text-white mb-6 text-center">
+                    <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-6 text-center">
                       {skill.category}
                     </h3>
                     <div className="space-y-4">
@@ -110,10 +110,10 @@ const SkillsSection = () => {
                           viewport={{ once: true }}
                         >
                           <div className="flex justify-between items-center mb-2">
-                            <span className="text-gray-300 font-medium">{item.name}</span>
-                            <span className="text-primary-400 text-sm">{item.level}%</span>
+                            <span className="text-gray-700 dark:text-gray-300 font-medium">{item.name}</span>
+                            <span className="text-primary-600 dark:text-primary-400 text-sm">{item.level}%</span>
                           </div>
-                          <div className="w-full bg-gray-700 rounded-full h-2">
+                          <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2">
                             <motion.div
                               className={`h-2 rounded-full bg-gradient-to-r ${skill.color}`}
                               initial={{ width: 0 }}
@@ -132,12 +132,11 @@ const SkillsSection = () => {
           })}
         </div>
 
-
         {/* Interactive Skills Visualization */}
         <AnimatedSection animation="scaleIn" delay={0.8} className="mt-20">
-          <GlowingCard className="p-8 text-center">
-            <h3 className="text-2xl font-bold text-white mb-6">Interactive Development</h3>
-            <p className="text-gray-400 mb-8 max-w-2xl mx-auto">
+          <GlowingCard className="p-8 text-center bg-white dark:bg-gray-800">
+            <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">Interactive Development</h3>
+            <p className="text-gray-600 dark:text-gray-400 mb-8 max-w-2xl mx-auto">
               I specialize in creating interactive, engaging user experiences with modern web technologies, 
               3D graphics, and smooth animations that captivate users.
             </p>
@@ -154,13 +153,13 @@ const SkillsSection = () => {
                   className="text-center"
                 >
                   <motion.div
-                    className="text-3xl font-bold text-primary-400 mb-2"
+                    className="text-3xl font-bold text-primary-600 dark:text-primary-400 mb-2"
                     animate={{ scale: [1, 1.1, 1] }}
                     transition={{ duration: 2, repeat: Infinity }}
                   >
                     {stat.value}
                   </motion.div>
-                  <div className="text-gray-400 text-sm">{stat.label}</div>
+                  <div className="text-gray-600 dark:text-gray-400 text-sm">{stat.label}</div>
                 </motion.div>
               ))}
             </div>

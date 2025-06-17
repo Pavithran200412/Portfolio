@@ -1,17 +1,16 @@
 import { motion } from 'framer-motion';
 import { TypeAnimation } from 'react-type-animation';
 import { FiDownload, FiMail, FiGithub, FiLinkedin, FiArrowDown } from 'react-icons/fi';
-import { saveAs } from 'file-saver';
 import Avatar3D from '../components/Avatar3D';
 import AnimatedSection from '../components/AnimatedSection';
 
 const HeroSection = () => {
   const handleDownloadResume = () => {
-  const link = document.createElement('a');
-  link.href = '/Resume.pdf'; // Make sure Resume.pdf is in your public folder
-  link.download = 'Pavithran_Resume.pdf';
-  link.click();
-};
+    const link = document.createElement('a');
+    link.href = '/Resume.pdf';
+    link.download = 'Pavithran_Resume.pdf';
+    link.click();
+  };
 
   const scrollToNext = () => {
     document.getElementById('about').scrollIntoView({ behavior: 'smooth' });
@@ -28,7 +27,7 @@ const HeroSection = () => {
             transition={{ duration: 0.8 }}
           >
             <motion.h1 
-              className="text-5xl md:text-7xl lg:text-8xl font-bold mb-6"
+              className="text-5xl md:text-7xl lg:text-8xl font-bold mb-6 text-gray-900 dark:text-white"
               initial={{ opacity: 0, scale: 0.5 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 1, delay: 0.2 }}
@@ -39,11 +38,11 @@ const HeroSection = () => {
               </span>
             </motion.h1>
             
-            <div className="text-2xl md:text-3xl lg:text-4xl text-gray-300 mb-8 h-20">
+            <div className="text-2xl md:text-3xl lg:text-4xl text-gray-600 dark:text-gray-300 mb-8 h-20">
               <TypeAnimation
                 sequence={[
                   'Transforming Ideas into Reality',
-                  3000, // Increased delay
+                  3000,
                   'Tech Enthusiast',
                   3000,
                   'Team Worker',
@@ -52,14 +51,14 @@ const HeroSection = () => {
                   3000,
                 ]}
                 wrapper="span"
-                speed={40} // Reduced speed
+                speed={40}
                 repeat={Infinity}
                 className="font-medium"
               />
             </div>
             
             <motion.p 
-              className="text-lg md:text-xl text-gray-400 max-w-2xl mx-auto lg:mx-0 mb-12 leading-relaxed"
+              className="text-lg md:text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto lg:mx-0 mb-12 leading-relaxed"
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.6 }}
@@ -77,8 +76,8 @@ const HeroSection = () => {
             className="flex flex-wrap justify-center lg:justify-start gap-4 mb-12"
           >
             <motion.button
-              whileHover={{ scale: 1.03, y: -1 }} // Reduced scale and movement
-              whileTap={{ scale: 0.97 }}
+              whileHover={{ scale: 1.05, y: -2 }}
+              whileTap={{ scale: 0.95 }}
               onClick={handleDownloadResume}
               className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-primary-600 to-secondary-600 hover:from-primary-700 hover:to-secondary-700 text-white font-medium rounded-xl shadow-lg transition-all duration-200"
             >
@@ -87,8 +86,8 @@ const HeroSection = () => {
             </motion.button>
             
             <motion.button
-              whileHover={{ scale: 1.03, y: -1 }} // Reduced scale and movement
-              whileTap={{ scale: 0.97 }}
+              whileHover={{ scale: 1.05, y: -2 }}
+              whileTap={{ scale: 0.95 }}
               onClick={() => document.getElementById('contact').scrollIntoView({ behavior: 'smooth' })}
               className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-secondary-600 to-accent-600 hover:from-secondary-700 hover:to-accent-700 text-white font-medium rounded-xl shadow-lg transition-all duration-200"
             >
@@ -97,10 +96,10 @@ const HeroSection = () => {
             </motion.button>
             
             <motion.button
-              whileHover={{ scale: 1.03, y: -1 }} // Reduced scale and movement
-              whileTap={{ scale: 0.97 }}
+              whileHover={{ scale: 1.05, y: -2 }}
+              whileTap={{ scale: 0.95 }}
               onClick={() => document.getElementById('projects').scrollIntoView({ behavior: 'smooth' })}
-              className="inline-flex items-center px-8 py-4 border-2 border-primary-400 text-primary-400 hover:bg-primary-400 hover:text-white font-medium rounded-xl transition-all duration-200 backdrop-blur-sm"
+              className="inline-flex items-center px-8 py-4 border-2 border-primary-600 text-primary-600 hover:bg-primary-600 hover:text-white font-medium rounded-xl transition-all duration-200 backdrop-blur-sm"
             >
               View Projects
             </motion.button>
@@ -117,15 +116,15 @@ const HeroSection = () => {
               { Icon: FiGithub, href: 'https://github.com/Pavithran200412', label: 'GitHub' },
               { Icon: FiLinkedin, href: 'https://www.linkedin.com/in/pavithran-s-1814a3310?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app', label: 'LinkedIn' },
               { Icon: FiMail, href: 'mailto:pavithran.workat@gmail.com', label: 'Email' }
-            ].map(({ Icon, href, label, color }) => (
+            ].map(({ Icon, href, label }) => (
               <motion.a
                 key={label}
                 href={href}
                 target="_blank"
                 rel="noopener noreferrer"
-                whileHover={{ scale: 1.2, y: -3 }} // Reduced movement
+                whileHover={{ scale: 1.2, y: -3 }}
                 whileTap={{ scale: 0.95 }}
-                className={`p-4 text-gray-400 ${color} transition-all duration-200 rounded-full bg-white/10 backdrop-blur-sm hover:bg-white/20`}
+                className="p-4 text-gray-600 dark:text-gray-400 hover:text-primary-600 dark:hover:text-primary-400 transition-all duration-200 rounded-full bg-white/10 dark:bg-gray-800/50 backdrop-blur-sm hover:bg-white/20 dark:hover:bg-gray-700/50"
                 aria-label={label}
               >
                 <Icon size={24} />
@@ -144,13 +143,18 @@ const HeroSection = () => {
       <motion.button
         onClick={scrollToNext}
         className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
-        animate={{ y: [0, 5, 0] }} // Reduced movement
-        transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut' }} // Increased duration
+        animate={{ y: [0, 8, 0] }}
+        transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
         whileHover={{ scale: 1.1 }}
       >
-        <div className="flex flex-col items-center text-gray-400 hover:text-white transition-colors">
+        <div className="flex flex-col items-center text-gray-600 dark:text-gray-400 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">
           <span className="text-sm mb-2">Scroll Down</span>
-          <FiArrowDown size={24} />
+          <motion.div
+            animate={{ y: [0, 4, 0] }}
+            transition={{ duration: 1.5, repeat: Infinity, ease: 'easeInOut' }}
+          >
+            <FiArrowDown size={24} />
+          </motion.div>
         </div>
       </motion.button>
     </section>

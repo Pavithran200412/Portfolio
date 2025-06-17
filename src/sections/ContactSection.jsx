@@ -18,13 +18,6 @@ const ContactSection = () => {
       // Simulate API call delay
       await new Promise(resolve => setTimeout(resolve, 2000));
       
-      // In a real application, you would send this to your backend
-      // const response = await fetch('/api/contact', {
-      //   method: 'POST',
-      //   headers: { 'Content-Type': 'application/json' },
-      //   body: JSON.stringify(formData)
-      // });
-      
       console.log('Message sent successfully!');
       
     } catch (error) {
@@ -67,12 +60,12 @@ const ContactSection = () => {
   ];
 
   return (
-    <section id="contact" className="min-h-screen py-20 px-4">
+    <section id="contact" className="min-h-screen py-20 px-4 bg-white dark:bg-gray-900">
       <div className="max-w-6xl mx-auto">
         {/* Header */}
         <AnimatedSection className="text-center mb-16">
           <motion.h2 
-            className="text-4xl md:text-6xl font-bold mb-6"
+            className="text-4xl md:text-6xl font-bold mb-6 text-gray-900 dark:text-white"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
@@ -81,7 +74,7 @@ const ContactSection = () => {
             Get In <span className="bg-gradient-to-r from-primary-400 to-secondary-400 bg-clip-text text-transparent">Touch</span>
           </motion.h2>
           <motion.p 
-            className="text-xl text-gray-400 max-w-3xl mx-auto leading-relaxed"
+            className="text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto leading-relaxed"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
@@ -95,7 +88,7 @@ const ContactSection = () => {
           {/* Contact Form */}
           <AnimatedSection animation="fadeInLeft" delay={0.3}>
             <GlowingCard glowColor="primary">
-              <div className="p-8">
+              <div className="p-8 bg-gray-50 dark:bg-gray-800 rounded-xl">
                 <SecureContactForm 
                   onSubmit={handleFormSubmit}
                   isSubmitting={isSubmitting}
@@ -109,8 +102,8 @@ const ContactSection = () => {
             {/* Contact Details */}
             <AnimatedSection animation="fadeInRight" delay={0.5}>
               <GlowingCard glowColor="secondary">
-                <div className="p-8">
-                  <h3 className="text-2xl font-bold text-white mb-6 flex items-center">
+                <div className="p-8 bg-gray-50 dark:bg-gray-800 rounded-xl">
+                  <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6 flex items-center">
                     <FiShield className="mr-3 text-green-400" />
                     Contact Information
                   </h3>
@@ -126,16 +119,16 @@ const ContactSection = () => {
                           whileInView={{ opacity: 1, x: 0 }}
                           transition={{ delay: index * 0.1 }}
                           whileHover={{ scale: 1.02, x: 5 }}
-                          className="flex items-center p-4 bg-white/10 rounded-lg hover:bg-white/15 transition-all duration-300 group backdrop-blur-sm"
+                          className="flex items-center p-4 bg-white dark:bg-gray-700 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-600 transition-all duration-300 group"
                         >
                           <div className={`w-12 h-12 bg-gradient-to-br from-primary-600 to-secondary-600 rounded-lg flex items-center justify-center mr-4 group-hover:scale-110 transition-transform duration-300`}>
                             <Icon className="text-white" size={20} />
                           </div>
                           <div>
-                            <p className="text-sm text-gray-400">
+                            <p className="text-sm text-gray-500 dark:text-gray-400">
                               {info.label}
                             </p>
-                            <p className="text-white font-medium">
+                            <p className="text-gray-900 dark:text-white font-medium">
                               {info.value}
                             </p>
                           </div>
@@ -150,8 +143,8 @@ const ContactSection = () => {
             {/* Social Links */}
             <AnimatedSection animation="fadeInRight" delay={0.7}>
               <GlowingCard glowColor="accent">
-                <div className="p-8">
-                  <h3 className="text-2xl font-bold text-white mb-6">
+                <div className="p-8 bg-gray-50 dark:bg-gray-800 rounded-xl">
+                  <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">
                     Connect With Me
                   </h3>
                   
@@ -169,10 +162,10 @@ const ContactSection = () => {
                           transition={{ delay: index * 0.1 }}
                           whileHover={{ scale: 1.05, y: -5 }}
                           whileTap={{ scale: 0.95 }}
-                          className="flex items-center justify-center p-4 bg-white/10 rounded-lg hover:bg-white/15 transition-all duration-300 group backdrop-blur-sm"
+                          className="flex items-center justify-center p-4 bg-white dark:bg-gray-700 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-600 transition-all duration-300 group"
                         >
-                          <Icon className="text-gray-400 group-hover:text-white mr-2" size={20} />
-                          <span className="text-gray-400 group-hover:text-white font-medium">
+                          <Icon className="text-gray-600 dark:text-gray-400 group-hover:text-primary-600 dark:group-hover:text-primary-400 mr-2" size={20} />
+                          <span className="text-gray-600 dark:text-gray-400 group-hover:text-primary-600 dark:group-hover:text-primary-400 font-medium">
                             {social.label}
                           </span>
                         </motion.a>
@@ -182,7 +175,6 @@ const ContactSection = () => {
                 </div>
               </GlowingCard>
             </AnimatedSection>
-
           </div>
         </div>
       </div>
