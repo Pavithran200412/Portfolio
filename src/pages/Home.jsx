@@ -110,7 +110,7 @@ const Home = () => {
           >
             {[
               { Icon: FiGithub, href: 'https://github.com/Pavithran200412', label: 'GitHub' },
-              { Icon: FiLinkedin, href: 'https://www.linkedin.com/in/pavithran-s-1814a3310?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app', label: 'LinkedIn' },
+              { Icon: FiLinkedin, href: 'https://www.linkedin.com/in/pavithran-s3012/', label: 'LinkedIn' },
               { Icon: FiMail, href: 'mailto:pavithran.workat@gmail.com', label: 'Email' },
               { Icon: FiTwitter, href: 'https://twitter.com', label: 'Twitter' },
               { Icon: FiInstagram, href: 'https://instagram.com', label: 'Instagram' },
