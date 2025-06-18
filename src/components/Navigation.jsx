@@ -60,20 +60,20 @@ const Navigation = () => {
                 onClick={() => scrollToSection('home')}
                 className="text-2xl font-bold bg-gradient-to-r from-primary-400 to-secondary-400 bg-clip-text text-transparent"
               >
-                SP
+                PS
               </button>
             </motion.div>
 
-            {/* Desktop Navigation */}
-            <div className="hidden md:block">
-              <div className="ml-10 flex items-baseline space-x-4">
+            {/* Desktop Navigation - Centered */}
+            <div className="hidden md:flex flex-1 justify-center">
+              <div className="flex items-center space-x-8">
                 {navItems.map((item) => (
                   <motion.button
                     key={item.id}
                     onClick={() => scrollToSection(item.id)}
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
-                    className={`px-3 py-2 rounded-md text-sm font-medium transition-all duration-300 ${
+                    className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 ${
                       activeSection === item.id
                         ? 'text-primary-400 bg-primary-500/20 shadow-lg shadow-primary-500/25'
                         : 'text-gray-300 hover:text-primary-400 hover:bg-white/10'

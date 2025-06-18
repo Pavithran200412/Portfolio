@@ -32,12 +32,12 @@ const AboutSection = () => {
   ];
 
   return (
-    <section id="about" className="min-h-screen py-20 px-4 bg-white dark:bg-gray-900">
+    <section id="about" className="min-h-screen py-20 px-4 bg-gray-900">
       <div className="max-w-6xl mx-auto">
         {/* Header */}
         <AnimatedSection className="text-center mb-20">
           <motion.h2 
-            className="text-4xl md:text-6xl font-bold mb-6 text-gray-900 dark:text-white"
+            className="text-4xl md:text-6xl font-bold mb-6 text-white"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
@@ -46,7 +46,7 @@ const AboutSection = () => {
             About <span className="bg-gradient-to-r from-primary-400 to-secondary-400 bg-clip-text text-transparent">Me</span>
           </motion.h2>
           <motion.p 
-            className="text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto leading-relaxed"
+            className="text-xl text-gray-400 max-w-3xl mx-auto leading-relaxed"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
@@ -59,7 +59,7 @@ const AboutSection = () => {
 
         {/* Personal Story */}
         <AnimatedSection animation="fadeInUp" delay={0.3} className="mb-20">
-          <GlowingCard className="p-8 md:p-12 text-center bg-gray-50 dark:bg-gray-800">
+          <GlowingCard className="p-8 md:p-12 text-center bg-gray-800">
             <motion.div
               initial={{ scale: 0.8, opacity: 0 }}
               whileInView={{ scale: 1, opacity: 1 }}
@@ -67,8 +67,8 @@ const AboutSection = () => {
               viewport={{ once: true }}
             >
               <FiUser className="text-6xl text-primary-400 mx-auto mb-6" />
-              <h3 className="text-2xl md:text-3xl font-bold mb-6 text-gray-900 dark:text-white">My Story</h3>
-              <p className="text-gray-600 dark:text-gray-300 leading-relaxed text-lg">
+              <h3 className="text-2xl md:text-3xl font-bold mb-6 text-white">My Story</h3>
+              <p className="text-gray-300 leading-relaxed text-lg">
                 Started as a curious kid who loved taking apart computers, I've evolved into a developer 
                 who builds digital experiences that matter. My journey spans from learning my first 
                 "Hello World" to architecting complex applications that serve thousands of users. 
@@ -80,7 +80,7 @@ const AboutSection = () => {
 
         {/* Timeline */}
         <AnimatedSection animation="fadeInUp" delay={0.5}>
-          <h3 className="text-3xl font-bold text-center mb-12 text-gray-900 dark:text-white">My Journey</h3>
+          <h3 className="text-3xl font-bold text-center mb-12 text-white">My Journey</h3>
           <div className="relative">
             {/* Timeline line */}
             <div className="absolute left-4 md:left-1/2 transform md:-translate-x-px h-full w-1 bg-gradient-to-b from-primary-600 via-secondary-600 to-accent-600"></div>
@@ -100,7 +100,7 @@ const AboutSection = () => {
                 >
                   {/* Timeline dot */}
                   <motion.div 
-                    className="absolute left-4 md:left-1/2 transform md:-translate-x-1/2 w-8 h-8 bg-gradient-to-r from-primary-600 to-secondary-600 rounded-full border-4 border-white dark:border-gray-900 z-10 flex items-center justify-center"
+                    className="absolute left-4 md:left-1/2 transform md:-translate-x-1/2 w-8 h-8 bg-gradient-to-r from-primary-600 to-secondary-600 rounded-full border-4 border-gray-900 z-10 flex items-center justify-center"
                     whileHover={{ scale: 1.2, rotate: 180 }}
                     transition={{ type: 'spring', stiffness: 300 }}
                   >
@@ -110,19 +110,19 @@ const AboutSection = () => {
                   {/* Content card */}
                   <div className={`ml-16 md:ml-0 md:w-5/12 ${index % 2 === 0 ? 'md:mr-8' : 'md:ml-8'}`}>
                     <GlowingCard glowColor={item.color}>
-                      <div className="p-6 bg-white dark:bg-gray-800 rounded-xl">
+                      <div className="p-6 bg-gray-800 rounded-xl">
                         <div className="flex items-center mb-3">
                           <span className={`bg-${item.color}-100 dark:bg-${item.color}-900/50 text-${item.color}-600 dark:text-${item.color}-400 px-3 py-1 rounded-full text-sm font-bold`}>
                             {item.year}
                           </span>
                         </div>
-                        <h4 className="text-xl font-bold text-gray-900 dark:text-white mb-2">
+                        <h4 className="text-xl font-bold text-white mb-2">
                           {item.title}
                         </h4>
-                        <p className="text-primary-600 dark:text-primary-400 font-medium mb-3">
+                        <p className="text-primary-400 font-medium mb-3">
                           {item.company}
                         </p>
-                        <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
+                        <p className="text-gray-400 leading-relaxed">
                           {item.description}
                         </p>
                       </div>
@@ -141,7 +141,7 @@ const AboutSection = () => {
               whileHover={{ scale: 1.02 }}
               transition={{ type: 'spring', stiffness: 300 }}
             >
-              <h3 className="text-2xl md:text-3xl font-bold mb-4">Let's Build Something Amazing Together</h3>
+              <h3 className="text-2xl md:text-3xl font-bold mb-4">Let's Create Something Amazing Together</h3>
               <p className="text-lg opacity-90 mb-6 max-w-2xl mx-auto">
                 I'm always excited to work on new projects and collaborate with fellow developers. 
                 Whether it's a complex web application or a simple landing page, I bring passion and precision to every project.
