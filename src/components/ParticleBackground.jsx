@@ -1,13 +1,16 @@
 import { useCallback, useMemo } from 'react';
 import Particles from '@tsparticles/react';
 import { loadBasic } from '@tsparticles/basic';
+import { useTheme } from '../context/ThemeContext';
 
 const ParticleBackground = () => {
+  const { isDark } = useTheme();
+
   const particlesInit = useCallback(async (engine) => {
     await loadBasic(engine);
   }, []);
 
-  // Enhanced particle configuration for better interactivity
+  // Memoize particle configuration to prevent unnecessary re-renders
   const particlesConfig = useMemo(() => ({
     fullScreen: {
       enable: true,
@@ -18,60 +21,51 @@ const ParticleBackground = () => {
         value: 'transparent',
       },
     },
-    fpsLimit: 120,
+    fpsLimit: 60,
     interactivity: {
       events: {
         onClick: {
           enable: true,
-          mode: ['push', 'bubble'],
+          mode: ['push', 'repulse'],
         },
         onHover: {
           enable: true,
-          mode: ['grab', 'connect'],
+          mode: ['grab', 'bubble'],
         },
         resize: true,
       },
       modes: {
         push: {
-          quantity: 5,
+          quantity: 3,
         },
-        bubble: {
-          distance: 250,
-          size: 12,
-          duration: 3,
-          opacity: 0.9,
-          speed: 3,
+        repulse: {
+          distance: 200,
+          duration: 0.4,
         },
         grab: {
-          distance: 200,
-          links: {
-            opacity: 0.9,
-            color: '#8b5cf6',
-          },
-        },
-        connect: {
           distance: 150,
           links: {
-            opacity: 0.7,
+            opacity: 0.8,
           },
-          radius: 100,
+        },
+        bubble: {
+          distance: 200,
+          size: 8,
+          duration: 2,
+          opacity: 0.8,
         },
       },
     },
     particles: {
       color: {
-        value: ['#6366f1', '#8b5cf6', '#06b6d4', '#10b981', '#f59e0b'],
+        value: isDark ? ['#6366f1', '#8b5cf6', '#06b6d4'] : ['#3b82f6', '#6366f1', '#8b5cf6'],
       },
       links: {
-        color: '#4f46e5',
-        distance: 180,
+        color: isDark ? '#4f46e5' : '#6366f1',
+        distance: 150,
         enable: true,
-        opacity: 0.5,
-        width: 1.5,
-        triangles: {
-          enable: true,
-          opacity: 0.1,
-        },
+        opacity: isDark ? 0.4 : 0.3,
+        width: 1,
       },
       move: {
         directions: 'none',
@@ -80,116 +74,66 @@ const ParticleBackground = () => {
           default: 'bounce',
         },
         random: true,
-        speed: { min: 1, max: 3 },
+        speed: { min: 0.5, max: 2 },
         straight: false,
-        attract: {
-          enable: true,
-          rotateX: 600,
-          rotateY: 1200,
-        },
       },
       number: {
         density: {
           enable: true,
-          area: 1000,
+          area: 800,
         },
-        value: 100,
+        value: 80,
       },
       opacity: {
-        value: { min: 0.3, max: 0.9 },
+        value: { min: 0.3, max: 0.8 },
         animation: {
           enable: true,
-          speed: 2,
-          minimumValue: 0.2,
-          sync: false,
+          speed: 1,
+          minimumValue: 0.1,
         },
       },
       shape: {
-        type: ['circle', 'triangle', 'star'],
-        options: {
-          star: {
-            sides: 5,
-          },
-        },
+        type: ['circle', 'triangle'],
       },
       size: {
-        value: { min: 2, max: 8 },
+        value: { min: 1, max: 5 },
         animation: {
           enable: true,
-          speed: 3,
-          minimumValue: 1,
-          sync: false,
-        },
-      },
-      twinkle: {
-        particles: {
-          enable: true,
-          frequency: 0.05,
-          opacity: 1,
-        },
-      },
-      life: {
-        duration: {
-          sync: false,
-          value: 3,
-        },
-        count: 0,
-        delay: {
-          random: {
-            enable: true,
-            minimumValue: 0.5,
-          },
-          value: 1,
+          speed: 2,
+          minimumValue: 0.5,
         },
       },
     },
     detectRetina: true,
-    smooth: true,
     responsive: [
       {
         maxWidth: 768,
         options: {
           particles: {
             number: {
-              value: 50,
-            },
-            links: {
-              distance: 120,
-            },
-            move: {
-              speed: { min: 0.5, max: 2 },
-            },
-          },
-          interactivity: {
-            modes: {
-              grab: {
-                distance: 120,
-              },
-              bubble: {
-                distance: 150,
-              },
-            },
-          },
-        },
-      },
-      {
-        maxWidth: 480,
-        options: {
-          particles: {
-            number: {
-              value: 30,
+              value: 40,
             },
             links: {
               distance: 100,
             },
             move: {
-              speed: { min: 0.3, max: 1.5 },
+              speed: { min: 0.3, max: 1 },
+            },
+          },
+          interactivity: {
+            modes: {
+              grab: {
+                distance: 100,
+              },
+              bubble: {
+                distance: 100,
+              },
             },
           },
         },
       },
     ],
-  }), []);
+  }), [isDark]);
 
   return (
     <Particles

@@ -1,6 +1,6 @@
 import { useState, useCallback } from 'react';
 import { motion } from 'framer-motion';
-import { FiSend, FiShield, FiAlertTriangle, FiCheckCircle } from 'react-icons/fi';
+import { FiSend, FiShield, FiAlertTriangle } from 'react-icons/fi';
 
 const SecureContactForm = ({ onSubmit, isSubmitting = false }) => {
   const [formData, setFormData] = useState({
@@ -95,39 +95,30 @@ const SecureContactForm = ({ onSubmit, isSubmitting = false }) => {
     }
     
     try {
-      // Create form data for Netlify
-      const netlifyFormData = new FormData();
-      netlifyFormData.append('form-name', 'contact');
-      netlifyFormData.append('name', formData.name);
-      netlifyFormData.append('email', formData.email);
-      netlifyFormData.append('subject', formData.subject);
-      netlifyFormData.append('message', formData.message);
-
-      // Submit to Netlify
-      const response = await fetch('/', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: new URLSearchParams(netlifyFormData).toString()
+      // Process form data
+      const processedData = {
+        ...formData,
+        timestamp: new Date().toISOString(),
+        source: 'contact_form'
+      };
+      
+      // Submit form
+      await onSubmit(processedData);
+      
+      // Show success message
+      setIsSubmitted(true);
+      
+      // Clear form on successful submission
+      setFormData({
+        name: '',
+        email: '',
+        subject: '',
+        message: ''
       });
-
-      if (response.ok) {
-        // Show success message
-        setIsSubmitted(true);
-        
-        // Clear form on successful submission
-        setFormData({
-          name: '',
-          email: '',
-          subject: '',
-          message: ''
-        });
-        setErrors({});
-        
-        // Hide success message after 5 seconds
-        setTimeout(() => setIsSubmitted(false), 5000);
-      } else {
-        throw new Error('Network response was not ok');
-      }
+      setErrors({});
+      
+      // Hide success message after 5 seconds
+      setTimeout(() => setIsSubmitted(false), 5000);
       
     } catch (error) {
       console.error('Form submission error:', error);
@@ -156,7 +147,7 @@ const SecureContactForm = ({ onSubmit, isSubmitting = false }) => {
           animate={{ opacity: 1, y: 0 }}
           className="mb-6 p-4 bg-green-500/20 border border-green-400/50 text-green-400 rounded-lg backdrop-blur-sm flex items-start"
         >
-          <FiCheckCircle className="mr-2 mt-0.5 flex-shrink-0" />
+          <FiShield className="mr-2 mt-0.5 flex-shrink-0" />
           <span>🎉 Your message has been sent successfully! I'll get back to you soon.</span>
         </motion.div>
       )}
@@ -173,23 +164,7 @@ const SecureContactForm = ({ onSubmit, isSubmitting = false }) => {
         </motion.div>
       )}
 
-      <form 
-        onSubmit={handleSubmit} 
-        className="space-y-6" 
-        noValidate
-        name="contact"
-        method="POST"
-        data-netlify="true"
-        data-netlify-honeypot="bot-field"
-      >
-        {/* Hidden field for Netlify */}
-        <input type="hidden" name="form-name" value="contact" />
-        
-        {/* Honeypot field for spam protection */}
-        <div style={{ display: 'none' }}>
-          <input name="bot-field" />
-        </div>
-
+      <form onSubmit={handleSubmit} className="space-y-6" noValidate>
         {/* Name and Email Row */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div className="relative group">
@@ -285,9 +260,8 @@ const SecureContactForm = ({ onSubmit, isSubmitting = false }) => {
           </div>
           <ul className="space-y-1 text-xs">
             <li>• All data is validated and sanitized</li>
-            <li>• Secure submission via Netlify Forms</li>
+            <li>• No personal data is stored permanently</li>
             <li>• SSL/TLS encryption in transit</li>
-            <li>• Spam protection enabled</li>
           </ul>
         </div>
         
