@@ -31,16 +31,7 @@ body {
   min-height: 100vh;
   overflow-x: hidden;
   transition: background-color 0.3s ease, color 0.3s ease;
-}
-
-/* Light theme */
-body:not(.dark) {
-  background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 50%, #cbd5e1 100%);
-  color: #1e293b;
-}
-
-/* Dark theme */
-body.dark {
+  /* Always use dark theme */
   background: linear-gradient(135deg, #1e293b 0%, #7c3aed 50%, #6366f1 100%);
   color: #f8fafc;
 }
@@ -86,7 +77,7 @@ body.dark {
 }
 
 ::-webkit-scrollbar-track {
-  @apply bg-gray-200 dark:bg-gray-800;
+  @apply bg-gray-800;
 }
 
 ::-webkit-scrollbar-thumb {

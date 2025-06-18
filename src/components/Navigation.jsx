@@ -1,12 +1,10 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { useTheme } from '../context/ThemeContext';
-import { FiMenu, FiX, FiSun, FiMoon } from 'react-icons/fi';
+import { FiMenu, FiX } from 'react-icons/fi';
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
-  const { isDark, toggleTheme } = useTheme();
 
   const navItems = [
     { id: 'home', label: 'Home' },
@@ -87,72 +85,38 @@ const Navigation = () => {
               </div>
             </div>
 
-            {/* Theme Toggle & Mobile Menu Button */}
-            <div className="flex items-center space-x-4">
+            {/* Mobile Menu Button */}
+            <div className="md:hidden">
               <motion.button
-                whileHover={{ scale: 1.1, rotate: 180 }}
-                whileTap={{ scale: 0.9 }}
-                onClick={toggleTheme}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                onClick={() => setIsOpen(!isOpen)}
                 className="p-2 rounded-lg bg-white/10 hover:bg-white/20 text-gray-300 hover:text-white transition-all duration-300"
               >
                 <AnimatePresence mode="wait">
-                  {isDark ? (
+                  {isOpen ? (
                     <motion.div
-                      key="sun"
-                      initial={{ rotate: -180, opacity: 0 }}
+                      key="close"
+                      initial={{ rotate: -90, opacity: 0 }}
                       animate={{ rotate: 0, opacity: 1 }}
-                      exit={{ rotate: 180, opacity: 0 }}
-                      transition={{ duration: 0.3 }}
+                      exit={{ rotate: 90, opacity: 0 }}
+                      transition={{ duration: 0.2 }}
                     >
-                      <FiSun size={20} />
+                      <FiX size={20} />
                     </motion.div>
                   ) : (
                     <motion.div
-                      key="moon"
-                      initial={{ rotate: -180, opacity: 0 }}
+                      key="menu"
+                      initial={{ rotate: -90, opacity: 0 }}
                       animate={{ rotate: 0, opacity: 1 }}
-                      exit={{ rotate: 180, opacity: 0 }}
-                      transition={{ duration: 0.3 }}
+                      exit={{ rotate: 90, opacity: 0 }}
+                      transition={{ duration: 0.2 }}
                     >
-                      <FiMoon size={20} />
+                      <FiMenu size={20} />
                     </motion.div>
                   )}
                 </AnimatePresence>
               </motion.button>
-
-              {/* Mobile menu button */}
-              <div className="md:hidden">
-                <motion.button
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  onClick={() => setIsOpen(!isOpen)}
-                  className="p-2 rounded-lg bg-white/10 hover:bg-white/20 text-gray-300 hover:text-white transition-all duration-300"
-                >
-                  <AnimatePresence mode="wait">
-                    {isOpen ? (
-                      <motion.div
-                        key="close"
-                        initial={{ rotate: -90, opacity: 0 }}
-                        animate={{ rotate: 0, opacity: 1 }}
-                        exit={{ rotate: 90, opacity: 0 }}
-                        transition={{ duration: 0.2 }}
-                      >
-                        <FiX size={20} />
-                      </motion.div>
-                    ) : (
-                      <motion.div
-                        key="menu"
-                        initial={{ rotate: -90, opacity: 0 }}
-                        animate={{ rotate: 0, opacity: 1 }}
-                        exit={{ rotate: 90, opacity: 0 }}
-                        transition={{ duration: 0.2 }}
-                      >
-                        <FiMenu size={20} />
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
-                </motion.button>
-              </div>
             </div>
           </div>
         </div>
