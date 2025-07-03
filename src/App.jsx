@@ -4,7 +4,6 @@ import Navigation from './components/Navigation';
 import ParticleBackground from './components/ParticleBackground';
 import FloatingElements from './components/FloatingElements';
 import PrivacyBanner from './components/PrivacyBanner';
-import CustomCursor from './components/CustomCursor';
 import BackToTop from './components/BackToTop';
 import ScrollProgress from './components/ScrollProgress';
 import HeroSection from './sections/HeroSection';
@@ -82,7 +81,6 @@ function App() {
     <ThemeProvider>
       <div className="relative min-h-screen bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-white overflow-x-hidden theme-transition">
         <ScrollProgress />
-        <CustomCursor />
         <ParticleBackground />
         <FloatingElements />
         <Navigation />

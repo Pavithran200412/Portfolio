@@ -34,28 +34,12 @@ body {
   /* Always use dark theme */
   background: linear-gradient(135deg, #1e293b 0%, #7c3aed 50%, #6366f1 100%);
   color: #f8fafc;
+  cursor: auto !important;
 }
 
-/* Custom cursor - only show on desktop */
-@media (min-width: 769px) {
-  body {
-    cursor: none !important;
-  }
-  
-  button, a, input, textarea, [role="button"], .cursor-pointer {
-    cursor: none !important;
-  }
-}
-
-/* Show default cursor on mobile */
-@media (max-width: 768px) {
-  body {
-    cursor: auto !important;
-  }
-  
-  button, a, input, textarea, [role="button"], .cursor-pointer {
-    cursor: pointer !important;
-  }
+/* Remove all custom cursor styles */
+button, a, input, textarea, [role="button"], .cursor-pointer {
+  cursor: pointer !important;
 }
 
 /* Performance optimizations */
