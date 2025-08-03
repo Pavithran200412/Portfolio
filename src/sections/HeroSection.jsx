@@ -1,7 +1,6 @@
 import { motion } from 'framer-motion';
 import { TypeAnimation } from 'react-type-animation';
 import { FiDownload, FiMail, FiGithub, FiLinkedin, FiArrowDown } from 'react-icons/fi';
-import Avatar3D from '../components/Avatar3D';
 import AnimatedSection from '../components/AnimatedSection';
 
 const HeroSection = () => {
@@ -18,9 +17,8 @@ const HeroSection = () => {
 
   return (
     <section id="home" className="min-h-screen flex items-center justify-center px-4 pt-16 relative">
-      <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-        {/* Left Column - Text Content */}
-        <div className="text-center lg:text-left space-y-8">
+      <div className="max-w-6xl mx-auto text-center">
+        <div className="space-y-8">
           <motion.div
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
@@ -58,7 +56,7 @@ const HeroSection = () => {
             </div>
             
             <motion.p 
-              className="text-lg md:text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto lg:mx-0 mb-12 leading-relaxed"
+              className="text-lg md:text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto mb-12 leading-relaxed"
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.6 }}
@@ -73,7 +71,7 @@ const HeroSection = () => {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.8 }}
-            className="flex flex-wrap justify-center lg:justify-start gap-4 mb-12"
+            className="flex flex-wrap justify-center gap-4 mb-12"
           >
             <motion.button
               whileHover={{ scale: 1.05, y: -2 }}
@@ -110,7 +108,7 @@ const HeroSection = () => {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 1 }}
-            className="flex justify-center lg:justify-start space-x-6"
+            className="flex justify-center space-x-6"
           >
             {[
               { Icon: FiGithub, href: 'https://github.com/Pavithran200412', label: 'GitHub' },
@@ -132,11 +130,6 @@ const HeroSection = () => {
             ))}
           </motion.div>
         </div>
-
-        {/* Right Column - 3D Avatar */}
-        <AnimatedSection animation="scaleIn" delay={1.2} className="flex justify-center">
-          <Avatar3D />
-        </AnimatedSection>
       </div>
 
       {/* Scroll Indicator */}

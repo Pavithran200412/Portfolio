@@ -1,33 +1,10 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { FiMail, FiPhone, FiMapPin, FiGithub, FiLinkedin, FiTwitter, FiInstagram, FiShield } from 'react-icons/fi';
+import { FiMail, FiPhone, FiMapPin, FiGithub, FiLinkedin, FiTwitter, FiInstagram } from 'react-icons/fi';
 import AnimatedSection from '../components/AnimatedSection';
 import GlowingCard from '../components/GlowingCard';
-import SecureContactForm from '../components/SecureContactForm';
 
 const ContactSection = () => {
-  const [isSubmitting, setIsSubmitting] = useState(false);
-
-  const handleFormSubmit = async (formData) => {
-    setIsSubmitting(true);
-    
-    try {
-      // Simulate form submission
-      console.log('Form submitted:', formData);
-      
-      // Simulate API call delay
-      await new Promise(resolve => setTimeout(resolve, 2000));
-      
-      console.log('Message sent successfully!');
-      
-    } catch (error) {
-      console.error('Failed to send message:', error);
-      throw new Error('Failed to send message. Please try again.');
-    } finally {
-      setIsSubmitting(false);
-    }
-  };
-
   const contactInfo = [
     {
       icon: FiMail,
@@ -84,98 +61,65 @@ const ContactSection = () => {
           </motion.p>
         </AnimatedSection>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-          {/* Contact Form */}
-          <AnimatedSection animation="fadeInLeft" delay={0.3}>
-            <GlowingCard glowColor="primary">
-              <div className="p-8 bg-gray-50 dark:bg-gray-800 rounded-xl">
-                <SecureContactForm 
-                  onSubmit={handleFormSubmit}
-                  isSubmitting={isSubmitting}
-                />
+        {/* Contact Information Cards */}
+        <div className="max-w-4xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+            {contactInfo.map((info, index) => {
+              const Icon = info.icon;
+              return (
+                <AnimatedSection key={info.label} animation="fadeInUp" delay={index * 0.1}>
+                  <GlowingCard glowColor="primary">
+                    <motion.a
+                      href={info.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      whileHover={{ scale: 1.05, y: -5 }}
+                      className="block p-8 bg-gray-800 rounded-xl text-center group"
+                    >
+                      <div className="w-16 h-16 bg-gradient-to-br from-primary-600 to-secondary-600 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
+                        <Icon className="text-white" size={24} />
+                      </div>
+                      <h3 className="text-lg font-bold text-white mb-2">{info.label}</h3>
+                      <p className="text-gray-300 group-hover:text-primary-400 transition-colors">
+                        {info.value}
+                      </p>
+                    </motion.a>
+                  </GlowingCard>
+                </AnimatedSection>
+              );
+            })}
+          </div>
+
+          {/* Social Links */}
+          <AnimatedSection animation="fadeInUp" delay={0.4}>
+            <GlowingCard glowColor="secondary">
+              <div className="p-8 bg-gray-800 rounded-xl text-center">
+                <h3 className="text-2xl font-bold text-white mb-8">Connect With Me</h3>
+                <div className="flex justify-center space-x-6">
+                  {socialLinks.map((social, index) => {
+                    const Icon = social.icon;
+                    return (
+                      <motion.a
+                        key={social.label}
+                        href={social.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        initial={{ opacity: 0, scale: 0 }}
+                        whileInView={{ opacity: 1, scale: 1 }}
+                        transition={{ delay: index * 0.1 }}
+                        whileHover={{ scale: 1.2, y: -5 }}
+                        whileTap={{ scale: 0.95 }}
+                        className="w-14 h-14 bg-gradient-to-br from-primary-600 to-secondary-600 rounded-full flex items-center justify-center text-white hover:shadow-lg hover:shadow-primary-500/25 transition-all duration-300"
+                        aria-label={social.label}
+                      >
+                        <Icon size={24} />
+                      </motion.a>
+                    );
+                  })}
+                </div>
               </div>
             </GlowingCard>
           </AnimatedSection>
-
-          {/* Contact Information */}
-          <div className="space-y-8">
-            {/* Contact Details */}
-            <AnimatedSection animation="fadeInRight" delay={0.5}>
-              <GlowingCard glowColor="secondary">
-                <div className="p-8 bg-gray-50 dark:bg-gray-800 rounded-xl">
-                  <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6 flex items-center">
-                    <FiShield className="mr-3 text-green-400" />
-                    Contact Information
-                  </h3>
-                  
-                  <div className="space-y-6">
-                    {contactInfo.map((info, index) => {
-                      const Icon = info.icon;
-                      return (
-                        <motion.a
-                          key={info.label}
-                          href={info.href}
-                          initial={{ opacity: 0, x: 20 }}
-                          whileInView={{ opacity: 1, x: 0 }}
-                          transition={{ delay: index * 0.1 }}
-                          whileHover={{ scale: 1.02, x: 5 }}
-                          className="flex items-center p-4 bg-white dark:bg-gray-700 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-600 transition-all duration-300 group"
-                        >
-                          <div className={`w-12 h-12 bg-gradient-to-br from-primary-600 to-secondary-600 rounded-lg flex items-center justify-center mr-4 group-hover:scale-110 transition-transform duration-300`}>
-                            <Icon className="text-white" size={20} />
-                          </div>
-                          <div>
-                            <p className="text-sm text-gray-500 dark:text-gray-400">
-                              {info.label}
-                            </p>
-                            <p className="text-gray-900 dark:text-white font-medium">
-                              {info.value}
-                            </p>
-                          </div>
-                        </motion.a>
-                      );
-                    })}
-                  </div>
-                </div>
-              </GlowingCard>
-            </AnimatedSection>
-
-            {/* Social Links */}
-            <AnimatedSection animation="fadeInRight" delay={0.7}>
-              <GlowingCard glowColor="accent">
-                <div className="p-8 bg-gray-50 dark:bg-gray-800 rounded-xl">
-                  <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">
-                    Connect With Me
-                  </h3>
-                  
-                  <div className="grid grid-cols-2 gap-4">
-                    {socialLinks.map((social, index) => {
-                      const Icon = social.icon;
-                      return (
-                        <motion.a
-                          key={social.label}
-                          href={social.href}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          initial={{ opacity: 0, scale: 0 }}
-                          whileInView={{ opacity: 1, scale: 1 }}
-                          transition={{ delay: index * 0.1 }}
-                          whileHover={{ scale: 1.05, y: -5 }}
-                          whileTap={{ scale: 0.95 }}
-                          className="flex items-center justify-center p-4 bg-white dark:bg-gray-700 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-600 transition-all duration-300 group"
-                        >
-                          <Icon className="text-gray-600 dark:text-gray-400 group-hover:text-primary-600 dark:group-hover:text-primary-400 mr-2" size={20} />
-                          <span className="text-gray-600 dark:text-gray-400 group-hover:text-primary-600 dark:group-hover:text-primary-400 font-medium">
-                            {social.label}
-                          </span>
-                        </motion.a>
-                      );
-                    })}
-                  </div>
-                </div>
-              </GlowingCard>
-            </AnimatedSection>
-          </div>
         </div>
       </div>
     </section>
