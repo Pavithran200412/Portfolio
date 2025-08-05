@@ -13,11 +13,11 @@ const Projects = () => {
       shortDesc: 'Student Accommodation Management System',
       fullDesc: 'A comprehensive student accommodation management system designed to streamline the process of finding and managing student housing. Built with a modern tech stack including Java, Spring Boot and PostgreSQL. Features include user authentication, property listings, booking management,and an admin dashboard for managing properties and users.',
       image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSH5Cf_LlgRH2M7uVV474n6mMbbW4DfiS2NHQ&s',
-      tags: ['Java', 'Spring Boot', 'PostgreSQL'],
+      tags: ['Java', 'JDBC', 'PostgreSQL'],
       github: 'https://github.com/Paramesh612/DormNest-OOAD-Project',
       demo: 'https://github.com/Paramesh612/DormNest-OOAD-Project',
       features: ['User Authentication', 'Property Listings', 'Booking Management', 'Admin Dashboard'],
-      category: 'Java Spring Boot',
+      category: 'JDBC',
       color: 'primary'
     },
     {
