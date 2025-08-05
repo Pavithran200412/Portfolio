@@ -26,7 +26,7 @@ const Projects = () => {
       shortDesc: 'Remote Work Collaboration Platform',
       fullDesc: 'A cutting-edge remote work collaboration platform that integrates real-time communication.',
       image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQGAIiHmxrntQtwPht-ASiViBU-Ge4PfSRwdw&s',
-      tags: ['Java','Spring Boot', 'Networking'],
+      tags: ['Java','Java GUI', 'Networking'],
       github: 'https://github.com/Pavithran200412/RemoConnect-Project-CN',
       demo: 'https://github.com/Pavithran200412/RemoConnect-Project-CN',
       features: ['Messaging', 'File Sharing','Screen Sharing'],
