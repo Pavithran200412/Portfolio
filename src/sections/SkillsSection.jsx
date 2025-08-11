@@ -9,12 +9,12 @@ const SkillsSection = () => {
       category: 'Programming Languages & Frontend',
       icon: FiCode,
       items: [
-        { name: 'Java', level: 85 },
-        { name: 'React', level: 90 },
-        { name: 'JavaScript', level: 90 },
-        { name: 'HTML/CSS', level: 95 },
-        { name: 'Tailwind CSS', level: 90 },
-        { name: 'Bootstrap', level: 80 }
+        'Java',
+        'React',
+        'JavaScript',
+        'HTML/CSS',
+        'Tailwind CSS',
+        'Bootstrap'
       ],
       color: 'from-blue-500 to-cyan-500',
       glowColor: 'primary'
@@ -23,8 +23,8 @@ const SkillsSection = () => {
       category: 'Backend',
       icon: FiServer,
       items: [
-        { name: 'Node.js', level: 88 },
-        { name: 'Express', level: 85 },
+        'Node.js',
+        'Express'
       ],
       color: 'from-green-500 to-emerald-500',
       glowColor: 'secondary'
@@ -33,10 +33,10 @@ const SkillsSection = () => {
       category: 'Database',
       icon: FiDatabase,
       items: [
-        { name: 'MongoDB', level: 85 },
-        { name: 'PostgreSQL', level: 80 },
-        { name: 'MySQL', level: 85 },
-        { name: 'SQL', level: 85 }
+        'MongoDB',
+        'PostgreSQL',
+        'MySQL',
+        'SQL'
       ],
       color: 'from-purple-500 to-pink-500',
       glowColor: 'accent'
@@ -45,9 +45,9 @@ const SkillsSection = () => {
       category: 'Tools & Others',
       icon: FiTool,
       items: [
-        { name: 'Git', level: 90 },
-        { name: 'VS Code', level: 95 },
-        { name: 'Figma', level: 80 }
+        'Git',
+        'VS Code',
+        'Figma'
       ],
       color: 'from-orange-500 to-red-500',
       glowColor: 'success'
@@ -97,28 +97,18 @@ const SkillsSection = () => {
                     <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-6 text-center">
                       {skill.category}
                     </h3>
-                    <div className="space-y-4">
+                    <div className="flex flex-wrap gap-2 justify-center">
                       {skill.items.map((item, itemIndex) => (
                         <motion.div
-                          key={item.name}
-                          initial={{ opacity: 0, x: -20 }}
-                          whileInView={{ opacity: 1, x: 0 }}
-                          transition={{ duration: 0.5, delay: itemIndex * 0.1 }}
+                          key={item}
+                          initial={{ opacity: 0, scale: 0.8 }}
+                          whileInView={{ opacity: 1, scale: 1 }}
+                          transition={{ duration: 0.4, delay: itemIndex * 0.1 }}
                           viewport={{ once: true }}
+                          whileHover={{ scale: 1.05, y: -2 }}
+                          className="px-3 py-2 bg-gradient-to-r from-gray-100 to-gray-200 dark:from-gray-700 dark:to-gray-600 text-gray-800 dark:text-gray-200 rounded-lg text-sm font-medium shadow-sm hover:shadow-md transition-all duration-200 cursor-default"
                         >
-                          <div className="flex justify-between items-center mb-2">
-                            <span className="text-gray-700 dark:text-gray-300 font-medium">{item.name}</span>
-                            <span className="text-primary-600 dark:text-primary-400 text-sm">{item.level}%</span>
-                          </div>
-                          <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2">
-                            <motion.div
-                              className={`h-2 rounded-full bg-gradient-to-r ${skill.color}`}
-                              initial={{ width: 0 }}
-                              whileInView={{ width: `${item.level}%` }}
-                              transition={{ duration: 1, delay: itemIndex * 0.1 }}
-                              viewport={{ once: true }}
-                            />
-                          </div>
+                          {item}
                         </motion.div>
                       ))}
                     </div>
