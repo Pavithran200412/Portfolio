@@ -136,7 +136,7 @@ const AboutSection = () => {
 
         {/* Call to Action */}
         <AnimatedSection animation="scaleIn" delay={0.8} className="mt-20 text-center">
-          <GlowingCard className="p-8 md:p-12 bg-gradient-to-r from-primary-600 to-secondary-600 text-white">
+          <GlowingCard className="p-8 text-center bg-white dark:bg-gray-800">
             <motion.div
               whileHover={{ scale: 1.02 }}
               transition={{ type: 'spring', stiffness: 300 }}
