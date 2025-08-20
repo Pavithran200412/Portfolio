@@ -23,8 +23,7 @@ const SkillsSection = () => {
       category: 'Backend',
       icon: FiServer,
       items: [
-        'Node.js',
-        'Express'
+        'Node.js'
       ],
       color: 'from-green-500 to-emerald-500',
       glowColor: 'secondary'
