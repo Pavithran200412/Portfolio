@@ -71,6 +71,19 @@ const Projects = () => {
       features: ['Hand Tracking', 'Spatial Audio', 'Real-time Interaction'],
       category: '3D Graphics',
       color: 'secondary'
+    },
+    {
+      id: 5,
+      title: 'Portfolio Website',
+      shortDesc: 'Personalized portfolio website',
+      fullDesc: 'A personalized portfolio website built with React and Tailwind CSS. Showcases projects, skills, and experience with a modern design and responsive layout.',
+      image: 'https://i.ytimg.com/vi/fBf-IznUHns/sddefault.jpg',
+      tags: ['React', 'Tailwind CSS', 'JavaScript'],
+      github: 'https://github.com/Pavithran200412/Portfolio',
+      demo: 'https://pavithran-s.netlify.app',
+      features: ['Responsive Design', 'Project Showcase', 'Contact Section'],
+      category: 'Web Development',
+      color: 'primary'
     }
   ];
 
