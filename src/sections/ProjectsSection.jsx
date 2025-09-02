@@ -43,7 +43,7 @@ const ProjectsSection = () => {
       image: 'https://acropolium.com/img/articles/hospital-management-software/img01.jpg',
       tags: ['React', 'Node.js', 'MongoDB', 'Express', 'Bootstrap'],
       github: 'https://github.com/Pavithran200412/Hospital-Management-website',
-      demo: 'https://github.com/Pavithran200412/Hospital-Management-website',
+      demo: 'https://hvmlvjn1-3000.use.devtunnels.ms/',
       features: ['Patient Registration', 'Appointment Scheduling', 'Doctor Profiles', 'Admin Panel'],
       category: 'Full Stack',
       color: 'accent'
