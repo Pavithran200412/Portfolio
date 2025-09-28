@@ -30,6 +30,7 @@ const About = () => {
     }
   ];
 
+
   const timeline = [
     {
       year: '2023',

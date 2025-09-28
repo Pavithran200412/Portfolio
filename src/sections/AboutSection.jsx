@@ -1,10 +1,18 @@
 import { motion } from 'framer-motion';
-import { FiUser, FiHeart, FiTarget, FiAward } from 'react-icons/fi';
+import { FiUser, FiHeart, FiTarget, FiAward, FiCodesandbox } from 'react-icons/fi';
 import AnimatedSection from '../components/AnimatedSection';
 import GlowingCard from '../components/GlowingCard';
 
 const AboutSection = () => {
   const timeline = [
+     {
+      year: 'Jun - Sep 2025',
+      title: 'Web Frontend Developer’s Team',
+      company: 'Solvexa (Startup)',
+      description: 'Learned how large-scale industries design and structure frontend systems with professional standards and practices.',
+      icon: FiCodesandbox,
+      color: 'primary'
+    },
     {
       year: '2023 – Present',
       title: 'Madras Institute of Technology, Anna University Chennai, Tamil Nadu.',
