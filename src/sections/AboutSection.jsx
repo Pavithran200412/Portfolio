@@ -14,7 +14,7 @@ const AboutSection = () => {
       color: 'primary'
     },
     {
-      year: 'Jun 2020 – Apr 2022',
+      year: 'Jun 2020 – Apr 2023',
       title: 'Adhiparasakthi Polytechnic College Chengalpattu, Tamil Nadu.',
       company: 'Diploma in Computer Science',
       description: 'Completed my diploma in Computer Science, gaining foundational knowledge in programming and software development.',
