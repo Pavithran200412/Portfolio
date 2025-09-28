@@ -6,7 +6,7 @@ import GlowingCard from '../components/GlowingCard';
 const AboutSection = () => {
   const timeline = [
      {
-      year: 'Jun - Sep 2025',
+      year: 'July - September 2025',
       title: 'Web Frontend Developer’s Team',
       company: 'Solvexa (Startup)',
       description: 'Learned how large-scale industries design and structure frontend systems with professional standards and practices.',
