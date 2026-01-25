@@ -5,20 +5,20 @@ import GlowingCard from '../components/GlowingCard';
 
 const AboutSection = () => {
   const timeline = [
-     {
-      year: 'Jul 2025 - Sep 2025',
-      title: 'Web Frontend Developer’s Team',
-      company: 'Solvexa (Startup)',
-      description: 'Learned how large-scale industries design and structure frontend systems with professional standards and practices.',
-      icon: FiCodesandbox,
-      color: 'primary'
-    },
     {
       year: '2023 – Present',
       title: 'Madras Institute of Technology, Anna University Chennai, Tamil Nadu.',
       company: 'Bachelor of Engineering in Computer Science',
       description: 'Currently pursuing my Bachelor of Engineering in Computer Science, focusing on software development, algorithms, and data structures.',
       icon: FiUser,
+      color: 'primary'
+    },
+    {
+      year: 'Jul 2025 - Sep 2025',
+      title: 'Web Frontend Developer’s Team',
+      company: 'Solvexa (Startup)',
+      description: 'Learned how large-scale industries design and structure frontend systems with professional standards and practices.',
+      icon: FiCodesandbox,
       color: 'primary'
     },
     {

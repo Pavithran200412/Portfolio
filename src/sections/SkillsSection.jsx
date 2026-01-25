@@ -14,7 +14,8 @@ const SkillsSection = () => {
         'JavaScript',
         'HTML/CSS',
         'Tailwind CSS',
-        'Bootstrap'
+        'Bootstrap',
+        'MUI',
       ],
       color: 'from-blue-500 to-cyan-500',
       glowColor: 'primary'
@@ -23,7 +24,8 @@ const SkillsSection = () => {
       category: 'Backend',
       icon: FiServer,
       items: [
-        'Node.js'
+        'Node.js',
+        'Express.js'
       ],
       color: 'from-green-500 to-emerald-500',
       glowColor: 'secondary'
@@ -35,7 +37,8 @@ const SkillsSection = () => {
         'MongoDB',
         'PostgreSQL',
         'MySQL',
-        'SQL'
+        'SQL',
+        'Superbase'
       ],
       color: 'from-purple-500 to-pink-500',
       glowColor: 'accent'
@@ -44,9 +47,11 @@ const SkillsSection = () => {
       category: 'Tools & Others',
       icon: FiTool,
       items: [
+        'Flutter',
         'Git',
         'VS Code',
-        'Figma'
+        'Figma',
+        'draw.io'
       ],
       color: 'from-orange-500 to-red-500',
       glowColor: 'success'
