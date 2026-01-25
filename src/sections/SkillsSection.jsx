@@ -128,7 +128,7 @@ const SkillsSection = () => {
             </p>
             <div className="flex justify-center space-x-8">
               {[
-                { label: 'Projects Completed', value: '12+' }
+                { label: 'Projects Completed', value: '16+' }
               ].map((stat, index) => (
                 <motion.div
                   key={stat.label}
