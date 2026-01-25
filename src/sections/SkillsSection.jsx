@@ -51,7 +51,10 @@ const SkillsSection = () => {
         'Git',
         'VS Code',
         'Figma',
-        'draw.io'
+        'draw.io',
+        'Postman',
+        'Canva',
+        'MS Office'
       ],
       color: 'from-orange-500 to-red-500',
       glowColor: 'success'
