@@ -31,8 +31,8 @@ body {
   min-height: 100vh;
   overflow-x: hidden;
   transition: background-color 0.3s ease, color 0.3s ease;
-  /* Professional dark theme */
-  background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 50%, #0e7490 100%);
+  /* Professional dark theme — solid background */
+  background: #0b1120;
   color: #f8fafc;
   cursor: auto !important;
 }

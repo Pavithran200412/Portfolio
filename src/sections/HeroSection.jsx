@@ -26,10 +26,10 @@ const HeroSection = () => {
           >
             <div className="relative group">
               {/* Outer glow ring */}
-              <div className="absolute -inset-1 bg-gradient-to-r from-primary-500 via-secondary-500 to-accent-500 rounded-full opacity-60 group-hover:opacity-80 blur-sm transition-opacity duration-500" />
+              <div className="absolute -inset-1 bg-primary-500 rounded-full opacity-30 group-hover:opacity-50 blur-md transition-opacity duration-500" />
               
-              {/* Gradient border */}
-              <div className="relative p-1 bg-gradient-to-br from-primary-400 via-secondary-500 to-accent-400 rounded-full">
+              {/* Border */}
+              <div className="relative p-1 bg-primary-500 rounded-full">
                 <div className="bg-gray-900 rounded-full p-1">
                   <img
                     src="/profile.jpg"
@@ -68,18 +68,16 @@ const HeroSection = () => {
               </motion.p>
 
               <motion.h1 
-                className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-4 text-gray-900 dark:text-white leading-tight"
+                className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-4 text-white leading-tight"
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.5 }}
               >
                 Hi, I'm{' '}
-                <span className="bg-gradient-to-r from-primary-400 via-secondary-400 to-accent-400 bg-clip-text text-transparent">
-                  Pavithran S
-                </span>
+                <span className="text-primary-400">Pavithran S</span>
               </motion.h1>
               
-              <div className="text-xl md:text-2xl lg:text-3xl text-gray-600 dark:text-gray-300 mb-6 h-14 md:h-16">
+              <div className="text-xl md:text-2xl lg:text-3xl text-gray-400 mb-6 h-14 md:h-16">
                 <TypeAnimation
                   sequence={[
                     'Transforming Ideas into Reality',
@@ -99,7 +97,7 @@ const HeroSection = () => {
               </div>
               
               <motion.p 
-                className="text-base md:text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto lg:mx-0 leading-relaxed"
+                className="text-base md:text-lg text-gray-400 max-w-2xl mx-auto lg:mx-0 leading-relaxed"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.7 }}
@@ -120,7 +118,7 @@ const HeroSection = () => {
                 whileHover={{ scale: 1.05, y: -2 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={() => setShowResume(true)}
-                className="inline-flex items-center px-6 py-3 md:px-8 md:py-4 bg-gradient-to-r from-primary-600 to-secondary-600 hover:from-primary-700 hover:to-secondary-700 text-white font-medium rounded-xl shadow-lg transition-all duration-200"
+                className="inline-flex items-center px-6 py-3 md:px-8 md:py-4 bg-primary-600 hover:bg-primary-700 text-white font-medium rounded-xl shadow-lg shadow-primary-600/20 transition-all duration-200"
               >
                 <FiDownload className="mr-2" />
                 View Resume
@@ -130,7 +128,7 @@ const HeroSection = () => {
                 whileHover={{ scale: 1.05, y: -2 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={() => document.getElementById('contact').scrollIntoView({ behavior: 'smooth' })}
-                className="inline-flex items-center px-6 py-3 md:px-8 md:py-4 bg-gradient-to-r from-secondary-600 to-accent-600 hover:from-secondary-700 hover:to-accent-700 text-white font-medium rounded-xl shadow-lg transition-all duration-200"
+                className="inline-flex items-center px-6 py-3 md:px-8 md:py-4 border border-primary-500 text-primary-400 hover:bg-primary-600 hover:text-white hover:border-primary-600 font-medium rounded-xl transition-all duration-200"
               >
                 <FiMail className="mr-2" />
                 Contact Me
@@ -140,9 +138,9 @@ const HeroSection = () => {
                 whileHover={{ scale: 1.05, y: -2 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={() => document.getElementById('projects').scrollIntoView({ behavior: 'smooth' })}
-                className="inline-flex items-center px-6 py-3 md:px-8 md:py-4 border-2 border-primary-500 text-primary-400 hover:bg-primary-600 hover:text-white hover:border-primary-600 font-medium rounded-xl transition-all duration-200 backdrop-blur-sm"
+                className="inline-flex items-center px-6 py-3 md:px-8 md:py-4 text-gray-300 hover:text-primary-400 font-medium transition-all duration-200"
               >
-                View Projects
+                View Projects →
               </motion.button>
             </motion.div>
 
@@ -166,7 +164,7 @@ const HeroSection = () => {
                     rel="noopener noreferrer"
                     whileHover={{ scale: 1.15, y: -3 }}
                     whileTap={{ scale: 0.95 }}
-                    className="p-3 text-gray-400 hover:text-primary-400 transition-all duration-200 rounded-full bg-white/5 hover:bg-white/10 backdrop-blur-sm border border-white/10 hover:border-primary-500/30"
+                    className="p-3 text-gray-500 hover:text-primary-400 transition-all duration-200 rounded-full border border-gray-800 hover:border-primary-500/30"
                     aria-label={label}
                   >
                     <Icon size={20} />
@@ -189,7 +187,7 @@ const HeroSection = () => {
             onClick={scrollToNext}
             animate={{ y: [0, 8, 0] }}
             transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
-            className="text-gray-400 hover:text-primary-400 transition-colors duration-200"
+            className="text-gray-500 hover:text-primary-400 transition-colors duration-200"
             aria-label="Scroll to about section"
           >
             <FiArrowDown size={24} />

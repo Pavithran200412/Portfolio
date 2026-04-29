@@ -1,7 +1,6 @@
 import { motion } from 'framer-motion';
 import { FiUser, FiHeart, FiAward, FiCodesandbox } from 'react-icons/fi';
 import AnimatedSection from '../components/AnimatedSection';
-import GlowingCard from '../components/GlowingCard';
 
 const AboutSection = () => {
   const timeline = [
@@ -11,7 +10,6 @@ const AboutSection = () => {
       company: 'Bachelor of Engineering in Computer Science',
       description: 'Currently pursuing my Bachelor of Engineering in Computer Science, focusing on software development, algorithms, and data structures.',
       icon: FiUser,
-      color: 'primary'
     },
     {
       year: 'Jul 2025 - Sep 2025',
@@ -19,7 +17,6 @@ const AboutSection = () => {
       company: 'Solvexa (Startup)',
       description: 'Learned how large-scale industries design and structure frontend systems with professional standards and practices.',
       icon: FiCodesandbox,
-      color: 'primary'
     },
     {
       year: 'Jun 2020 – Apr 2023',
@@ -27,7 +24,6 @@ const AboutSection = () => {
       company: 'Diploma in Computer Science',
       description: 'Completed my diploma in Computer Science, gaining foundational knowledge in programming and software development.',
       icon: FiAward,
-      color: 'secondary'
     },
     {
       year: '2008 – 2020',
@@ -35,91 +31,81 @@ const AboutSection = () => {
       company: 'Schooling',
       description: 'Completed my schooling at St.Joseph of Cluny Matric Hr.Sec. School Viluppuram, Tamil Nadu.',
       icon: FiHeart,
-      color: 'accent'
     }
   ];
 
   return (
-    <section id="about" className="min-h-screen py-20 px-4 bg-white dark:bg-gray-900">
-      <div className="max-w-6xl mx-auto">
+    <section id="about" className="py-24 px-4">
+      <div className="max-w-5xl mx-auto">
         {/* Header */}
         <AnimatedSection className="text-center mb-20">
           <motion.h2 
-            className="text-4xl md:text-6xl font-bold mb-6 text-gray-900 dark:text-white"
+            className="text-4xl md:text-5xl font-bold mb-6 text-white"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
-            About <span className="bg-gradient-to-r from-primary-400 to-secondary-400 bg-clip-text text-transparent">Me</span>
+            About <span className="text-primary-400">Me</span>
           </motion.h2>
           <motion.p 
-            className="text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto leading-relaxed"
+            className="text-lg text-gray-400 max-w-2xl mx-auto leading-relaxed"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
             viewport={{ once: true }}
           >
-            I'm a passionate developer developing my skills and learning new things. I have a love for creating innovative solutions 
-            and beautiful user experiences. Here's my journey and what drives me every day.
+            I'm a passionate developer developing my skills and learning new things. Here's my journey so far.
           </motion.p>
         </AnimatedSection>
 
         {/* Timeline */}
-        <AnimatedSection animation="fadeInUp" delay={0.3}>
-          <h3 className="text-3xl font-bold text-center mb-12 text-gray-900 dark:text-white">My Journey</h3>
-          <div className="relative">
-            {/* Timeline line */}
-            <div className="absolute left-4 md:left-1/2 transform md:-translate-x-px h-full w-1 bg-gradient-to-b from-primary-600 via-secondary-600 to-accent-600"></div>
-            
-            {timeline.map((item, index) => {
-              const Icon = item.icon;
-              return (
-                <motion.div
-                  key={item.year}
-                  initial={{ opacity: 0, x: index % 2 === 0 ? -100 : 100 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.8, delay: index * 0.2 }}
-                  viewport={{ once: true }}
-                  className={`relative flex items-center mb-12 ${
-                    index % 2 === 0 ? 'md:flex-row-reverse' : ''
-                  }`}
-                >
-                  {/* Timeline dot */}
-                  <motion.div 
-                    className="absolute left-4 md:left-1/2 transform md:-translate-x-1/2 w-8 h-8 bg-gradient-to-r from-primary-600 to-secondary-600 rounded-full border-4 border-white dark:border-gray-900 z-10 flex items-center justify-center"
-                    whileHover={{ scale: 1.2, rotate: 180 }}
-                    transition={{ type: 'spring', stiffness: 300 }}
+        <div className="relative">
+          {/* Timeline line */}
+          <div className="absolute left-4 md:left-1/2 transform md:-translate-x-px h-full w-px bg-gray-800" />
+          
+          {timeline.map((item, index) => {
+            const Icon = item.icon;
+            return (
+              <motion.div
+                key={item.year}
+                initial={{ opacity: 0, y: 40 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: index * 0.15 }}
+                viewport={{ once: true }}
+                className={`relative flex items-start mb-12 ${
+                  index % 2 === 0 ? 'md:flex-row-reverse' : ''
+                }`}
+              >
+                {/* Timeline dot */}
+                <div className="absolute left-4 md:left-1/2 transform md:-translate-x-1/2 w-8 h-8 bg-primary-600 rounded-full border-4 border-gray-900 z-10 flex items-center justify-center">
+                  <Icon className="text-white" size={14} />
+                </div>
+                
+                {/* Content card */}
+                <div className={`ml-16 md:ml-0 md:w-5/12 ${index % 2 === 0 ? 'md:mr-8' : 'md:ml-8'}`}>
+                  <motion.div
+                    whileHover={{ y: -3 }}
+                    className="p-6 bg-gray-900/80 border border-gray-800 rounded-xl hover:border-primary-500/20 transition-all duration-300"
                   >
-                    <Icon className="text-white" size={16} />
+                    <span className="inline-block px-3 py-1 bg-primary-600/10 text-primary-400 rounded-full text-sm font-semibold mb-3">
+                      {item.year}
+                    </span>
+                    <h4 className="text-lg font-bold text-white mb-1">
+                      {item.title}
+                    </h4>
+                    <p className="text-primary-400 font-medium text-sm mb-3">
+                      {item.company}
+                    </p>
+                    <p className="text-gray-400 text-sm leading-relaxed">
+                      {item.description}
+                    </p>
                   </motion.div>
-                  
-                  {/* Content card */}
-                  <div className={`ml-16 md:ml-0 md:w-5/12 ${index % 2 === 0 ? 'md:mr-8' : 'md:ml-8'}`}>
-                    <GlowingCard glowColor={item.color}>
-                      <div className="p-6 bg-white dark:bg-gray-800 rounded-xl">
-                        <div className="flex items-center mb-3">
-                          <span className={`bg-${item.color}-100 dark:bg-${item.color}-900/50 text-${item.color}-600 dark:text-${item.color}-400 px-3 py-1 rounded-full text-sm font-bold`}>
-                            {item.year}
-                          </span>
-                        </div>
-                        <h4 className="text-xl font-bold text-gray-900 dark:text-white mb-2">
-                          {item.title}
-                        </h4>
-                        <p className="text-primary-600 dark:text-primary-400 font-medium mb-3">
-                          {item.company}
-                        </p>
-                        <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
-                          {item.description}
-                        </p>
-                      </div>
-                    </GlowingCard>
-                  </div>
-                </motion.div>
-              );
-            })}
-          </div>
-        </AnimatedSection>
+                </div>
+              </motion.div>
+            );
+          })}
+        </div>
       </div>
     </section>
   );
