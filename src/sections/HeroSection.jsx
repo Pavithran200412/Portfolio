@@ -1,15 +1,12 @@
+import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { TypeAnimation } from 'react-type-animation';
 import { FiDownload, FiMail, FiGithub, FiLinkedin, FiArrowDown } from 'react-icons/fi';
-import AnimatedSection from '../components/AnimatedSection';
+import ResumePreview from '../components/ResumePreview';
+import ViewCounter from '../components/ViewCounter';
 
 const HeroSection = () => {
-  const handleDownloadResume = () => {
-    const link = document.createElement('a');
-    link.href = '/Resume.pdf';
-    link.download = 'Pavithran_Resume.pdf';
-    link.click();
-  };
+  const [showResume, setShowResume] = useState(false);
 
   const scrollToNext = () => {
     document.getElementById('about').scrollIntoView({ behavior: 'smooth' });
@@ -122,7 +119,7 @@ const HeroSection = () => {
               <motion.button
                 whileHover={{ scale: 1.05, y: -2 }}
                 whileTap={{ scale: 0.95 }}
-                onClick={handleDownloadResume}
+                onClick={() => setShowResume(true)}
                 className="inline-flex items-center px-6 py-3 md:px-8 md:py-4 bg-gradient-to-r from-primary-600 to-secondary-600 hover:from-primary-700 hover:to-secondary-700 text-white font-medium rounded-xl shadow-lg transition-all duration-200"
               >
                 <FiDownload className="mr-2" />
@@ -149,31 +146,34 @@ const HeroSection = () => {
               </motion.button>
             </motion.div>
 
-            {/* Social Links */}
+            {/* Social Links + View Counter */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 1.1 }}
-              className="flex justify-center lg:justify-start space-x-4"
+              className="flex flex-col sm:flex-row items-center lg:items-start gap-4"
             >
-              {[
-                { Icon: FiGithub, href: 'https://github.com/Pavithran200412', label: 'GitHub' },
-                { Icon: FiLinkedin, href: 'https://www.linkedin.com/in/pavithran-s3012/', label: 'LinkedIn' },
-                { Icon: FiMail, href: 'mailto:pavithran.workat@gmail.com', label: 'Email' }
-              ].map(({ Icon, href, label }) => (
-                <motion.a
-                  key={label}
-                  href={href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  whileHover={{ scale: 1.15, y: -3 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="p-3 text-gray-400 hover:text-primary-400 transition-all duration-200 rounded-full bg-white/5 hover:bg-white/10 backdrop-blur-sm border border-white/10 hover:border-primary-500/30"
-                  aria-label={label}
-                >
-                  <Icon size={20} />
-                </motion.a>
-              ))}
+              <div className="flex justify-center lg:justify-start space-x-4">
+                {[
+                  { Icon: FiGithub, href: 'https://github.com/Pavithran200412', label: 'GitHub' },
+                  { Icon: FiLinkedin, href: 'https://www.linkedin.com/in/pavithran-s3012/', label: 'LinkedIn' },
+                  { Icon: FiMail, href: 'mailto:pavithran.workat@gmail.com', label: 'Email' }
+                ].map(({ Icon, href, label }) => (
+                  <motion.a
+                    key={label}
+                    href={href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    whileHover={{ scale: 1.15, y: -3 }}
+                    whileTap={{ scale: 0.95 }}
+                    className="p-3 text-gray-400 hover:text-primary-400 transition-all duration-200 rounded-full bg-white/5 hover:bg-white/10 backdrop-blur-sm border border-white/10 hover:border-primary-500/30"
+                    aria-label={label}
+                  >
+                    <Icon size={20} />
+                  </motion.a>
+                ))}
+              </div>
+              <ViewCounter />
             </motion.div>
           </div>
         </div>
@@ -196,6 +196,9 @@ const HeroSection = () => {
           </motion.button>
         </motion.div>
       </div>
+
+      {/* Resume Preview Modal */}
+      <ResumePreview isOpen={showResume} onClose={() => setShowResume(false)} />
     </section>
   );
 };

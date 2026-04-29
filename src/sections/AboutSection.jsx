@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { FiUser, FiHeart, FiTarget, FiAward, FiCodesandbox } from 'react-icons/fi';
+import { FiUser, FiHeart, FiAward, FiCodesandbox } from 'react-icons/fi';
 import AnimatedSection from '../components/AnimatedSection';
 import GlowingCard from '../components/GlowingCard';
 
@@ -15,7 +15,7 @@ const AboutSection = () => {
     },
     {
       year: 'Jul 2025 - Sep 2025',
-      title: 'Web Frontend Developer’s Team',
+      title: 'Web Frontend Developer\'s Team',
       company: 'Solvexa (Startup)',
       description: 'Learned how large-scale industries design and structure frontend systems with professional standards and practices.',
       icon: FiCodesandbox,
@@ -65,29 +65,8 @@ const AboutSection = () => {
           </motion.p>
         </AnimatedSection>
 
-        {/* Personal Story */}
-        <AnimatedSection animation="fadeInUp" delay={0.3} className="mb-20">
-          <GlowingCard className="p-8 md:p-12 text-center bg-gray-50 dark:bg-gray-800">
-            <motion.div
-              initial={{ scale: 0.8, opacity: 0 }}
-              whileInView={{ scale: 1, opacity: 1 }}
-              transition={{ duration: 0.8 }}
-              viewport={{ once: true }}
-            >
-              <FiUser className="text-6xl text-primary-400 mx-auto mb-6" />
-              <h3 className="text-2xl md:text-3xl font-bold mb-6 text-gray-900 dark:text-white">My Story</h3>
-              <p className="text-gray-600 dark:text-gray-300 leading-relaxed text-lg">
-                Started as a curious kid who loved taking apart computers, I've evolved into a developer 
-                who builds digital experiences that matter. My journey spans from learning my first 
-                "Hello World" to architecting complex applications that serve thousands of users. 
-                I believe in the power of clean code, beautiful design, and meaningful user interactions.
-              </p>
-            </motion.div>
-          </GlowingCard>
-        </AnimatedSection>
-
         {/* Timeline */}
-        <AnimatedSection animation="fadeInUp" delay={0.5}>
+        <AnimatedSection animation="fadeInUp" delay={0.3}>
           <h3 className="text-3xl font-bold text-center mb-12 text-gray-900 dark:text-white">My Journey</h3>
           <div className="relative">
             {/* Timeline line */}
@@ -140,30 +119,6 @@ const AboutSection = () => {
               );
             })}
           </div>
-        </AnimatedSection>
-
-        {/* Call to Action */}
-        <AnimatedSection animation="scaleIn" delay={0.8} className="mt-20 text-center">
-          <GlowingCard className="p-8 text-center bg-white dark:bg-gray-800">
-            <motion.div
-              whileHover={{ scale: 1.02 }}
-              transition={{ type: 'spring', stiffness: 300 }}
-            >
-              <h3 className="text-2xl md:text-3xl font-bold mb-4">Let's Build Something Amazing Together</h3>
-              <p className="text-lg opacity-90 mb-6 max-w-2xl mx-auto">
-                I'm always excited to work on new projects and collaborate with fellow developers. 
-                Whether it's a complex web application or a simple landing page, I bring passion and precision to every project.
-              </p>
-              <motion.button
-                whileHover={{ scale: 1.05, y: -2 }}
-                whileTap={{ scale: 0.95 }}
-                onClick={() => document.getElementById('contact').scrollIntoView({ behavior: 'smooth' })}
-                className="bg-white text-primary-600 px-8 py-3 rounded-xl font-medium hover:bg-gray-100 transition-colors duration-200"
-              >
-                Get In Touch
-              </motion.button>
-            </motion.div>
-          </GlowingCard>
         </AnimatedSection>
       </div>
     </section>

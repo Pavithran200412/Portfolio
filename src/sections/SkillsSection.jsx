@@ -1,5 +1,4 @@
 import { motion } from 'framer-motion';
-import { FiCode, FiDatabase, FiServer, FiTool } from 'react-icons/fi';
 import AnimatedSection from '../components/AnimatedSection';
 import GlowingCard from '../components/GlowingCard';
 
@@ -7,54 +6,48 @@ const SkillsSection = () => {
   const skills = [
     {
       category: 'Programming Languages & Frontend',
-      icon: FiCode,
       items: [
-        'Java',
-        'React',
-        'JavaScript',
-        'HTML/CSS',
-        'Tailwind CSS',
-        'Bootstrap',
-        'MUI',
+        { name: 'Java', icon: 'devicon-java-plain colored' },
+        { name: 'React', icon: 'devicon-react-original colored' },
+        { name: 'JavaScript', icon: 'devicon-javascript-plain colored' },
+        { name: 'HTML5', icon: 'devicon-html5-plain colored' },
+        { name: 'CSS3', icon: 'devicon-css3-plain colored' },
+        { name: 'Tailwind CSS', icon: 'devicon-tailwindcss-original colored' },
+        { name: 'Bootstrap', icon: 'devicon-bootstrap-plain colored' },
+        { name: 'MUI', icon: 'devicon-materialui-plain colored' },
       ],
       color: 'from-blue-500 to-cyan-500',
       glowColor: 'primary'
     },
     {
       category: 'Backend',
-      icon: FiServer,
       items: [
-        'Node.js',
-        'Express.js'
+        { name: 'Node.js', icon: 'devicon-nodejs-plain colored' },
+        { name: 'Express.js', icon: 'devicon-express-original' },
       ],
       color: 'from-green-500 to-emerald-500',
       glowColor: 'secondary'
     },
     {
       category: 'Database',
-      icon: FiDatabase,
       items: [
-        'MongoDB',
-        'PostgreSQL',
-        'MySQL',
-        'SQL',
-        'Superbase'
+        { name: 'MongoDB', icon: 'devicon-mongodb-plain colored' },
+        { name: 'PostgreSQL', icon: 'devicon-postgresql-plain colored' },
+        { name: 'MySQL', icon: 'devicon-mysql-plain colored' },
+        { name: 'Supabase', icon: 'devicon-supabase-plain colored' },
       ],
       color: 'from-purple-500 to-pink-500',
       glowColor: 'accent'
     },
     {
       category: 'Tools & Others',
-      icon: FiTool,
       items: [
-        'Flutter',
-        'Git',
-        'VS Code',
-        'Figma',
-        'draw.io',
-        'Postman',
-        'Canva',
-        'MS Office'
+        { name: 'Flutter', icon: 'devicon-flutter-plain colored' },
+        { name: 'Git', icon: 'devicon-git-plain colored' },
+        { name: 'VS Code', icon: 'devicon-vscode-plain colored' },
+        { name: 'Figma', icon: 'devicon-figma-plain colored' },
+        { name: 'Postman', icon: 'devicon-postman-plain colored' },
+        { name: 'Canva', icon: 'devicon-canva-original colored' },
       ],
       color: 'from-orange-500 to-red-500',
       glowColor: 'success'
@@ -87,78 +80,42 @@ const SkillsSection = () => {
         </AnimatedSection>
 
         {/* Skills Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-20">
-          {skills.map((skill, index) => {
-            const Icon = skill.icon;
-            return (
-              <AnimatedSection
-                key={skill.category}
-                animation="fadeInUp"
-                delay={index * 0.1}
-              >
-                <GlowingCard glowColor={skill.glowColor} className="h-full">
-                  <div className="p-6 bg-white dark:bg-gray-800 rounded-xl h-full">
-                    <div className={`w-16 h-16 rounded-xl bg-gradient-to-br ${skill.color} flex items-center justify-center mb-6 mx-auto`}>
-                      <Icon className="text-white" size={28} />
-                    </div>
-                    <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-6 text-center">
-                      {skill.category}
-                    </h3>
-                    <div className="flex flex-wrap gap-2 justify-center">
-                      {skill.items.map((item, itemIndex) => (
-                        <motion.div
-                          key={item}
-                          initial={{ opacity: 0, scale: 0.8 }}
-                          whileInView={{ opacity: 1, scale: 1 }}
-                          transition={{ duration: 0.4, delay: itemIndex * 0.1 }}
-                          viewport={{ once: true }}
-                          whileHover={{ scale: 1.05, y: -2 }}
-                          className="px-3 py-2 bg-gradient-to-r from-gray-100 to-gray-200 dark:from-gray-700 dark:to-gray-600 text-gray-800 dark:text-gray-200 rounded-lg text-sm font-medium shadow-sm hover:shadow-md transition-all duration-200 cursor-default"
-                        >
-                          {item}
-                        </motion.div>
-                      ))}
-                    </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          {skills.map((skill, index) => (
+            <AnimatedSection
+              key={skill.category}
+              animation="fadeInUp"
+              delay={index * 0.1}
+            >
+              <GlowingCard glowColor={skill.glowColor} className="h-full">
+                <div className="p-6 bg-white dark:bg-gray-800 rounded-xl h-full">
+                  <div className={`w-full h-1.5 rounded-full bg-gradient-to-r ${skill.color} mb-6`} />
+                  <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-6 text-center">
+                    {skill.category}
+                  </h3>
+                  <div className="grid grid-cols-2 gap-3">
+                    {skill.items.map((item, itemIndex) => (
+                      <motion.div
+                        key={item.name}
+                        initial={{ opacity: 0, scale: 0.8 }}
+                        whileInView={{ opacity: 1, scale: 1 }}
+                        transition={{ duration: 0.4, delay: itemIndex * 0.08 }}
+                        viewport={{ once: true }}
+                        whileHover={{ scale: 1.08, y: -3 }}
+                        className="flex flex-col items-center gap-2 p-3 bg-gray-50 dark:bg-gray-700/50 rounded-xl hover:bg-gray-100 dark:hover:bg-gray-600/50 transition-all duration-200 cursor-default"
+                      >
+                        <i className={`${item.icon} text-2xl`} />
+                        <span className="text-xs font-medium text-gray-700 dark:text-gray-300 text-center leading-tight">
+                          {item.name}
+                        </span>
+                      </motion.div>
+                    ))}
                   </div>
-                </GlowingCard>
-              </AnimatedSection>
-            );
-          })}
+                </div>
+              </GlowingCard>
+            </AnimatedSection>
+          ))}
         </div>
-
-        {/* Interactive Skills Visualization */}
-        <AnimatedSection animation="scaleIn" delay={0.8} className="mt-20">
-          <GlowingCard className="p-8 text-center bg-white dark:bg-gray-800">
-            <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">Interactive Development</h3>
-            <p className="text-gray-600 dark:text-gray-400 mb-8 max-w-2xl mx-auto">
-              I specialize in creating interactive, engaging user experiences with modern web technologies, 
-              3D graphics, and smooth animations that captivate users.
-            </p>
-            <div className="flex justify-center space-x-8">
-              {[
-                { label: 'Projects Completed', value: '16+' }
-              ].map((stat, index) => (
-                <motion.div
-                  key={stat.label}
-                  initial={{ opacity: 0, scale: 0 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
-                  viewport={{ once: true }}
-                  className="text-center"
-                >
-                  <motion.div
-                    className="text-3xl font-bold text-primary-600 dark:text-primary-400 mb-2"
-                    animate={{ scale: [1, 1.1, 1] }}
-                    transition={{ duration: 2, repeat: Infinity }}
-                  >
-                    {stat.value}
-                  </motion.div>
-                  <div className="text-gray-600 dark:text-gray-400 text-sm">{stat.label}</div>
-                </motion.div>
-              ))}
-            </div>
-          </GlowingCard>
-        </AnimatedSection>
       </div>
     </section>
   );
