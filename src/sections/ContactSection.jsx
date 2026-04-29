@@ -33,7 +33,7 @@ const ContactSection = () => {
   ];
 
   // Replace this with your actual Google Form embed URL
-  const googleFormUrl = 'https://forms.gle/oZc6nTKQ8DcWhDss8';
+  const googleFormUrl = 'https://docs.google.com/forms/d/e/1FAIpQLSd6II47nQVfib9P8y4MpV_LQZH3hyolLKqeRY-Ycv7K_QN9ZA/viewform?embedded=true';
 
   return (
     <section id="contact" className="min-h-screen py-20 px-4 bg-white dark:bg-gray-900">
