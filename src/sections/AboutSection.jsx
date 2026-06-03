@@ -5,7 +5,7 @@ import AnimatedSection from '../components/AnimatedSection';
 const AboutSection = () => {
   const timeline = [
     {
-      year: '2023 – Present',
+      year: 'Sep 2023 – May 2026',
       title: 'Madras Institute of Technology, Anna University Chennai, Tamil Nadu.',
       company: 'Bachelor of Engineering in Computer Science',
       description: 'Currently pursuing my Bachelor of Engineering in Computer Science, focusing on software development, algorithms, and data structures.',
