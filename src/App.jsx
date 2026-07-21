@@ -8,6 +8,7 @@ import HeroSection from './sections/HeroSection';
 import AboutSection from './sections/AboutSection';
 import SkillsSection from './sections/SkillsSection';
 import ProjectsSection from './sections/ProjectsSection';
+import GitHubSection from './sections/GitHubSection';
 import ContactSection from './sections/ContactSection';
 import './index.css';
 
@@ -46,6 +47,7 @@ function App() {
           <AboutSection />
           <SkillsSection />
           <ProjectsSection />
+          <GitHubSection />
           <ContactSection />
         </main>
       </div>
