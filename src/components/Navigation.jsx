@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
+import { PillBase } from '@/components/ui/3d-adaptive-navigation-bar';
 
 const Navigation = () => {
   const [activeSection, setActiveSection] = useState('home');
@@ -40,52 +41,38 @@ const Navigation = () => {
   };
 
   return (
-    <>
-      <motion.nav
-        initial={{ y: -100 }}
-        animate={{ y: 0 }}
-        className="fixed top-0 left-0 right-0 z-50 bg-white/10 dark:bg-dark-900/10 backdrop-blur-xl border-b border-white/20 dark:border-dark-700/50"
+    <motion.header
+      initial={{ y: -100, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={{ duration: 0.5, ease: 'easeOut' }}
+      className="fixed top-3 sm:top-4 left-0 right-0 z-50 flex items-center justify-between px-3 sm:px-8 pointer-events-none"
+    >
+      {/* Brand / Logo on top-left */}
+      <motion.div
+        whileHover={{ scale: 1.05 }}
+        whileTap={{ scale: 0.95 }}
+        className="pointer-events-auto shrink-0"
       >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-16">
-            {/* Logo */}
-            <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              className="flex-shrink-0"
-            >
-              <button
-                onClick={() => scrollToSection('home')}
-                className="text-2xl font-bold bg-gradient-to-r from-primary-400 to-secondary-400 bg-clip-text text-transparent"
-              >
-                SP
-              </button>
-            </motion.div>
+        <button
+          onClick={() => scrollToSection('home')}
+          className="text-xl sm:text-2xl font-extrabold bg-gradient-to-r from-blue-500 via-indigo-500 to-purple-500 bg-clip-text text-transparent drop-shadow-sm px-2.5 py-1 sm:px-3 sm:py-1.5 rounded-xl backdrop-blur-md bg-white/20 dark:bg-black/20 border border-white/30 dark:border-white/10"
+        >
+          SP
+        </button>
+      </motion.div>
 
-            {/* Navigation - Always Visible */}
-            <div className="block">
-              <div className="ml-10 flex items-baseline space-x-4">
-                {navItems.map((item) => (
-                  <motion.button
-                    key={item.id}
-                    onClick={() => scrollToSection(item.id)}
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                    className={`px-2 md:px-3 py-2 rounded-md text-xs md:text-sm font-medium transition-all duration-300 ${
-                      activeSection === item.id
-                        ? 'text-primary-400 bg-primary-500/20 shadow-lg shadow-primary-500/25'
-                        : 'text-gray-300 hover:text-primary-400 hover:bg-white/10'
-                    }`}
-                  >
-                    {item.label}
-                  </motion.button>
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
-      </motion.nav>
-    </>
+      {/* Centered 3D Adaptive Navigation Pill */}
+      <div className="pointer-events-auto mx-auto max-w-full">
+        <PillBase
+          items={navItems}
+          activeSection={activeSection}
+          onSectionClick={scrollToSection}
+        />
+      </div>
+
+      {/* Spacer to balance header layout on desktop */}
+      <div className="hidden sm:block w-12 pointer-events-none" />
+    </motion.header>
   );
 };
 
