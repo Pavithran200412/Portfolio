@@ -115,30 +115,30 @@ const HeroSection = () => {
               className="flex flex-wrap justify-center lg:justify-start gap-3 md:gap-4"
             >
               <motion.button
-                whileHover={{ scale: 1.05, y: -2 }}
-                whileTap={{ scale: 0.95 }}
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
                 onClick={() => setShowResume(true)}
-                className="inline-flex items-center px-6 py-3 md:px-8 md:py-4 bg-primary-600 hover:bg-primary-700 text-white font-medium rounded-xl shadow-lg shadow-primary-600/20 transition-all duration-200"
+                className="inline-flex items-center px-6 py-3 md:px-7 md:py-3.5 bg-primary-500 hover:bg-primary-600 text-white font-medium rounded-xl shadow-md shadow-primary-500/20 transition-all duration-200"
               >
                 <FiDownload className="mr-2" />
                 View Resume
               </motion.button>
               
               <motion.button
-                whileHover={{ scale: 1.05, y: -2 }}
-                whileTap={{ scale: 0.95 }}
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
                 onClick={() => document.getElementById('contact').scrollIntoView({ behavior: 'smooth' })}
-                className="inline-flex items-center px-6 py-3 md:px-8 md:py-4 border border-primary-500 text-primary-400 hover:bg-primary-600 hover:text-white hover:border-primary-600 font-medium rounded-xl transition-all duration-200"
+                className="inline-flex items-center px-6 py-3 md:px-7 md:py-3.5 bg-white/[0.06] hover:bg-white/[0.12] border border-white/[0.12] hover:border-white/[0.24] text-[#f5f5f7] font-medium rounded-xl transition-all duration-200"
               >
                 <FiMail className="mr-2" />
                 Contact Me
               </motion.button>
               
               <motion.button
-                whileHover={{ scale: 1.05, y: -2 }}
-                whileTap={{ scale: 0.95 }}
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
                 onClick={() => document.getElementById('projects').scrollIntoView({ behavior: 'smooth' })}
-                className="inline-flex items-center px-6 py-3 md:px-8 md:py-4 text-gray-300 hover:text-primary-400 font-medium transition-all duration-200"
+                className="inline-flex items-center px-6 py-3 md:px-7 md:py-3.5 text-secondary-500 hover:text-white font-medium transition-all duration-200"
               >
                 View Projects →
               </motion.button>
@@ -151,7 +151,7 @@ const HeroSection = () => {
               transition={{ duration: 0.8, delay: 1.1 }}
               className="flex flex-col sm:flex-row items-center lg:items-start gap-4"
             >
-              <div className="flex justify-center lg:justify-start space-x-4">
+              <div className="flex justify-center lg:justify-start space-x-3">
                 {[
                   { Icon: FiGithub, href: 'https://github.com/Pavithran200412', label: 'GitHub' },
                   { Icon: FiLinkedin, href: 'https://www.linkedin.com/in/pavithran-s3012/', label: 'LinkedIn' },
@@ -162,12 +162,12 @@ const HeroSection = () => {
                     href={href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    whileHover={{ scale: 1.15, y: -3 }}
-                    whileTap={{ scale: 0.95 }}
-                    className="p-3 text-gray-500 hover:text-primary-400 transition-all duration-200 rounded-full border border-gray-800 hover:border-primary-500/30"
+                    whileHover={{ scale: 1.06, y: -1.5 }}
+                    whileTap={{ scale: 0.96 }}
+                    className="p-3 text-secondary-500 hover:text-white transition-all duration-200 rounded-xl bg-white/[0.04] hover:bg-white/[0.1] border border-white/[0.08] hover:border-white/[0.18]"
                     aria-label={label}
                   >
-                    <Icon size={20} />
+                    <Icon size={18} />
                   </motion.a>
                 ))}
               </div>

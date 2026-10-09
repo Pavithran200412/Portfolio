@@ -1,34 +1,33 @@
 import { motion } from 'framer-motion';
 import { useState } from 'react';
 
-const GlowingCard = ({ children, className = '', glowColor = 'primary' }) => {
+/**
+ * Apple-style Frosted Lift Card
+ * Subtle specular backlight, hairline border illumination, and calm micro-elevation
+ */
+const GlowingCard = ({ children, className = '', glowColor = 'primary', onClick }) => {
   const [isHovered, setIsHovered] = useState(false);
-
-  const glowColors = {
-    primary: 'shadow-primary-500/50',
-    secondary: 'shadow-secondary-500/50',
-    accent: 'shadow-accent-500/50',
-    success: 'shadow-success-500/50',
-  };
 
   return (
     <motion.div
       className={`relative group ${className}`}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
-      whileHover={{ scale: 1.02, y: -5 }}
-      transition={{ type: 'spring', stiffness: 300, damping: 20 }}
+      onClick={onClick}
+      whileHover={{ y: -3 }}
+      whileTap={{ scale: 0.99 }}
+      transition={{ type: 'spring', stiffness: 380, damping: 26 }}
     >
-      {/* Glow effect */}
+      {/* Subtle Apple specular ambient backlight */}
       <motion.div
-        className={`absolute -inset-0.5 bg-gradient-to-r from-${glowColor}-600 to-${glowColor === 'primary' ? 'secondary' : 'primary'}-600 rounded-xl blur opacity-0 group-hover:opacity-75 transition duration-1000`}
+        className="absolute -inset-[1px] rounded-2xl bg-gradient-to-b from-white/15 to-primary-500/10 blur-sm pointer-events-none transition-opacity duration-500"
         animate={{
-          opacity: isHovered ? 0.75 : 0,
+          opacity: isHovered ? 0.35 : 0,
         }}
       />
-      
-      {/* Card content */}
-      <div className="relative bg-white/10 dark:bg-dark-800/50 backdrop-blur-xl rounded-xl border border-white/20 dark:border-dark-700/50 overflow-hidden">
+
+      {/* Frosted Titanium Card content */}
+      <div className="relative h-full bg-[#161617]/90 group-hover:bg-[#1c1c1e]/95 transition-all duration-300 backdrop-blur-2xl rounded-2xl border border-white/[0.08] group-hover:border-white/[0.18] overflow-hidden shadow-lg shadow-black/50">
         {children}
       </div>
     </motion.div>

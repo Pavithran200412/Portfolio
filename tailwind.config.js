@@ -9,40 +9,40 @@ export default {
     extend: {
       colors: {
         primary: {
-          50: '#eff6ff',
-          100: '#dbeafe',
-          200: '#bfdbfe',
-          300: '#93c5fd',
-          400: '#60a5fa',
-          500: '#3b82f6',
-          600: '#2563eb',
-          700: '#1d4ed8',
-          800: '#1e40af',
-          900: '#1e3a8a',
+          50: '#f0f7ff',
+          100: '#e0effe',
+          200: '#bae0fd',
+          300: '#7cc5fb',
+          400: '#38a9f8',
+          500: '#2997ff', // Apple Electric Blue
+          600: '#0071e3', // Apple Link Blue
+          700: '#0058b6',
+          800: '#00438c',
+          900: '#002f66',
         },
         secondary: {
-          50: '#f0fdf4',
-          100: '#dcfce7',
-          200: '#bbf7d0',
-          300: '#86efac',
-          400: '#4ade80',
-          500: '#22c55e',
-          600: '#16a34a',
-          700: '#15803d',
-          800: '#166534',
-          900: '#14532d',
+          50: '#fbfbfd',
+          100: '#f5f5f7', // Apple Light Surface / Snow
+          200: '#e5e5ea',
+          300: '#d1d1d6',
+          400: '#aeaeb2',
+          500: '#86868b', // Apple Classic SF Gray
+          600: '#636366',
+          700: '#48484a',
+          800: '#3a3a3c',
+          900: '#1c1c1e', // Apple Dark Gray
         },
         accent: {
-          50: '#ecfeff',
-          100: '#cffafe',
-          200: '#a5f3fc',
-          300: '#67e8f9',
-          400: '#22d3ee',
-          500: '#06b6d4',
-          600: '#0891b2',
-          700: '#0e7490',
-          800: '#155e75',
-          900: '#164e63',
+          50: '#f4f4f6',
+          100: '#e8e8ed',
+          200: '#d5d5dc',
+          300: '#b0b0bc',
+          400: '#8e8e9d',
+          500: '#6e6e80',
+          600: '#555566',
+          700: '#3d3d4d',
+          800: '#242433',
+          900: '#14141e',
         },
         success: {
           50: '#ecfdf5',
@@ -50,8 +50,8 @@ export default {
           200: '#a7f3d0',
           300: '#6ee7b7',
           400: '#34d399',
-          500: '#10b981',
-          600: '#059669',
+          500: '#30d158', // Apple iOS Green
+          600: '#28cd41',
           700: '#047857',
           800: '#065f46',
           900: '#064e3b',
@@ -62,7 +62,7 @@ export default {
           200: '#fde68a',
           300: '#fcd34d',
           400: '#fbbf24',
-          500: '#f59e0b',
+          500: '#ff9f0a', // Apple iOS Orange
           600: '#d97706',
           700: '#b45309',
           800: '#92400e',
@@ -74,23 +74,23 @@ export default {
           200: '#fecaca',
           300: '#fca5a5',
           400: '#f87171',
-          500: '#ef4444',
+          500: '#ff453a', // Apple iOS Red
           600: '#dc2626',
           700: '#b91c1c',
           800: '#991b1b',
           900: '#7f1d1d',
         },
         dark: {
-          50: '#f8fafc',
-          100: '#f1f5f9',
-          200: '#e2e8f0',
-          300: '#cbd5e1',
-          400: '#94a3b8',
-          500: '#64748b',
-          600: '#475569',
-          700: '#334155',
-          800: '#1e293b',
-          900: '#0f172a',
+          50: '#f5f5f7',
+          100: '#e5e5ea',
+          200: '#d1d1d6',
+          300: '#86868b',
+          400: '#636366',
+          500: '#3a3a3c',
+          600: '#2c2c2e', // Apple Hairline Border
+          700: '#1c1c1e', // Apple Raised Card
+          800: '#161617', // Apple Frosted Surface
+          900: '#000000', // Apple Space Black
         }
       },
       animation: {
@@ -130,7 +130,7 @@ export default {
         '88': '22rem',
       },
       fontFamily: {
-        'sans': ['Inter', 'system-ui', 'Avenir', 'Helvetica', 'Arial', 'sans-serif'],
+        'sans': ['-apple-system', 'BlinkMacSystemFont', '"SF Pro Display"', '"SF Pro Text"', 'Inter', 'system-ui', 'sans-serif'],
       },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
@@ -140,9 +140,9 @@ export default {
         xs: '2px',
       },
       boxShadow: {
-        'glow': '0 0 20px rgba(59, 130, 246, 0.3)',
-        'glow-lg': '0 0 40px rgba(59, 130, 246, 0.4)',
-        'neon': '0 0 5px currentColor, 0 0 10px currentColor, 0 0 15px currentColor',
+        'glow': '0 0 20px rgba(41, 151, 255, 0.25)',
+        'glow-lg': '0 0 35px rgba(41, 151, 255, 0.35)',
+        'neon': '0 0 5px currentColor, 0 0 10px currentColor',
       },
     },
   },

@@ -155,8 +155,8 @@ const ProjectsSection = () => {
                 initial={{ opacity: 0, y: 50, scale: 0.9 }}
                 animate={{ opacity: 1, y: 0, scale: 1 }}
                 exit={{ opacity: 0, y: 50, scale: 0.9 }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                whileHover={{ y: -10 }}
+                transition={{ duration: 0.5, delay: index * 0.08 }}
+                whileHover={{ y: -3 }}
                 className="w-full max-w-sm"
               >
                 <GlowingCard 
@@ -169,8 +169,8 @@ const ProjectsSection = () => {
                       src={project.image}
                       alt={project.title}
                       className="w-full h-48 object-cover"
-                      whileHover={{ scale: 1.1 }}
-                      transition={{ duration: 0.3 }}
+                      whileHover={{ scale: 1.025 }}
+                      transition={{ duration: 0.35, ease: 'easeOut' }}
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
                       <motion.div

@@ -31,9 +31,9 @@ body {
   min-height: 100vh;
   overflow-x: hidden;
   transition: background-color 0.3s ease, color 0.3s ease;
-  /* Professional dark theme — solid background */
-  background: #0b1120;
-  color: #f8fafc;
+  /* Apple Space Black minimal theme */
+  background: #000000;
+  color: #f5f5f7;
   cursor: auto !important;
 }
 
@@ -55,21 +55,22 @@ button, a, input, textarea, [role="button"], .cursor-pointer {
   will-change: transform;
 }
 
-/* Custom scrollbar */
+/* Apple-style minimalist scrollbar */
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 6px;
 }
 
 ::-webkit-scrollbar-track {
-  @apply bg-gray-800;
+  background: #000000;
 }
 
 ::-webkit-scrollbar-thumb {
-  @apply bg-primary-500 rounded-full;
+  background: rgba(255, 255, 255, 0.16);
+  border-radius: 9999px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  @apply bg-primary-600;
+  background: rgba(255, 255, 255, 0.28);
 }
 
 /* Line clamp utility */
@@ -275,14 +276,35 @@ button {
   animation: particle-float 10s ease-in-out infinite;
 }
 
-/* Hover effects */
+/* Apple Minimalist Hover Effects */
 .hover-lift {
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+              background-color 0.35s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .hover-lift:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+  transform: translateY(-2.5px);
+  box-shadow: 0 12px 30px -8px rgba(0, 0, 0, 0.65), 0 0 0 1px rgba(255, 255, 255, 0.12);
+}
+
+.apple-card {
+  background: rgba(22, 22, 23, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+              background-color 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.apple-card:hover {
+  transform: translateY(-2.5px);
+  background: rgba(28, 28, 30, 0.95);
+  border-color: rgba(255, 255, 255, 0.18);
+  box-shadow: 0 14px 34px -10px rgba(0, 0, 0, 0.7), 0 0 1px 1px rgba(255, 255, 255, 0.06);
 }
 
 /* Loading states */

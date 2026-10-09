@@ -85,8 +85,8 @@ const AboutSection = () => {
                 {/* Content card */}
                 <div className={`ml-16 md:ml-0 md:w-5/12 ${index % 2 === 0 ? 'md:mr-8' : 'md:ml-8'}`}>
                   <motion.div
-                    whileHover={{ y: -3 }}
-                    className="p-6 bg-gray-900/80 border border-gray-800 rounded-xl hover:border-primary-500/20 transition-all duration-300"
+                    whileHover={{ y: -2.5 }}
+                    className="p-6 bg-[#161617]/90 hover:bg-[#1c1c1e]/95 border border-white/[0.08] hover:border-white/[0.18] rounded-2xl backdrop-blur-xl transition-all duration-300 shadow-md shadow-black/40"
                   >
                     <span className="inline-block px-3 py-1 bg-primary-600/10 text-primary-400 rounded-full text-sm font-semibold mb-3">
                       {item.year}

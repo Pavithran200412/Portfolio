@@ -37,7 +37,7 @@ function App() {
 
   return (
     <ThemeProvider>
-      <div className="relative min-h-screen bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-white overflow-x-hidden theme-transition">
+      <div className="relative min-h-screen bg-black text-[#f5f5f7] overflow-x-hidden theme-transition">
         <ScrollProgress />
         <ParticleBackground />
         <Navigation />

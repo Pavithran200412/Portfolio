@@ -266,7 +266,7 @@ const TestimonialsSection = () => {
                   transition={{ duration: 0.45, ease: [0.4, 0, 0.2, 1] }}
                   className="w-full"
                 >
-                  <div className="relative p-8 md:p-10 bg-gray-900/70 border border-white/5 rounded-2xl backdrop-blur-sm hover:border-primary-500/20 transition-all duration-300 shadow-2xl">
+                  <div className="relative p-8 md:p-10 bg-[#161617]/90 hover:bg-[#1c1c1e]/95 border border-white/[0.08] hover:border-white/[0.18] rounded-2xl backdrop-blur-2xl transition-all duration-300 shadow-2xl shadow-black/60">
                     {/* Decorative quote icon */}
                     <div className="absolute top-8 right-8 opacity-10">
                       <FaQuoteLeft size={64} className="text-primary-400" />

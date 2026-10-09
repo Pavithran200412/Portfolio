@@ -79,10 +79,10 @@ const SkillsSection = () => {
               delay={index * 0.1}
             >
               <motion.div
-                whileHover={{ y: -4 }}
-                className="p-6 bg-gray-900/80 border border-gray-800 rounded-xl hover:border-primary-500/20 transition-all duration-300 h-full"
+                whileHover={{ y: -2.5 }}
+                className="p-6 bg-[#161617]/90 hover:bg-[#1c1c1e]/95 border border-white/[0.08] hover:border-white/[0.18] rounded-2xl backdrop-blur-xl transition-all duration-300 h-full shadow-md shadow-black/40"
               >
-                <h3 className="text-base font-bold text-white mb-5 pb-3 border-b border-gray-800">
+                <h3 className="text-base font-bold text-white mb-5 pb-3 border-b border-white/[0.08]">
                   {skill.category}
                 </h3>
                 <div className="grid grid-cols-2 gap-3">
@@ -93,8 +93,8 @@ const SkillsSection = () => {
                       whileInView={{ opacity: 1, scale: 1 }}
                       transition={{ duration: 0.4, delay: itemIndex * 0.06 }}
                       viewport={{ once: true }}
-                      whileHover={{ scale: 1.05 }}
-                      className="flex flex-col items-center gap-2 p-3 bg-gray-800/50 rounded-lg hover:bg-gray-800 transition-colors duration-200 cursor-default"
+                      whileHover={{ scale: 1.025 }}
+                      className="flex flex-col items-center gap-2 p-3 bg-white/[0.04] hover:bg-white/[0.08] border border-white/[0.04] hover:border-white/[0.12] rounded-xl transition-all duration-200 cursor-default"
                     >
                       <i className={`${item.icon} text-2xl`} />
                       <span className="text-xs font-medium text-gray-400 text-center leading-tight">

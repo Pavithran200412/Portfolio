@@ -73,14 +73,14 @@ const ContactSection = () => {
                     href={info.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    whileHover={{ x: 6 }}
-                    className="flex items-center gap-5 p-5 bg-gray-800/50 border border-white/5 rounded-xl hover:bg-gray-800 hover:border-primary-500/20 transition-all duration-300 group"
+                    whileHover={{ x: 3 }}
+                    className="flex items-center gap-5 p-5 bg-[#161617]/90 border border-white/[0.08] rounded-2xl hover:bg-[#1c1c1e]/95 hover:border-white/[0.18] transition-all duration-300 group shadow-sm shadow-black/40"
                   >
-                    <div className="w-12 h-12 bg-gradient-to-br from-primary-600 to-secondary-600 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform duration-300">
-                      <Icon className="text-white" size={20} />
+                    <div className="w-12 h-12 bg-primary-600/20 border border-primary-500/30 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:scale-105 transition-transform duration-300">
+                      <Icon className="text-primary-400" size={20} />
                     </div>
                     <div>
-                      <p className="text-sm text-gray-400 font-medium">{info.label}</p>
+                      <p className="text-sm text-secondary-500 font-medium">{info.label}</p>
                       <p className="text-white font-medium group-hover:text-primary-400 transition-colors">
                         {info.value}
                       </p>
@@ -92,7 +92,7 @@ const ContactSection = () => {
 
             {/* Social Links */}
             <AnimatedSection animation="fadeInUp" delay={0.4}>
-              <div className="p-6 bg-gray-800/50 border border-white/5 rounded-xl">
+              <div className="p-6 bg-[#161617]/90 border border-white/[0.08] rounded-2xl shadow-sm shadow-black/40">
                 <h3 className="text-lg font-bold text-white mb-5">Connect With Me</h3>
                 <div className="flex gap-3">
                   {socialLinks.map((social, index) => {
@@ -106,9 +106,9 @@ const ContactSection = () => {
                         initial={{ opacity: 0, scale: 0 }}
                         whileInView={{ opacity: 1, scale: 1 }}
                         transition={{ delay: index * 0.1 }}
-                        whileHover={{ scale: 1.15, y: -3 }}
-                        whileTap={{ scale: 0.95 }}
-                        className="w-12 h-12 bg-gradient-to-br from-primary-600 to-secondary-600 rounded-xl flex items-center justify-center text-white hover:shadow-lg hover:shadow-primary-500/25 transition-all duration-300"
+                        whileHover={{ scale: 1.06, y: -2 }}
+                        whileTap={{ scale: 0.96 }}
+                        className="w-12 h-12 bg-white/[0.06] hover:bg-primary-500/20 border border-white/[0.08] hover:border-primary-500/30 rounded-xl flex items-center justify-center text-white transition-all duration-300"
                         aria-label={social.label}
                       >
                         <Icon size={20} />
