@@ -47,11 +47,13 @@ function parseGvizResponse(text) {
   const json = JSON.parse(text.slice(start, end));
   const rows = json?.table?.rows ?? [];
 
+  // Column order (Google Forms added Email at col 1):
+  // 0=Timestamp, 1=Email, 2=Name, 3=Role, 4=Company, 5=Rating, 6=Testimonial
   return rows
-    .filter((row) => row.c?.[5]?.v) // must have a message
+    .filter((row) => row.c?.[6]?.v) // must have a testimonial message
     .map((row, i) => {
       const get = (idx) => row.c?.[idx]?.v ?? '';
-      const name = String(get(1)).trim() || 'Anonymous';
+      const name = String(get(2)).trim() || 'Anonymous';
       const initials = name
         .split(' ')
         .map((w) => w[0])
@@ -61,15 +63,16 @@ function parseGvizResponse(text) {
       return {
         id: `sheet-${i}`,
         name,
-        role: String(get(2)).trim() || 'Colleague',
-        company: String(get(3)).trim() || '',
+        role: String(get(3)).trim() || 'Colleague',
+        company: String(get(4)).trim() || '',
         avatar: initials || '??',
         avatarColor: AVATAR_COLORS[i % AVATAR_COLORS.length],
-        rating: Math.min(5, Math.max(1, Number(get(4)) || 5)),
-        text: String(get(5)).trim(),
+        rating: Math.min(5, Math.max(1, Number(get(5)) || 5)),
+        text: String(get(6)).trim(),
       };
     });
 }
+
 
 // ── Sub-components ────────────────────────────────────────
 
