@@ -8,8 +8,8 @@ const ContactSection = () => {
     {
       icon: FiMail,
       label: 'Email',
-      value: 'pavithran.workat@gmail.com',
-      href: 'mailto:pavithran.workat@gmail.com',
+      value: 'pavithransureshbabu358@gmail.com',
+      href: 'mailto:pavithransureshbabu358@gmail.com',
     },
     {
       icon: FiPhone,

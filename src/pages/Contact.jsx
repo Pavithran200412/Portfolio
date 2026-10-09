@@ -39,19 +39,19 @@ const Contact = () => {
     {
       icon: FiMail,
       label: 'Email',
-      value: 'john.doe@example.com',
-      href: 'mailto:john.doe@example.com'
+      value: 'pavithransureshbabu358@gmail.com',
+      href: 'mailto:pavithransureshbabu358@gmail.com'
     },
     {
       icon: FiPhone,
       label: 'Phone',
-      value: '+1 (555) 123-4567',
-      href: 'tel:+15551234567'
+      value: '+91 93859 85154',
+      href: 'tel:+919385985154'
     },
     {
       icon: FiMapPin,
       label: 'Location',
-      value: 'San Francisco, CA',
+      value: 'chennai, Tamil Nadu, India',
       href: 'https://maps.google.com'
     }
   ];
